@@ -75,8 +75,7 @@ def Study(study, studymeta, participants) {
     status: "completed"
 
 
-    //pondscum: subjects;
-    // enrollment[0] (if subjects?): Reference_Key_Identifier(study, "Group", studymeta.study_code);
+    enrollment[0] (if participants?): Reference_Key_Identifier(study, "Group", studymeta.study_code);
     identifier[0]: Key_Identifier(study, "ResearchStudy", studymeta.study_code);
     identifier[0].use: "official";
 
