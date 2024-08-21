@@ -1,0 +1,3 @@
+def Transform_Dataset(resource) {
+    $this: ProcessStudy(resource.study, resource.study_meta[], resource.participant);
+}

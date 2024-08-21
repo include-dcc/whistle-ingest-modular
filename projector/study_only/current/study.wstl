@@ -1,0 +1,202 @@
+// Research Study 
+// The research study acts as the Umbrella that covers all details associated with
+// a single study. Currently, we treat all of DS-Connect as one study. Patients 
+// are tied to a study by way of the ResearchSubject. 
+
+def StudyArtifactUrl(artifact_type, artifact_label, artifact_url) {
+    if (artifact_url?) {
+        type: artifact_type;
+        label: artifact_label;
+        url: artifact_url;
+    }
+}
+
+def StudyArtifactCitation(artifact_type, artifact_label, artifact_citation) {
+    if (artifact_citation?) {
+        type: artifact_type;
+        label: artifact_label;
+        citation: artifact_citation;
+    }
+}
+
+def StudyArtifactDisplay(artifact_type, artifact_label, artifact_value) {
+    if (artifact_value?) {
+        type: artifact_type;
+        label: artifact_label;
+        display: artifact_value;
+    }
+}
+
+def study_contact(name, email, institute) {
+    name: name;
+    telecom[0].system: "email";
+    telecom[0].value: email;
+    extension[0].url: "https://include-dcc.github.io/include-model-forge/StructureDefinition/contact-detail-institution"
+    extension[0].valueString: institute;
+}
+
+def add_contact(study_contact) {
+    $this: study_contact(study_contact.study_contact_name, study_contact.study_contact_email, study_contact.study_contact_institution);
+}
+
+def StudyProgram(study_program) {
+    url: "https://include-dcc.github.io/include-model-forge/StructureDefinition/study-program";
+    valueCodeableConcept.coding: HarmonizeMapped(study_program, "Study Program");
+    // udles: study_program;
+    // valueString: study_program;
+}
+
+def StudyDbGaP(required id) {
+    value: id;
+    system: "https://www.ncbi.nlm.nih.gov/projects/gap/cgi-bin/study.cgi?study_id=";
+    use: "secondary";
+}
+
+def ResearchStudyAssociatedParty(investigator_name) {
+    url: "https://nih-ncpi.github.io/ncpi-fhir-ig-2/StructureDefinition/research-study-associated-party";
+    extension[0].url: "name";
+    extension[0].valueString: investigator_name
+}
+
+
+// Definition: Build the ResearchStudy resource
+//
+// Argument:
+//  study - This is the full study object created by Whistler
+//
+def Study(study, studymeta, participants) {
+    meta.tag[]: StudyMeta(study);
+    meta.profile[]: "https://nih-ncpi.github.io/ncpi-fhir-ig/StructureDefinition/ncpi-research-study";
+
+    var dbgap_ids: $Unique(studymeta.dataset_meta[*].dbgap);
+    
+    title: studymeta.study_title;
+    description: studymeta.study_description;
+    status: "completed"
+
+
+    //pondscum: subjects;
+    // enrollment[0] (if subjects?): Reference_Key_Identifier(study, "Group", studymeta.study_code);
+    identifier[0]: Key_Identifier(study, "ResearchStudy", studymeta.study_code);
+    identifier[0].use: "official";
+
+
+    if (dbgap_ids?) {
+      // var ids: $StrSplit(studymeta.study_dbgap, "|");
+      identifier[]: StudyDbGaP(dbgap_ids[]);
+    }
+
+    keyword[0].coding: HarmonizeMapped(studymeta.program, "IncludeProgram");
+    keyword[0].text: "INCLUDE";
+    keyword[1].coding[]: BuildCoding(studymeta.study_code, studymeta.study_code, identifier[0].system);
+    keyword[1].text: studymeta.study_code;
+
+    relatedArtifact[] (if studymeta.study_website?): StudyArtifactUrl("documentation", "Study Website", studymeta.study_website);
+    relatedArtifact[] (if studymeta.selection_criteria?): StudyArtifactCitation("documentation", "SelectionCriteria", studymeta.selection_criteria);
+    relatedArtifact[] (if studymeta.study_design?): StudyArtifactCitation("citation", "StudyDesign", studymeta.study_design);
+
+    // Publications
+    var publications: $StrSplit(studymeta.study_publication, "|");
+    relatedArtifact[]: StudyArtifactCitation("citation", "Publication", publications[]);
+
+    relatedArtifact[] (if study.remote_access?): StudyArtifactUrl("derived-from", study.remote_access.type, study.remote_access.url);
+
+    // This has been moved into datasets. Do we still want to use this even though it's also in the identifier?
+    relatedArtifact[]: StudyArtifactDisplay("derived-from", "DbGaP", dbgap_ids[]);
+
+    var research_domains: $StrSplit(studymeta.research_domain, "|");
+    focus[].coding[]: HarmonizeMappedFirst(research_domains[], "Research Domain");
+
+    var lifespan: $StrSplit(studymeta.participant_lifespan_stage, "|");
+    focus[].coding[]: HarmonizeMappedFirst(lifespan[], "Participant Lifespan Stage");
+
+    if studymeta.vbr_email? {
+        contact[]: {
+            name: "Virtual Biorepository Contact";
+            telecom[]: {
+                system: "email";
+                value: studymeta.vbr_email;
+            };
+            telecom[]: {
+                system: "url";
+                value: studymeta.vbr_url;
+            }
+        }
+        note[].text: studymeta.vbr_readme;
+    }
+
+    resourceType: "ResearchStudy";
+    var investigator_names: $StrSplit(studymeta.principal_investigator_name, "|");
+    extension[]: ResearchStudyAssociatedParty(investigator_names[]);
+
+    var programs: $StrSplit(studymeta.program, "|");
+    extension[]: StudyProgram(programs[]);
+
+    contact[]: add_contact(studymeta.study_contacts[]);
+    // contact[]: study_contact(studymeta.study_contact_name, studymeta.study_contact_email, studymeta.study_contact_institution)
+}
+
+
+def StudyPageObsIdentifier(study, studymeta, colname, value) {
+    $this: Key_Identifier(study, "Observation", $StrCat(studymeta.study_code, "-", colname, "-", value));
+}
+
+def StudyPageObservation(study, studymeta, colname, value, datatype) {
+    meta.tag[]: StudyMeta(study);
+    meta.profile[]: "https://include-dcc.github.io/include-model-forge/StructureDefinition/study-page-observation";
+    identifier[]: StudyPageObsIdentifier(study, studymeta, colname, value);
+    identifier[0].use: "official";
+    status: "final";
+    
+    code.coding[]: HarmonizeMapped(colname, "Study Page Codes");
+    code.text: colname;
+
+    // Not sure why this is here. I assume this is right? 
+    if (value="100 enrolled in trial + participants screened") {
+        value: 100;
+    }
+
+    if (datatype="code") {
+        valueCodeableConcept.coding: HarmonizeMapped(value, colname);
+    } else {
+        if (datatype="integer") {
+            if (value ~= "") {
+                valueInteger: $ParseInt(value);
+            } else {
+                valueString: $StrCat("Oooga ", value);
+            }
+        } else {
+            valueString: value;
+        }
+    }
+    focus[]: Reference_Key_Identifier(study, "ResearchStudy", studymeta.study_code);
+    resourceType: "Observation";
+}
+
+// Description: Wrapper for all research studies in the dataset. For now, it's just the one
+//
+// Argument:
+//  study - This is the full study object created by Whistler
+def ProcessStudy(study, studymeta, participants) {
+
+    out research_study: Study(study, studymeta, participants);
+    if (studymeta.study_expected_number_of_participants = "100 enrolled in trial + participants screened") {
+        // Kinda sucks that whistle can't convert ints to int...
+        var exp_participant_count: "122";
+    } else {
+        var exp_participant_count: studymeta.study_expected_number_of_participants;
+    }
+    out research_study: StudyPageObservation(study, studymeta, "Study Expected Number of Participants", exp_participant_count, "integer");
+
+    out research_study: StudyPageObservation(study, studymeta, "Selection Criteria", studymeta.selection_criteria, "string");
+
+    var lifespans: $StrSplit(studymeta.participant_lifespan_stage, "|");
+    out research_study: StudyPageObservation(study, studymeta, "Participant Lifespan Stage", lifespans[], "code");
+
+    var source_types: $StrSplit(studymeta.clinical_data_source_type, "|");
+    out research_study: StudyPageObservation(study, studymeta, "Clinical Data Source Type", source_types[], "code");
+
+    var data_categories: $StrSplit(studymeta.expected_data_category, "|");
+    out research_study: StudyPageObservation(study, studymeta, "Expected Data Category", data_categories[], "code");
+    out research_study: StudyPageObservation(study, studymeta, "GUID type", studymeta.guid_type, "code");
+}
