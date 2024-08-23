@@ -79,6 +79,12 @@ def Study(study, studymeta, participants) {
     identifier[0]: Key_Identifier(study, "ResearchStudy", studymeta.study_code);
     identifier[0].use: "official";
 
+    // IG V1 Compliance
+    category.coding[0]: BuildCoding("StudyCohort", "Study Cohort", "https://nih-ncpi.github.io/ncpi-fhir-ig/CodeSystem/ncpi");
+    // IG V2 Compliance
+    // category.coding[0]: BuildCoding("StudyCohort", "Study Cohort", "https://nih-ncpi.github.io/ncpi-fhir-ig-2/CodeSystem/ncpi");
+
+
 
     if (dbgap_ids?) {
       // var ids: $StrSplit(studymeta.study_dbgap, "|");
@@ -98,7 +104,10 @@ def Study(study, studymeta, participants) {
     var publications: $StrSplit(studymeta.study_publication, "|");
     relatedArtifact[]: StudyArtifactCitation("citation", "Publication", publications[]);
 
-    relatedArtifact[] (if study.remote_access?): StudyArtifactUrl("derived-from", study.remote_access.type, study.remote_access.url);
+    // I don't see that we are using this in our current configurations. If we
+    // end up getting this data, it will probably end up coming as part of the
+    // dataset, I imagine. 
+    // relatedArtifact[] (if study.remote_access?): StudyArtifactUrl("derived-from", study.remote_access.type, study.remote_access.url);
 
     // This has been moved into datasets. Do we still want to use this even though it's also in the identifier?
     relatedArtifact[]: StudyArtifactDisplay("derived-from", "DbGaP", dbgap_ids[]);

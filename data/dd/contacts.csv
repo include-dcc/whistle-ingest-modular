@@ -1,0 +1,5 @@
+variable_name,description,data_type,enumerations,min,max
+Study Code,Study Code,String,ABC-DS;BRI-DSR;DS-COG-ALL;DS-Nexus;DS-PCGC;DS-Sleep;DS360-CHD;DSC;HTP;X01-deSmith;X01-Hakonarson,,
+Study Contact Name,Study Contact Name,String,,,
+Study Contact Institution,Study Contact Institution,String,,,
+Study Contact Email,Study Contact Email,String,,,

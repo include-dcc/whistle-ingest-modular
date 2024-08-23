@@ -1,0 +1,19 @@
+variable_name,description,data_type,enumerations,min,max
+Study Code,Study Code,String,DS-COG-ALL;DS-PCGC;DS360-CHD;DSC;HTP;X01-deSmith;X01-Hakonarson,,
+Dataset Name,Dataset Name,String,DS-COG-ALL Unharmonized Demographic/Clinical Data;DS-COG-ALL Whole Genome Sequencing;DS-Connect Unharmonized Demographic/Clinical Data;DS-PCGC Unharmonized Demographic/Clinical Data;DS-PCGC Whole Genome Sequencing;DS360-CHD Unharmonized Demographic/Clinical Data;DS360-CHD Whole Genome Sequencing ;HTP Plasma Inflammatory Markers (MSD v1);HTP Plasma Metabolomics (v1);HTP Unharmonized Demographic/Clinical Data;HTP Whole Blood RNAseq (v1);X01-deSmith Unharmonized Demographic/Clinical Data;X01-deSmith Whole Genome Sequencing;X01-Hakonarson RNASeq;X01-Hakonarson Unharmonized Demographic/Clinical Data;X01-Hakonarson Whole Genome Sequencing,,
+Dataset Global ID,Dataset Global ID,String,TBD,,
+Dataset External ID,Dataset External ID,String,; ,,
+Dataset Expected Number of Participants,Dataset Expected Number of Participants,Int,,1055,530
+Expected Number of Files,Expected Number of Files,String,,,
+Data Collection Start Year,Data Collection Start Year,Int,,2013,2016
+Data Collection End Year,Data Collection End Year,String,,,
+Dataset Data Category,Dataset Data Category,String,Genomics;Metabolomics;Proteomics;Transcriptomics;Unharmonized Demographic/Clinical Data,,
+Dataset Data Type,Dataset Data Type,String,,,
+Dataset Experimental Strategy,Dataset Experimental Strategy,String,;Bulk RNA-Seq;LCMS Metabolomics;Multiplex Immunoassay;Whole Genome Sequencing,,
+Dataset Experimental Platform,Dataset Experimental Platform,String,Illumina;Illumina NovaSeq;Meso Scale Discovery;Ultra high-performance liquid chromatography-mass spectrometry (UHPLC-MS),,
+Dataset Publication,Dataset Publication,String,,,
+Access Limitations,Access Limitations,String,,,
+Access Requirements,Access Requirements,String,,,
+Dataset dbGaP,Dataset dbGaP,String,,,
+Other Repository,Other Repository,String,,,
+Other Access Authority,Other Access Authority,String,,,
