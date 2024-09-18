@@ -68,12 +68,12 @@ def Study(study, studymeta, participants) {
     meta.tag[]: StudyMeta(study);
     meta.profile[]: "https://nih-ncpi.github.io/ncpi-fhir-ig/StructureDefinition/ncpi-research-study";
 
-    var dbgap_ids: $Unique(studymeta.dataset_meta[*].dbgap);
+    // var dbgap_ids: $Unique(studymeta.dataset_meta[*].dbgap);
+    var dbgap_ids: $StrSplit(studymeta.dbgap, "|");
     
     title: studymeta.study_title;
     description: studymeta.study_description;
     status: "completed"
-
 
     enrollment[0] (if participants?): Reference_Key_Identifier(study, "Group", studymeta.study_code);
     identifier[0]: Key_Identifier(study, "ResearchStudy", studymeta.study_code);
@@ -83,8 +83,6 @@ def Study(study, studymeta, participants) {
     category.coding[0]: BuildCoding("StudyCohort", "Study Cohort", "https://nih-ncpi.github.io/ncpi-fhir-ig/CodeSystem/ncpi");
     // IG V2 Compliance
     // category.coding[0]: BuildCoding("StudyCohort", "Study Cohort", "https://nih-ncpi.github.io/ncpi-fhir-ig-2/CodeSystem/ncpi");
-
-
 
     if (dbgap_ids?) {
       // var ids: $StrSplit(studymeta.study_dbgap, "|");
@@ -101,7 +99,7 @@ def Study(study, studymeta, participants) {
     relatedArtifact[] (if studymeta.study_design?): StudyArtifactCitation("citation", "StudyDesign", studymeta.study_design);
 
     // Publications
-    var publications: $StrSplit(studymeta.study_publication, "|");
+    var publications: $StrSplit(studymeta.publication, "|");
     relatedArtifact[]: StudyArtifactCitation("citation", "Publication", publications[]);
 
     // I don't see that we are using this in our current configurations. If we
@@ -150,35 +148,37 @@ def StudyPageObsIdentifier(study, studymeta, colname, value) {
 }
 
 def StudyPageObservation(study, studymeta, colname, value, datatype) {
-    meta.tag[]: StudyMeta(study);
-    meta.profile[]: "https://include-dcc.github.io/include-model-forge/StructureDefinition/study-page-observation";
-    identifier[]: StudyPageObsIdentifier(study, studymeta, colname, value);
-    identifier[0].use: "official";
-    status: "final";
-    
-    code.coding[]: HarmonizeMapped(colname, "Study Page Codes");
-    code.text: colname;
+    if (value?) {
+        meta.tag[]: StudyMeta(study);
+        meta.profile[]: "https://include-dcc.github.io/include-model-forge/StructureDefinition/study-page-observation";
+        identifier[]: StudyPageObsIdentifier(study, studymeta, colname, value);
+        identifier[0].use: "official";
+        status: "final";
+        
+        code.coding[]: HarmonizeMapped(colname, "Study Page Codes");
+        code.text: colname;
 
-    // Not sure why this is here. I assume this is right? 
-    if (value="100 enrolled in trial + participants screened") {
-        value: 100;
-    }
-
-    if (datatype="code") {
-        valueCodeableConcept.coding: HarmonizeMapped(value, colname);
-    } else {
-        if (datatype="integer") {
-            if (value ~= "") {
-                valueInteger: $ParseInt(value);
-            } else {
-                valueString: $StrCat("Oooga ", value);
-            }
-        } else {
-            valueString: value;
+        // Not sure why this is here. I assume this is right? 
+        if (value="100 enrolled in trial + participants screened") {
+            value: 100;
         }
+
+        if (datatype="code") {
+            valueCodeableConcept.coding: HarmonizeMapped(value, colname);
+        } else {
+            if (datatype="integer") {
+                if (value ~= "") {
+                    valueInteger: $ParseInt(value);
+                } else {
+                    valueString: $StrCat("Oooga ", value);
+                }
+            } else {
+                valueString: value;
+            }
+        }
+        focus[]: Reference_Key_Identifier(study, "ResearchStudy", studymeta.study_code);
+        resourceType: "Observation";
     }
-    focus[]: Reference_Key_Identifier(study, "ResearchStudy", studymeta.study_code);
-    resourceType: "Observation";
 }
 
 // Description: Wrapper for all research studies in the dataset. For now, it's just the one
@@ -188,13 +188,13 @@ def StudyPageObservation(study, studymeta, colname, value, datatype) {
 def ProcessStudy(study, studymeta, participants) {
 
     out research_study: Study(study, studymeta, participants);
-    if (studymeta.study_expected_number_of_participants = "100 enrolled in trial + participants screened") {
+    if (studymeta.expected_number_of_participants = "100 enrolled in trial + participants screened") {
         // Kinda sucks that whistle can't convert ints to int...
         var exp_participant_count: "122";
     } else {
-        var exp_participant_count: studymeta.study_expected_number_of_participants;
+        var exp_participant_count: studymeta.expected_number_of_participants;
     }
-    out research_study: StudyPageObservation(study, studymeta, "Study Expected Number of Participants", exp_participant_count, "integer");
+    out research_study: StudyPageObservation(study, studymeta, "Expected Number of Participants", exp_participant_count, "integer");
 
     out research_study: StudyPageObservation(study, studymeta, "Selection Criteria", studymeta.selection_criteria, "string");
 
@@ -204,7 +204,9 @@ def ProcessStudy(study, studymeta, participants) {
     var source_types: $StrSplit(studymeta.clinical_data_source_type, "|");
     out research_study: StudyPageObservation(study, studymeta, "Clinical Data Source Type", source_types[], "code");
 
-    var data_categories: $StrSplit(studymeta.expected_data_category, "|");
-    out research_study: StudyPageObservation(study, studymeta, "Expected Data Category", data_categories[], "code");
+    var data_categories: $StrSplit(studymeta.data_category, "|");
+    out research_study: StudyPageObservation(study, studymeta, "Data Category", data_categories[], "code");
     out research_study: StudyPageObservation(study, studymeta, "GUID type", studymeta.guid_type, "code");
+    out research_study: StudyPageObservation(study, studymeta, "Acknowledgments", studymeta.acknowledgments, "string")
+    out research_study: StudyPageObservation(study, studymeta, "Citation Statement", studymeta.citation_statement, "string")
 }
