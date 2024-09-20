@@ -1,0 +1,7 @@
+variable_name,description,data_type,enumerations,min,max
+Study Code,Study Code,String,,,
+Dataset Name,Dataset Name,String,,,
+Dataset External ID,Dataset External ID,String,,,
+Dataset Global ID,Dataset Global ID,String,,,
+File Name,File Name,String,,,
+File Global ID,File Global ID,String,,,

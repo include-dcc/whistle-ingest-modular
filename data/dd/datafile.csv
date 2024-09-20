@@ -1,0 +1,19 @@
+variable_name,description,data_type,enumerations
+Study Code,Study Code,string,
+Participant External ID,"Unique INCLUDE global identifier for the participant, assigned by DCC",string,
+Sample External ID,"Unique identifier for sample, assigned by data contributor. A sample is a unique biological material; two samples with two different IDs are biologically distinct.",string,
+Sample Global ID,Sample Global ID,String,,,
+File Global ID,"INCLUDE global file identifier, assigned by DCC",string,
+File Name,"Name of file, assigned by data contributor",string,
+File S3 Location,File S3 Location,String,,,
+File Upload Location,File Upload Location,String,,,
+DRS URI,DRS URI,String,,,
+File Hash,md5 hash of this file for validation (if known),string,
+Data Access,"Type of access control on this file, determined by DCC",enumeration,Controlled;Open;Registered
+Data Category,"General category of data in file (e.g. Clinical, Genomics, Proteomics, Metabolomics, Immune profiling, Transcriptomics)",enumeration,Genomics;Metabolomics;Proteomics;Transcriptomic;Unharmonized Demographic/Clinical Data
+Data Type,"Specific type of data contained in file (e.g. Preprocessed metabolite relative abundance, Absolute protein concentration, Aligned reads, Simple nucleotide variations, GVCF, Gene expression quantifications, Gene fusions, Somatic copy number variations, Somatic structural variations)",enumeration,Aligned Reads;Aligned Reads Index;Alternative Splicing;Annotated Gene Fusion;Annotated Variant Call;Annotated Variant Call Index;Familial Relationships Report;Gene Expression;Gene Expression Quantification;Gene Fusions;Genome Aligned Read;Genome Aligned Read Index;Genomic Variant;Genomic Variant Index;gVCF;gVCF Index;Isoform Expression Quantification;Other;Preprocessed metabolite relative abundance;Protein abundance (absolute protein concentration);Raw Gene Fusion;Unaligned Reads;Variant Calls;Variant Calls Index
+Experimental Strategy,"Experimental method used to obtain data in file (e.g. Whole genome sequencing, RNAseq, Multiplex immunoassay, Mass spec metabolomics)",enumeration,LCMS_Metabolomics;Multiplex Immunoassay;RNAseq;Whole genome sequencing
+Experimental Platform,"Specific platform used to perform experiment (e.g. SOMAscan, MSD, Luminex, Illumina)",enumeration,,Illumina;Meso Scale Discovery;Vanquish UHPLC + Q Exactive MS
+File Format,"Format of file (e.g. tsv, cram, gvcf, vcf, maf, txt, pdf, html, png)",enumeration,bai;bam;crai;cram;fastq;gvcf;html;pdf;tbi;tsv;txt;vcf
+File Size,"Size of file, if known (mainly important if large)",integer,
+File Size Unit,Unit of file size,string,
