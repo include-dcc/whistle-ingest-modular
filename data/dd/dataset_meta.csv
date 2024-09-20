@@ -1,7 +1,8 @@
 variable_name,description,data_type,enumerations,min,max
 Study Code,Study Code,String,DS-COG-ALL;DS-PCGC;DS360-CHD;DSC;HTP;X01-deSmith;X01-Hakonarson,,
 Dataset Name,Dataset Name,String,DS-COG-ALL Unharmonized Demographic/Clinical Data;DS-COG-ALL Whole Genome Sequencing;DS-Connect Unharmonized Demographic/Clinical Data;DS-PCGC Unharmonized Demographic/Clinical Data;DS-PCGC Whole Genome Sequencing;DS360-CHD Unharmonized Demographic/Clinical Data;DS360-CHD Whole Genome Sequencing ;HTP Plasma Inflammatory Markers (MSD v1);HTP Plasma Metabolomics (v1);HTP Unharmonized Demographic/Clinical Data;HTP Whole Blood RNAseq (v1);X01-deSmith Unharmonized Demographic/Clinical Data;X01-deSmith Whole Genome Sequencing;X01-Hakonarson RNASeq;X01-Hakonarson Unharmonized Demographic/Clinical Data;X01-Hakonarson Whole Genome Sequencing,,
-Dataset Global ID,Dataset Global ID,String,TBD,,
+Dataset Description,"",String,
+Dataset Global ID,Dataset Global ID,String,,,
 Dataset External ID,Dataset External ID,String,; ,,
 Expected Number of Participants,Expected Number of Participants,Int,,1055,530
 Expected Number of Files,Expected Number of Files,String,,,

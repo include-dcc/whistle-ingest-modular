@@ -1,1 +1,5 @@
-../../study_only/current/_harmonize_select_by_prefix.wstl
+// Filter out anything whose system doesn't match the study's prefix
+def HarmonizeSelectByPrefix(study, code, system) {
+    var codings: HarmonizeMapped(code, system);
+    $this: HarmonizeSelection(codings[], study.identifier-prefix);
+}

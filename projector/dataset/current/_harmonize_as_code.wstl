@@ -1,1 +1,11 @@
-../../study_only/current/_harmonize_as_code.wstl
+// Description: Return external code matching the code/system queried
+//
+// Arguments:
+//  code - Code to be harmonized
+//  system - The system where the code should be quried
+//
+// Only the first code is returned.
+def HarmonizeAsCode(code, system) {
+    var coding: HarmonizeMapped(code, system);
+    $this: coding[0].code;
+}

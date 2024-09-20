@@ -1,1 +1,10 @@
-../../study_only/current/_harmonize_mapped_first.wstl
+// Description: Return first external code mapping
+//
+// Arguments:
+//  code - Code to be harmonized
+//  system - The system where the code should be quried
+//
+def HarmonizeMappedFirst(code, system) {
+    var coding: HarmonizeMapped(code, system);
+    $this: coding[0];
+}
