@@ -1,0 +1,15 @@
+
+
+def Dataset(study, studymeta, dataset) {
+    meta.tag[]: StudyMeta(study)
+    // meta.profile[]: "TBD - If/when we create a profile"
+    resourceType: "List"
+
+    title: dataset.dataset_name;
+
+    if (dataset.dataset_global_id != 'TBD') {
+        id: dataset.dataset_global_id;
+    } 
+
+    
+}
