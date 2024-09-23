@@ -1,8 +1,8 @@
 //
 def BuildMetadataComponent(code, datatype, value) {
     if (value?) {
-        code: HarmonizeMappedFirst(code, "dataset_meta");
-
+        code.coding[]: HarmonizeMappedFirst(code, "dataset_meta");
+        
         if (datatype = "code") {
             valueCodeableConcept.coding[]: value;
         } 
@@ -41,7 +41,20 @@ def DatasetMetadataObservation(study, dataset) {
     component[]: BuildMetadataComponent("Expected Number of Participants", "integer", dataset.expected_number_of_participants);
     component[]: BuildMetadataComponent("Expected Number of Files", "integer", dataset.expected_number_of_files);
 
-    dataset_values: dataset;
+    component[]: BuildMetadataComponent("Data Collection Start Year", "string", dataset.data_collection_start_year);
+    component[]: BuildMetadataComponent("Data Collection End Year", "string", dataset.data_collection_end_year);
+
+    component[]: BuildMetadataComponent("Data Category", "code", HarmonizeMappedFirst(dataset.data_category, "Data Category"))
+    var data_types: $StrSplit(dataset.data_type, "|");
+    component[]: BuildMetadataComponent("Data Type", "string", data_types[])
+    component[]: BuildMetadataComponent("Experimental Strategy", "string", dataset.experimental_strategy)
+    component[]: BuildMetadataComponent("Experimental Platform", "string", dataset.experimental_platform)
+    component[]: BuildMetadataComponent("Publication", "string", dataset.publication)
+    component[]: BuildMetadataComponent("Access Limitations", "string", dataset.access_limitations)
+    component[]: BuildMetadataComponent("Access Requirements", "string", dataset.access_requirements)
+    component[]: BuildMetadataComponent("dbGaP", "string", dataset.dbgap)
     
+    component[]: BuildMetadataComponent("Is Harmonized", "boolean", dataset.is_harmonized)
+
 }
 
