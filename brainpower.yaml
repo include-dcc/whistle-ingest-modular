@@ -1,0 +1,59 @@
+study_id: INCLUDE-GUIDs
+study_accession:  
+study_title: INCLUDE-GUIDs
+study_desc: 
+url: https://includedcc.org/studies/include-guids
+identifier_prefix: https://includedcc.org/fhir/include-guids
+dd_prefix: https://includedcc.org/fhir
+output_filename: guids
+id_colname: Participant ID
+whistle_src: projector/dataset/_entry.wstl
+code_harmonization_dir: harmony/common
+require_official: True
+curies:
+  http://purl.obolibrary.org/obo/hp.owl: HP
+  http://purl.obolibrary.org/obo/mondo.owl: MONDO
+  http://purl.obolibrary.org/obo/maxo.owl: MAXO
+  http://purl.obolibrary.org/obo/ncit.owl: NCIT
+projector_lib: projector/dataset/current
+env:
+  local: dev
+  dev: dev
+  qa: qa-kf2-inc
+  prod: prod-kf2-inc
+dataset:
+  study_meta: 
+    filename: data/tables/INCLUDE-GUIDs/study.csv
+    data_dictionary:
+      filename: data/dd/study.csv
+    code_harmonization: harmony/common/data-harmony.csv
+  study_contacts:
+    hidden: true
+    filename: data/tables/INCLUDE-GUIDs/contacts.csv
+    data_dictionary: 
+      filename: data/dd/contacts.csv
+    code_harmonization: harmony/common/data-harmony.csv
+    embed:
+      dataset: study_meta
+      colname: Study Code
+  dataset_manifest:
+    filename: data/tables/INCLUDE-GUIDs/guids_dataset_manifest_2024-09-20_ingest_placeholder.csv
+    data_dictionary: 
+      filename: data/dd/dataset_manifest.csv
+    code_harmonization: harmony/common/data-harmony.csv
+    embed:
+      dataset: dataset_meta
+      colname: Dataset External ID
+  dataset_meta:
+    filename: data/tables/INCLUDE-GUIDs/datasets.csv
+    data_dictionary:
+      filename: data/dd/dataset_meta.csv
+    code_harmonization: harmony/common/data-harmony.csv
+  dataset_file_manifest:
+    filename: data/tables/INCLUDE-GUIDs/guids_datafile_manifest_2024-09-20_ingest_placeholder.csv
+    data_dictionary:
+      filename: data/dd/datafile.csv
+    code_harmonization: harmony/common/data-harmony.csv
+active_tables:
+  ALL: true
+#  family: true

@@ -1,0 +1,41 @@
+study_id: AADSC
+study_accession:  
+study_title: 
+study_desc: 
+url: 
+identifier_prefix: https://includedcc.org/fhir/aadsc
+dd_prefix: https://includedcc.org/fhir
+output_filename: aadsc
+id_colname: Participant ID
+whistle_src: projector/study_only/_entry.wstl
+code_harmonization_dir: harmony/aadsc
+require_official: True
+curies:
+  http://purl.obolibrary.org/obo/hp.owl: HP
+  http://purl.obolibrary.org/obo/mondo.owl: MONDO
+  http://purl.obolibrary.org/obo/maxo.owl: MAXO
+  http://purl.obolibrary.org/obo/ncit.owl: NCIT
+projector_lib: projector/study_only/current
+env:
+  local: dev
+  dev: dev
+  qa: qa-kf2-inc
+  prod: prod-kf2-inc
+dataset:
+  study_meta: 
+    filename: data/tables/AADSC/study.csv
+    data_dictionary:
+      filename: data/dd/study.csv
+    code_harmonization: harmony/aadsc/data-harmony.csv
+  study_contacts:
+    hidden: true
+    filename: data/tables/AADSC/contacts.csv
+    data_dictionary: 
+      filename: data/dd/contacts.csv
+    code_harmonization: harmony/aadsc/data-harmony.csv
+    embed:
+      dataset: study_meta
+      colname: Study Code
+active_tables:
+  ALL: true
+#  family: true

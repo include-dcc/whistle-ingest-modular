@@ -1,0 +1,41 @@
+study_id: AECOM-DS
+study_accession:  
+study_title: AECOM-DS
+study_desc: Upper Airway Structure and Function and Risk for OSA in Children with Down Syndrome
+url: https://includedcc.org/studies/include-guids
+identifier_prefix: https://includedcc.org/fhir/include-guids
+dd_prefix: https://includedcc.org/fhir
+output_filename: aecomds
+id_colname: Participant ID
+whistle_src: projector/study_only/_entry.wstl
+code_harmonization_dir: harmony/common
+require_official: True
+curies:
+  http://purl.obolibrary.org/obo/hp.owl: HP
+  http://purl.obolibrary.org/obo/mondo.owl: MONDO
+  http://purl.obolibrary.org/obo/maxo.owl: MAXO
+  http://purl.obolibrary.org/obo/ncit.owl: NCIT
+projector_lib: projector/study_only/current
+env:
+  local: dev
+  dev: dev
+  qa: qa-kf2-inc
+  prod: prod-kf2-inc
+dataset:
+  study_meta: 
+    filename: data/tables/AECOM-DS/study.csv
+    data_dictionary:
+      filename: data/dd/study.csv
+    code_harmonization: harmony/common/data-harmony.csv
+  study_contacts:
+    hidden: true
+    filename: data/tables/AECOM-DS/contacts.csv
+    data_dictionary: 
+      filename: data/dd/contacts.csv
+    code_harmonization: harmony/common/data-harmony.csv
+    embed:
+      dataset: study_meta
+      colname: Study Code
+active_tables:
+  ALL: true
+#  family: true

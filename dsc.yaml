@@ -1,0 +1,64 @@
+study_id: DSC
+study_accession:  
+study_title: DS-Connect-The Down Syndrome Registry
+study_desc: The Down Syndrome Registry are to better understand the health of people with Down syndrome and to inform eligible participants who, based on their health history, may be a match for research studies or new clinical trials.
+url: https://includedcc.org/studies/ds-connect
+identifier_prefix: https://includedcc.org/fhir/dsc
+dd_prefix: https://includedcc.org/fhir
+output_filename: dsc
+id_colname: Participant ID
+whistle_src: projector/study_only/_entry.wstl
+code_harmonization_dir: harmony/dsc
+require_official: True
+curies:
+  http://purl.obolibrary.org/obo/hp.owl: HP
+  http://purl.obolibrary.org/obo/mondo.owl: MONDO
+  http://purl.obolibrary.org/obo/maxo.owl: MAXO
+  http://purl.obolibrary.org/obo/ncit.owl: NCIT
+projector_lib: projector/dataset/current
+env:
+  local: dev0
+  dev: dev0
+  qa: qa-kf2-inc
+  prod: prod-kf2-inc
+dataset:
+  study_meta: 
+    filename: data/tables/DSC/study.csv
+    data_dictionary:
+      filename: data/dd/study.csv
+    code_harmonization: harmony/dsc/data-harmony.csv
+  study_contacts:
+    hidden: true
+    filename: data/tables/DSC/contacts.csv
+    data_dictionary: 
+      filename: data/dd/contacts.csv
+    code_harmonization: harmony/dsc/data-harmony.csv
+    embed:
+      dataset: study_meta
+      colname: Study Code
+  dataset_manifest:
+    filename: data/tables/DSC/dsc_unharmonized_clinical_dataset_manifest_2024-09-06.csv
+    data_dictionary: 
+      filename: data/dd/dataset_manifest.csv
+    code_harmonization: harmony/dsc/data-harmony.csv
+    embed:
+      dataset: dataset_meta
+      colname: Dataset External ID
+  dataset_meta:
+    filename: data/tables/DSC/datasets.csv
+    data_dictionary:
+      filename: data/dd/dataset_meta.csv
+    code_harmonization: harmony/dsc/data-harmony.csv
+  dataset_file_manifest:
+    filename: data/tables/DSC/dsc_unharmonized_clinical_datafiles_2024-05-17.csv
+    data_dictionary:
+      filename: data/dd/datafile.csv
+    code_harmonization: harmony/dsc/data-harmony.csv
+  participant:
+    filename: data/tables/DSC/dsc_participant_harmonized_2024-04-12.csv
+    data_dictionary: 
+      filename: data/dd/participant.csv
+    code_harmonization: harmony/dsc/data-harmony.csv
+active_tables:
+  ALL: true
+#  family: true
