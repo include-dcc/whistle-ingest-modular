@@ -15,7 +15,7 @@ Experimental Platform,Experimental Platform,String,Illumina;Illumina NovaSeq;Mes
 Publication,Publication,String,,,
 Access Limitations,Access Limitations,String,,,
 Access Requirements,Access Requirements,String,,,
-Dataset dbGaP,Dataset dbGaP,String,,,
+dbGaP,dbGaP,String,,,
 Other Repository,Other Repository,String,,,
 Other Access Authority,Other Access Authority,String,,,
 Is Harmonized,Is Harmonized,Boolean,,,

@@ -31,8 +31,11 @@ def study_contact(name, email, institute) {
     name: name;
     telecom[0].system: "email";
     telecom[0].value: email;
-    extension[0].url: "https://include-dcc.github.io/include-model-forge/StructureDefinition/contact-detail-institution"
-    extension[0].valueString: institute;
+
+    if (institute?) {
+        extension[0].url: "https://include-dcc.github.io/include-model-forge/StructureDefinition/contact-detail-institution"
+        extension[0].valueString: institute;
+    }
 }
 
 def add_contact(study_contact) {
@@ -40,10 +43,15 @@ def add_contact(study_contact) {
 }
 
 def StudyProgram(study_program) {
-    url: "https://include-dcc.github.io/include-model-forge/StructureDefinition/study-program";
-    valueCodeableConcept.coding: HarmonizeMapped(study_program, "Study Program");
-    // udles: study_program;
-    // valueString: study_program;
+    var program: HarmonizeMappedFirst(study_program, "Program");
+    if (program?) {
+        url: "https://include-dcc.github.io/include-model-forge/StructureDefinition/study-program";
+        valueCodeableConcept.coding[]: program;
+        // udles: study_program;
+        // valueString: study_program;
+    } else {
+        arg: study_program;
+    }
 }
 
 def StudyDbGaP(required id) {
@@ -66,7 +74,6 @@ def ResearchStudyAssociatedParty(investigator_name) {
 //
 def Study(study, studymeta, participants) {
     meta.tag[]: StudyMeta(study);
-    meta.profile[]: "https://nih-ncpi.github.io/ncpi-fhir-ig/StructureDefinition/ncpi-research-study";
 
     // var dbgap_ids: $Unique(studymeta.dataset_meta[*].dbgap);
     var dbgap_ids: $StrSplit(studymeta.dbgap, "|");
@@ -75,12 +82,18 @@ def Study(study, studymeta, participants) {
     description: studymeta.study_description;
     status: "completed"
 
-    enrollment[0] (if participants?): Reference_Key_Identifier(study, "Group", studymeta.study_code);
+    if (participants?) {
+        // The profile requires an enrollment, but we only have enough 
+        // information to add an enrollment group if we have participants. 
+        meta.profile[]: "https://nih-ncpi.github.io/ncpi-fhir-ig/StructureDefinition/ncpi-research-study";
+        enrollment[0]: Reference_Key_Identifier(study, "Group", studymeta.study_code);
+    }
+
     identifier[0]: Key_Identifier(study, "ResearchStudy", studymeta.study_code);
     identifier[0].use: "official";
 
     // IG V1 Compliance
-    category.coding[0]: BuildCoding("StudyCohort", "Study Cohort", "https://nih-ncpi.github.io/ncpi-fhir-ig/CodeSystem/ncpi");
+    category[].coding[0]: BuildCoding("StudyCohort", "Study Cohort", "https://nih-ncpi.github.io/ncpi-fhir-ig/CodeSystem/ncpi");
     // IG V2 Compliance
     // category.coding[0]: BuildCoding("StudyCohort", "Study Cohort", "https://nih-ncpi.github.io/ncpi-fhir-ig-2/CodeSystem/ncpi");
 
@@ -153,9 +166,11 @@ def StudyPageObservation(study, studymeta, colname, value, datatype) {
         meta.profile[]: "https://include-dcc.github.io/include-model-forge/StructureDefinition/study-page-observation";
         identifier[]: StudyPageObsIdentifier(study, studymeta, colname, value);
         identifier[0].use: "official";
+
         status: "final";
         
-        code.coding[]: HarmonizeMapped(colname, "Study Page Codes");
+        //code.coding[]: HarmonizeMapped(colname, "Study Page Codes");
+        code.coding[]: HarmonizeMappedFirst(colname, "Study Page Codes");
         code.text: colname;
 
         // Not sure why this is here. I assume this is right? 
@@ -164,7 +179,7 @@ def StudyPageObservation(study, studymeta, colname, value, datatype) {
         }
 
         if (datatype="code") {
-            valueCodeableConcept.coding: HarmonizeMapped(value, colname);
+            valueCodeableConcept.coding: HarmonizeMappedFirst(value, colname);
         } else {
             if (datatype="integer") {
                 if (value ~= "") {

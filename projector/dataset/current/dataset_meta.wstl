@@ -19,9 +19,9 @@ def DatasetMetadataObservation(study, dataset) {
     meta.tag[]: StudyMeta(study);
     
     if (dataset.dataset_global_id ~= "TBD") {
-        id: dataset.dataset_global_id;
-        identifier[]: Key_Identifier(study, "List", dataset.dataset_global_id);
-        // identifier[1]: Key_Identifier(study, "List", dataset.dataset_external_id);
+        // id: dataset.dataset_global_id;
+        identifier[]: Key_Identifier(study, "Observation", dataset.dataset_global_id);
+        // identifier[1]: Key_Identifier(study, "Observation", dataset.dataset_external_id);
     } 
 
     identifier[]: Key_Identifier(study, "Observation", $StrCat("Dataset-Metadata-", dataset.dataset_external_id));

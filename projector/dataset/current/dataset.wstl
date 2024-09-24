@@ -9,6 +9,8 @@ def Dataset(study, studymeta, dataset) {
     resourceType: "List"
 
     title: dataset.dataset_name;
+    status: "current";
+    mode: "working";
 
     if (dataset.dataset_global_id ~= "TBD") {
         id: dataset.dataset_global_id;
