@@ -12,6 +12,10 @@ def BuildMetadataComponent(code, datatype, value) {
         if (datatype = "integer") {
             valueInteger: $ParseInt(value);
         }
+
+        if (datatype = "boolean") {
+            valueBoolean: value = "TRUE";
+        }
     }
 }
 
