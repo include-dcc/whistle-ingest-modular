@@ -36,7 +36,7 @@ Participant Lifespan Stage,Participant Lifespan Stage,study,study_meta,Study Pag
 Selection Criteria,Selection Criteria,study,study_meta,Study Page Codes,selection-criteria,Selection Criteria,https://includedcc.org/fhir/code-systems/study_page_codes,
 Study Design,Study Design,study,study_meta,Study Page Codes,study-design,Study Design,https://includedcc.org/fhir/code-systems/study_page_codes,
 Clinical Data Source Type,Clinical Data Source Type,study,study_meta,Study Page Codes,clinical-data-source-type,Clinical Data Source Type,https://includedcc.org/fhir/code-systems/study_page_codes,
-Expected Data Category,Expected Data Category,study,study_meta,Study Page Codes,expected-data-category,Expected Data Category,https://includedcc.org/fhir/code-systems/study_page_codes,
+Data Category,Data Category,study,study_meta,Study Page Codes,data-category,Data Category,https://includedcc.org/fhir/code-systems/study_page_codes,
 Study Website,Study Website,study,study_meta,Study Page Codes,study-website,Study Website,https://includedcc.org/fhir/code-systems/study_page_codes,
 dbGaP,dbGaP,study,study_meta,Study Page Codes,dbgap,dbGaP,https://includedcc.org/fhir/code-systems/study_page_codes,
 Publication,Publication,study,study_meta,Study Page Codes,publication,Publication,https://includedcc.org/fhir/code-systems/study_page_codes,
