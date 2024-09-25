@@ -179,7 +179,7 @@ def StudyPageObservation(study, studymeta, colname, value, datatype) {
         }
 
         if (datatype="code") {
-            valueCodeableConcept.coding: HarmonizeMappedFirst(value, colname);
+            valueCodeableConcept.coding[]: HarmonizeMappedFirst(value, colname);
         } else {
             if (datatype="integer") {
                 if (value ~= "") {
