@@ -34,15 +34,15 @@ NCPI-FHIR-IG:
 
 #    ig-supplement/CodeSystem-ncit.json              
 # IG-Addendum:
-   #source_type: FILES
-  # resources:
-    # - ../../../summary/summarize-vars/ig-supplement/observation_result_requirement.json
-    # - ../../../summary/summarize-vars/ig-supplement/observation_definition_code.json  
-    # - ../../../summary/summarize-vars/ig-supplement/StructureDefinition-study-group.json
+  # source_type: FILES
+ #  resources:
+   #  - ../ig-supplement/observation_result_requirement.json
+    # - ../ig-supplement/observation_definition_code.json  
+    # - ../ig-supplement/StructureDefinition-study-group.json
 
 NCPI-FHIR-IG-2:
   source_type: IG
-  url: https://torstees.github.io/ncpi-fhir-ig-2/
+  url: https://nih-ncpi.github.io/ncpi-fhir-ig-2/
 
   resources: 
   -  CodeSystem

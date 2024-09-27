@@ -1,11 +1,11 @@
-study_id: BrainPower
+study_id: TEAM-DS
 study_accession:  
-study_title: The Promotion of Physical Activity for the Prevention of Alzheimer�s Disease in Adults with Down Syndrome
+study_title: Evaluating Assessment and Medication Treatment of ADHD in Children with Down Syndrome (TEAM-DS)
 study_desc: 
-url: https://includedcc.org/studies/brainpower
-identifier_prefix: https://includedcc.org/fhir/brainpower
+url: https://includedcc.org/studies/teamds
+identifier_prefix: https://includedcc.org/fhir/teamds
 dd_prefix: https://includedcc.org/fhir
-output_filename: brainpower
+output_filename: teamds
 id_colname: Participant ID
 whistle_src: projector/study_only/_entry.wstl
 code_harmonization_dir: harmony/common
@@ -23,13 +23,13 @@ env:
   prod: prod-kf2-inc
 dataset:
   study_meta: 
-    filename: data/tables/BrainPower/study.csv
+    filename: data/tables/TEAM-DS/study.csv
     data_dictionary:
       filename: data/dd/study.csv
     code_harmonization: harmony/common/data-harmony.csv
   study_contacts:
     hidden: true
-    filename: data/tables/BrainPower/contacts.csv
+    filename: data/tables/TEAM-DS/contacts.csv
     data_dictionary: 
       filename: data/dd/contacts.csv
     code_harmonization: harmony/common/data-harmony.csv
@@ -37,7 +37,7 @@ dataset:
       dataset: study_meta
       colname: Study Code
   participant:
-    filename: data/tables/BrainPower/BrainPower_participants_GlobalID_15Apr2024.csv
+    filename: data/tables/TEAM-DS/teamds_participant_harmonized_2024-04-12.csv
     data_dictionary: 
       filename: data/dd/participant.csv
     code_harmonization: harmony/common/data-harmony.csv
