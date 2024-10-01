@@ -221,7 +221,7 @@ def ProcessStudy(study, studymeta, participants) {
 
     var data_categories: $StrSplit(studymeta.data_category, "|");
     out research_study: StudyPageObservation(study, studymeta, "Data Category", data_categories[], "code");
-    out research_study: StudyPageObservation(study, studymeta, "GUID type", studymeta.guid_type, "code");
+    out research_study: StudyPageObservation(study, studymeta, "GUID Type", studymeta.guid_type, "code");
     out research_study: StudyPageObservation(study, studymeta, "Acknowledgments", studymeta.acknowledgments, "string")
     out research_study: StudyPageObservation(study, studymeta, "Citation Statement", studymeta.citation_statement, "string")
 }
