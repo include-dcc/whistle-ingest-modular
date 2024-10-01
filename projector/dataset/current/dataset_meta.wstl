@@ -56,7 +56,9 @@ def DatasetMetadataObservation(study, dataset) {
     component[]: BuildMetadataComponent("Publication", "string", dataset.publication)
     component[]: BuildMetadataComponent("Access Limitations", "string", dataset.access_limitations)
     component[]: BuildMetadataComponent("Access Requirements", "string", dataset.access_requirements)
-    component[]: BuildMetadataComponent("dbGaP", "string", dataset.dbgap)
+    
+    var dbgap_ids: $StrSplit(dataset.dbgap, "|");
+    component[]: BuildMetadataComponent("dbGaP", "string", dbgap_ids[])
     
     component[]: BuildMetadataComponent("Is Harmonized", "boolean", dataset.is_harmonized)
 
