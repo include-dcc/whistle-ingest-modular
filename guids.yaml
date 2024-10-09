@@ -37,7 +37,7 @@ dataset:
       dataset: study_meta
       colname: Study Code
   dataset_manifest:
-    filename: data/tables/INCLUDE-GUIDs/guids_dataset_manifest_2024-09-20_ingest_placeholder.csv
+    filename: data/tables/INCLUDE-GUIDs/guids_dataset_manifest_2024-10-08.csv
     data_dictionary: 
       filename: data/dd/dataset_manifest.csv
     code_harmonization: harmony/common/data-harmony.csv
@@ -50,7 +50,7 @@ dataset:
       filename: data/dd/dataset_meta.csv
     code_harmonization: harmony/common/data-harmony.csv
   dataset_file_manifest:
-    filename: data/tables/INCLUDE-GUIDs/guids_datafile_manifest_2024-09-20_ingest_placeholder.csv
+    filename: data/tables/INCLUDE-GUIDs/guids_datafile_manifest_2024-10-08.csv
     data_dictionary:
       filename: data/dd/datafile.csv
     code_harmonization: harmony/common/data-harmony.csv

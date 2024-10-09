@@ -13,7 +13,7 @@ annotations:
     email: dsresearch@cuanschutz.edu
     url: https://redcap.link/HTPVBRrequest
     readme: To request biospecimens from the HTP biobank, please use the request form (https://redcap.link/HTPVBRrequest). General inquiries can be directed to dsresearch@cuanschutz.edu.
-code_harmonization_dir: harmony/htp
+code_harmonization_dir: harmony/common
 require_official: True
 curies:
   http://purl.obolibrary.org/obo/hp.owl: HP
@@ -22,8 +22,8 @@ curies:
   http://purl.obolibrary.org/obo/ncit.owl: NCIT
 projector_lib: projector/study_only/current
 env:
-  local: dev0
-  dev: dev0
+  local: dev
+  dev: dev
   qa: qa-kf2-inc
   prod: prod-kf2-inc
 dataset:
@@ -31,13 +31,13 @@ dataset:
     filename: data/tables/HTP/study.csv
     data_dictionary:
       filename: data/dd/study.csv
-    code_harmonization: harmony/htp/data-harmony.csv
+    code_harmonization: harmony/common/data-harmony.csv
   study_contacts:
     hidden: true
     filename: data/tables/HTP/contacts.csv
     data_dictionary: 
       filename: data/dd/contacts.csv
-    code_harmonization: harmony/htp/data-harmony.csv
+    code_harmonization: harmony/common/data-harmony.csv
     embed:
       dataset: study_meta
       colname: Study Code
@@ -45,7 +45,7 @@ dataset:
     filename: data/tables/HTP/datasets.csv
     data_dictionary: 
       filename: data/dd/dataset_meta.csv
-    code_harmonization: harmony/htp/data-harmony.csv
+    code_harmonization: harmony/common/data-harmony.csv
     embed:
       dataset: study_meta
       colname: Study Code
@@ -53,7 +53,7 @@ dataset:
     filename: data/tables/HTP/htp_v4_participant_updated_2024-06-21.csv
     data_dictionary: 
       filename: data/dd/participant.csv
-    code_harmonization: harmony/htp/data-harmony.csv
+    code_harmonization: harmony/common/data-harmony.csv
 active_tables:
   ALL: true
 #  family: true

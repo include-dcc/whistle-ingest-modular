@@ -1,0 +1,109 @@
+local code,text,table_name,parent_varname,local code system,code,display,code system,comment
+kg,Kilograms,,,units,kg,Kilograms,http://unitsofmeasure.org,
+cm,cm,,,units,cm,cm,http://unitsofmeasure.org,
+kg/m2,kg/m2,,,units,kg/m2,kg/m2,http://unitsofmeasure.org,
+kg/m^2,kg/m^2,,,units,kg/m2,kg/m2,http://unitsofmeasure.org,
+%,%,,,units,%,%,http://unitsofmeasure.org,
+weeks,weeks,,,units,wk,weeks,http://unitsofmeasure.org,
+10^9 cells/L,10^9 cells/L,,,units,10*9/L,billion per liter,http://unitsofmeasure.org,
+L of red blood cells/L of blood,L of red blood cells/L of blood,,,units,L/L,liter per liter,http://unitsofmeasure.org,
+g/dL,g/dL,,,units,g/dL,g/dL,http://unitsofmeasure.org,
+Weight,Kilograms,,,units,kg,Kilograms,http://unitsofmeasure.org,
+Height,cm,,,units,cm,cm,http://unitsofmeasure.org,
+BMI,kg/m2,,,units,kg/m2,kg/m2,http://unitsofmeasure.org,
+ml,ml,,,units,ml,ml,http://unitsofmeasure.org,
+ml,ml,,,Vial_Volume,ml,ml,http://unitsofmeasure.org,
+permL,/mL,,,units,/mL,/mL,http://unitsofmeasure.org,
+INCLUDE,INCLUDE,study,,IncludeProgram,INCLUDE,INCLUDE,https://includedcc.org/fhir/code-systems/programs,
+AADSC,AADSC,study,,IncludeProgram,INCLUDE,INCLUDE,https://includedcc.org/fhir/code-systems/programs,
+ABC-DS,ABC-DS,study,,IncludeProgram,INCLUDE,INCLUDE,https://includedcc.org/fhir/code-systems/programs,
+BRI-DSR,BRI-DSR,study,,IncludeProgram,INCLUDE,INCLUDE,https://includedcc.org/fhir/code-systems/programs,
+DSC,DSC,study,,IncludeProgram,INCLUDE,INCLUDE,https://includedcc.org/fhir/code-systems/programs,
+DS-Sleep,DS-Sleep,study,,IncludeProgram,INCLUDE,INCLUDE,https://includedcc.org/fhir/code-systems/programs,
+HTP,HTP,study,,IncludeProgram,INCLUDE,INCLUDE,https://includedcc.org/fhir/code-systems/programs,
+X01-deSmith,X01-deSmith,study,,IncludeProgram,INCLUDE,INCLUDE,https://includedcc.org/fhir/code-systems/programs,
+X01-Hakon,X01-Hakon,study,,IncludeProgram,INCLUDE,INCLUDE,https://includedcc.org/fhir/code-systems/programs,
+Control-only,Control Only,family,family_type,Family Type,Control-only,Control Only,https://includedcc.org/fhir/code-systems/family_types
+Duo,Duo,family,family_type,Family Type,Duo,Duo,https://includedcc.org/fhir/code-systems/family_types
+Other,Other,family,family_type,Family Type,Other,Other,https://includedcc.org/fhir/code-systems/family_types
+Proband-only,Proband-only,family,family_type,Family Type,Proband-only,Proband-only,https://includedcc.org/fhir/code-systems/family_types
+Trio,Trio,family,family_type,Family Type,Trio,Trio,https://includedcc.org/fhir/code-systems/family_types
+Trio+,Trio+,family,family_type,Family Type,Trio+,Trio+,https://includedcc.org/fhir/code-systems/family_types
+Down syndrome - karyotype not provided,Down syndrome - karyotype not provided,condition,MONDO Code,condition_description,0008608,Down Syndrome,http://purl.obolibrary.org/obo/mondo.owl,
+B Cells,B Cells,Specimen,Sample Type,Sample Type,B-Cells,B Cells,https://includedcc.org/fhir/code-systems/sample_types
+Buffy coat,Buffy Coat,Specimen,Sample Type,Sample Type,Buffy-Coat,Buffy Coat,https://includedcc.org/fhir/code-systems/sample_types
+CD4+ Tconv Cells,CD4+ Tconv Cells,Specimen,Sample Type,Sample Type,CD4+-Tconv-Cells,CD4+ Tconv Cells,https://includedcc.org/fhir/code-systems/sample_types
+CD8+ T Cells,CD8+ T Cells,Specimen,Sample Type,Sample Type,CD8+T-Cells,CD8+ T Cells,https://includedcc.org/fhir/code-systems/sample_types
+DNA,DNA,Specimen,Sample Type,Sample Type,DNA,DNA,https://includedcc.org/fhir/code-systems/sample_types
+Granulocytes,Granulocytes,Specimen,Sample Type,Sample Type,Granulocytes,Granulocytes,https://includedcc.org/fhir/code-systems/sample_types
+Monocytes,Monocytes,Specimen,Sample Type,Sample Type,Monocytes,Monocytes,https://includedcc.org/fhir/code-systems/sample_types
+NK Cells,NK Cells,Specimen,Sample Type,Sample Type,NK-Cells,NK Cells,https://includedcc.org/fhir/code-systems/sample_types
+PBMC,PBMCs,Specimen,Sample Type,Sample Type,PBMCs,PBMCs,https://includedcc.org/fhir/code-systems/sample_types
+PBMCs,PBMCs,Specimen,Sample Type,Sample Type,PBMCs,PBMCs,https://includedcc.org/fhir/code-systems/sample_types
+Plasma,Plasma,Specimen,Sample Type,Sample Type,Plasma,Plasma,https://includedcc.org/fhir/code-systems/sample_types
+RNA,RNA,Specimen,Sample Type,Sample Type,RNA,RNA,https://includedcc.org/fhir/code-systems/sample_types
+Red Blood Cells,Red Blood Cells,Specimen,Sample Type,Sample Type,Red-Blood-Cells,Red Blood Cells,https://includedcc.org/fhir/code-systems/sample_types
+Saliva,Saliva,Specimen,Sample Type,Sample Type,Saliva,Saliva,https://includedcc.org/fhir/code-systems/sample_types
+Tregs,Regulatory T Cells,Specimen,Sample Type,Sample Type,Tregs,Regulatory T Cells,https://includedcc.org/fhir/code-systems/sample_types
+WBCs,White Blood Cells,Specimen,Sample Type,Sample Type,WBCs,White Blood Cells,https://includedcc.org/fhir/code-systems/sample_types
+Peripheral Whole Blood,Peripheral Whole Blood,Specimen,Sample Type,Sample Type,Peripheral-Whole-Blood,Peripheral Whole Blood,https://includedcc.org/fhir/code-systems/sample_types
+Whole blood,Peripheral Whole Blood,Specimen,Sample Type,Sample Type,Peripheral-Whole-Blood,White Blood Cells,https://includedcc.org/fhir/code-systems/sample_types
+Behavior and Behavior Mechanisms,Behavior and Behavior Mechanisms,study,research_domain,Research Domain,D001520,Behavior and Behavior Mechanisms,urn:oid:2.16.840.1.113883.6.177,
+Congenital Heart Defects,Congenital Heart Defects,study,research_domain,Research Domain,D006330,Congenital Heart Defects,urn:oid:2.16.840.1.113883.6.177,
+Immune System Diseases,Immune System Diseases,study,research_domain,Research Domain,D007154,Immune System Diseases,urn:oid:2.16.840.1.113883.6.177,
+Hematologic Diseases,Hematologic Diseases,study,research_domain,Research Domain,D006402,Hematologic Diseases,urn:oid:2.16.840.1.113883.6.177,
+Sleep Wake Disorders,Sleep Wake Disorders,study,research_domain,Research Domain,D012893,Sleep Wake Disorders,urn:oid:2.16.840.1.113883.6.177,
+All Co-occurring Conditions,All Co-occurring Conditions,study,research_domain,Research Domain,D013568,All Co-occurring Conditions,urn:oid:2.16.840.1.113883.6.177,
+Fetal,Fetal,study,participant_lifespan_stage,Participant Lifespan Stage,fetal,Fetal,https://includedcc.org/fhir/code-systems/participant_lifespan_age,
+Neonatal,Neonatal,study,participant_lifespan_stage,Participant Lifespan Stage,neonatal,Neonatal,https://includedcc.org/fhir/code-systems/participant_lifespan_age,
+Pediatric,Pediatric,study,participant_lifespan_stage,Participant Lifespan Stage,pediatric,Pediatric,https://includedcc.org/fhir/code-systems/participant_lifespan_age,
+Adult,Adult,study,participant_lifespan_stage,Participant Lifespan Stage,adult,Adult,https://includedcc.org/fhir/code-systems/participant_lifespan_age,
+Medical Record,Medical Record,study,clinical_data_source_type,Clinical Data Source Type,medical-record,Medical Record,https://includedcc.org/fhir/code-systems/clinical_data_source_types,
+Investigator Assessment,Investigator Assessment,study,clinical_data_source_type,Clinical Data Source Type,investigator-assessment,Investigator Assessment,https://includedcc.org/fhir/code-systems/clinical_data_source_types,
+Participant or Caregiver Report,Participant or Caregiver Report,study,clinical_data_source_type,Clinical Data Source Type,participant-or-caregiver-report,Participant or Caregiver Report,https://includedcc.org/fhir/code-systems/clinical_data_source_types,
+Other,Other,study,clinical_data_source_type,Clinical Data Source Type,other,Other,https://includedcc.org/fhir/code-systems/clinical_data_source_types,
+Unknown,Unknown,study,clinical_data_source_type,Clinical Data Source Type,unknown,Unknown,https://includedcc.org/fhir/code-systems/clinical_data_source_types,
+Unharmonized Demographic/Clinical Data,Unharmonized Demographic/Clinical Data,study,expected_data_category,Expected Data Category,unharmonized-demographic/clinical-data,Unharmonized Demographic/Clinical Data,https://includedcc.org/fhir/code-systems/expected_data_category,
+Harmonized Demographic/Clinical Data,Harmonized Demographic/Clinical Data,study,expected_data_category,Expected Data Category,Harmonized Demographic/Clinical Data,Harmonized Demographic/Clinical Data,https://includedcc.org/fhir/code-systems/expected_data_category,
+Genomics,Genomics,study,expected_data_category,Expected Data Category,genomics,Genomics,https://includedcc.org/fhir/code-systems/expected_data_category,
+Transcriptomics,Transcriptomics,study,expected_data_category,Expected Data Category,transcriptomics,Transcriptomics,https://includedcc.org/fhir/code-systems/expected_data_category,
+Proteomics,Proteomics,study,expected_data_category,Expected Data Category,proteomics,Proteomics,https://includedcc.org/fhir/code-systems/expected_data_category,
+Metabolomics,Metabolomics,study,expected_data_category,Expected Data Category,metabolomics,Metabolomics,https://includedcc.org/fhir/code-systems/expected_data_category,
+Cognitive/Behavioral,Cognitive/Behavioral,study,expected_data_category,Expected Data Category,cognitive/behavioral,Cognitive/Behavioral,https://includedcc.org/fhir/code-systems/expected_data_category,
+Immune Maps,Immune Maps,study,expected_data_category,Expected Data Category,immune-maps,Immune Maps,https://includedcc.org/fhir/code-systems/expected_data_category,
+Imaging,Imaging,study,expected_data_category,Expected Data Category,imaging,Imaging,https://includedcc.org/fhir/code-systems/expected_data_category,
+Microbiome,Microbiome,study,expected_data_category,Expected Data Category,microbiome,Microbiome,https://includedcc.org/fhir/code-systems/expected_data_category,
+Other,Other,study,expected_data_category,Expected Data Category,other,Other,https://includedcc.org/fhir/code-systems/expected_data_category,
+NDAR,NDAR,study,guid_type,GUID type,ndar,NDAR,https://includedcc.org/fhir/code-systems/guid_type,
+Other,Other,study,guid_type,GUID type,other,Other,https://includedcc.org/fhir/code-systems/guid_type,
+None,None,study,guid_type,GUID type,none,None,https://includedcc.org/fhir/code-systems/guid_type,
+Study Code,Study Code,study,study_meta,Study Page Codes,study-code,Study Code,https://includedcc.org/fhir/code-systems/study_page_codes,
+Study Title,Study Title,study,study_meta,Study Page Codes,study-title,Study Title,https://includedcc.org/fhir/code-systems/study_page_codes,
+Program,Program,study,study_meta,Study Page Codes,program,Program,https://includedcc.org/fhir/code-systems/study_page_codes,
+Study Description,Study Description,study,study_meta,Study Page Codes,study-description,Study Description,https://includedcc.org/fhir/code-systems/study_page_codes,
+Principal Investigator Name,Principal Investigator Name,study,study_meta,Study Page Codes,principal-investigator-name,Principal Investigator Name,https://includedcc.org/fhir/code-systems/study_page_codes,
+Study Contact Name,Study Contact Name,study,study_meta,Study Page Codes,study-contact-name,Study Contact Name,https://includedcc.org/fhir/code-systems/study_page_codes,
+Study Contact Institution,Study Contact Institution,study,study_meta,Study Page Codes,study-contact-institution,Study Contact Institution,https://includedcc.org/fhir/code-systems/study_page_codes,
+Study Contact Email,Study Contact Email,study,study_meta,Study Page Codes,study-contact-email,Study Contact Email,https://includedcc.org/fhir/code-systems/study_page_codes,
+Virtual Biorepository Email,Virtual Biorepository Email,study,study_meta,Study Page Codes,virtual-biorepository-email,Virtual Biorepository Email,https://includedcc.org/fhir/code-systems/study_page_codes,
+Virtual Biorepository URL,Virtual Biorepository URL,study,study_meta,Study Page Codes,virtual-biorepository-url,Virtual Biorepository URL,https://includedcc.org/fhir/code-systems/study_page_codes,
+Virtual Biorepository Readme,Virtual Biorepository Readme,study,study_meta,Study Page Codes,virtual-biorepository-readme,Virtual Biorepository Readme,https://includedcc.org/fhir/code-systems/study_page_codes,
+Research Domain,Research Domain,study,study_meta,Study Page Codes,research-domain,Research Domain,https://includedcc.org/fhir/code-systems/study_page_codes,
+Participant Lifespan Stage,Participant Lifespan Stage,study,study_meta,Study Page Codes,participant-lifespan-stage,Participant Lifespan Stage,https://includedcc.org/fhir/code-systems/study_page_codes,
+Selection Criteria,Selection Criteria,study,study_meta,Study Page Codes,selection-criteria,Selection Criteria,https://includedcc.org/fhir/code-systems/study_page_codes,
+Study Design,Study Design,study,study_meta,Study Page Codes,study-design,Study Design,https://includedcc.org/fhir/code-systems/study_page_codes,
+Clinical Data Source Type,Clinical Data Source Type,study,study_meta,Study Page Codes,clinical-data-source-type,Clinical Data Source Type,https://includedcc.org/fhir/code-systems/study_page_codes,
+Expected Data Category,Expected Data Category,study,study_meta,Study Page Codes,expected-data-category,Expected Data Category,https://includedcc.org/fhir/code-systems/study_page_codes,
+Study Website,Study Website,study,study_meta,Study Page Codes,study-website,Study Website,https://includedcc.org/fhir/code-systems/study_page_codes,
+dbGaP,dbGaP,study,study_meta,Study Page Codes,dbgap,dbGaP,https://includedcc.org/fhir/code-systems/study_page_codes,
+Publication,Publication,study,study_meta,Study Page Codes,publication,Publication,https://includedcc.org/fhir/code-systems/study_page_codes,
+Study Expected Number of Participants,Study Expected Number of Participants,study,study_meta,Study Page Codes,study-expected-number-of-participants,Study Expected Number of Participants,https://includedcc.org/fhir/code-systems/study_page_codes,
+GUID type,GUID type,study,study_meta,Study Page Codes,guid-type,GUID type,https://includedcc.org/fhir/code-systems/study_page_codes,
+INCLUDE,INCLUDE,study,study_meta,Study Program,include,INCLUDE,https://includedcc.org/fhir/code-systems/programs,
+KF,KF,study,study_meta,Study Program,kf,Kids First,https://includedcc.org/fhir/code-systems/programs,
+Proband,Proband,Participant,Family Membership,Family Membership,C64435,Proband,http://purl.obolibrary.org/obo/ncit.owl
+Father,Father,Participant,Family Membership,Family Membership,C25174,Father,http://purl.obolibrary.org/obo/ncit.owl,
+Mother,Mother,Participant,Family Membership,Family Membership,C25189,Mother,http://purl.obolibrary.org/obo/ncit.owl,
+Sibling,Sibling,Participant,Family Membership,Family Membership,C25204,Sibling,http://purl.obolibrary.org/obo/ncit.owl,
+Other relative,Other relative,Participant,Family Membership,Family Membership,C21480,Other relative,http://purl.obolibrary.org/obo/ncit.owl,
+Unrelated control,Unrelated control,Participant,Family Membership,Family Membership,C25328,Unrelated control,http://purl.obolibrary.org/obo/ncit.owl,

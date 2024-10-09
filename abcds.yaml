@@ -8,7 +8,7 @@ dd_prefix: https://includedcc.org/fhir
 output_filename: abcds
 id_colname: Participant ID
 whistle_src: projector/study_only/_entry.wstl
-code_harmonization_dir: harmony/abcds
+code_harmonization_dir: harmony/common
 require_official: True
 curies:
   http://purl.obolibrary.org/obo/hp.owl: HP
@@ -26,13 +26,13 @@ dataset:
     filename: data/tables/ABC-DS/study.csv
     data_dictionary:
       filename: data/dd/study.csv
-    code_harmonization: harmony/abcds/data-harmony.csv
+    code_harmonization: harmony/common/data-harmony.csv
   study_contacts:
     hidden: true
     filename: data/tables/ABC-DS/contacts.csv
     data_dictionary: 
       filename: data/dd/contacts.csv
-    code_harmonization: harmony/abcds/data-harmony.csv
+    code_harmonization: harmony/common/data-harmony.csv
     embed:
       dataset: study_meta
       colname: Study Code
@@ -40,7 +40,7 @@ dataset:
     # filename: data/tables/abcds/datasets.csv
     # data_dictionary: 
     #   filename: data/dd/dataset_meta.csv
-    # code_harmonization: harmony/abcds/data-harmony.csv
+    # code_harmonization: harmony/common/data-harmony.csv
     # embed:
     #   dataset: study_meta
     #   colname: Study Code
@@ -48,7 +48,7 @@ dataset:
     filename: data/tables/ABC-DS/participant.csv
     data_dictionary: 
       filename: data/dd/participant.csv
-    code_harmonization: harmony/abcds/data-harmony.csv
+    code_harmonization: harmony/common/data-harmony.csv
 active_tables:
   ALL: true
 #  family: true

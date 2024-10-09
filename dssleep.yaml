@@ -1,11 +1,11 @@
-study_id: AECOM-DS
+study_id: DS-Sleep
 study_accession:  
-study_title: AECOM-DS
-study_desc: Upper Airway Structure and Function and Risk for OSA in Children with Down Syndrome
-url: https://includedcc.org/studies/aecom-ds
-identifier_prefix: https://includedcc.org/fhir/aecom-ds
+study_title: Dimensional, Sleep, and Genomic Analyses of Down Syndrome to Elucidate Phenotypic Variability
+study_desc: 
+url: https://includedcc.org/studies/ds-sleep
+identifier_prefix: https://includedcc.org/fhir/ds-sleep
 dd_prefix: https://includedcc.org/fhir
-output_filename: aecomds
+output_filename: dssleep
 id_colname: Participant ID
 whistle_src: projector/study_only/_entry.wstl
 code_harmonization_dir: harmony/common
@@ -23,19 +23,32 @@ env:
   prod: prod-kf2-inc
 dataset:
   study_meta: 
-    filename: data/tables/AECOM-DS/study.csv
+    filename: data/tables/DS-Sleep/study.csv
     data_dictionary:
       filename: data/dd/study.csv
     code_harmonization: harmony/common/data-harmony.csv
   study_contacts:
     hidden: true
-    filename: data/tables/AECOM-DS/contacts.csv
+    filename: data/tables/DS-Sleep/contacts.csv
     data_dictionary: 
       filename: data/dd/contacts.csv
     code_harmonization: harmony/common/data-harmony.csv
     embed:
       dataset: study_meta
       colname: Study Code
+  # dataset_meta:
+    # filename: data/tables/abcds/datasets.csv
+    # data_dictionary: 
+    #   filename: data/dd/dataset_meta.csv
+    # code_harmonization: harmony/common/data-harmony.csv
+    # embed:
+    #   dataset: study_meta
+    #   colname: Study Code
+  participant:
+    filename: data/tables/DS-Sleep/participant.csv
+    data_dictionary: 
+      filename: data/dd/participant.csv
+    code_harmonization: harmony/common/data-harmony.csv
 active_tables:
   ALL: true
 #  family: true
