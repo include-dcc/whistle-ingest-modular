@@ -102,14 +102,14 @@ def Study(study, studymeta, participants) {
       identifier[]: StudyDbGaP(dbgap_ids[]);
     }
 
-    keyword[0].coding: HarmonizeMapped(studymeta.program, "IncludeProgram");
+    keyword[0].coding: HarmonizeMapped(studymeta.program, "Program");
     keyword[0].text: "INCLUDE";
     keyword[1].coding[]: BuildCoding(studymeta.study_code, studymeta.study_code, identifier[0].system);
     keyword[1].text: studymeta.study_code;
 
     relatedArtifact[] (if studymeta.study_website?): StudyArtifactUrl("documentation", "Study Website", studymeta.study_website);
     relatedArtifact[] (if studymeta.selection_criteria?): StudyArtifactCitation("documentation", "SelectionCriteria", studymeta.selection_criteria);
-    // relatedArtifact[] (if studymeta.study_design?): StudyArtifactCitation("citation", "StudyDesign", studymeta.study_design);
+    relatedArtifact[] (if studymeta.study_design?): StudyArtifactCitation("citation", "StudyDesign", studymeta.study_design);
 
     // Publications
     var publications: $StrSplit(studymeta.publication, "|");
