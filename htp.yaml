@@ -6,8 +6,13 @@ url: https://includedcc.org/studies/human-trisome-project
 identifier_prefix: https://includedcc.org/fhir/htp
 dd_prefix: https://includedcc.org/fhir
 output_filename: htp
-id_colname: Participant ID
-whistle_src: projector/study_only/_entry.wstl
+orojection_version: current
+id_colnam: Participant ID
+whistle_src: _entry.wstl
+projections: 
+  study: projector/study_only
+  dataset: projector/dataset
+  harmonized: projector/harmonized
 annotations:
   virtual_biorepository:
     email: dsresearch@cuanschutz.edu

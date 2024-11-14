@@ -1,9 +1,0 @@
-def Transform_Dataset(resource) {
-    $this: CreateDataDictionaryTerminologies(resource);
-
-    $this: ProcessStudy(resource.study, resource.study_meta[], resource.participant);
-
-    $this: ProcessDataset(resource.study, resource.study_meta[], resource.dataset_meta);
-
-    $this: ProcessDatasetFiles(resource.study, resource.dataset_file_manifest[]);
-}
