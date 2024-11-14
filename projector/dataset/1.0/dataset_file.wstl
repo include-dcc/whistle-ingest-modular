@@ -1,0 +1,69 @@
+// 
+
+def DatasetFileDetailExtension(study, manifest) {
+    extension[]: FileSizeExtension(study, manifest);
+
+    if (manifest.file_hash?) {
+        extension[]: FileHashExtension(study, manifest.file_hash, "md5");
+    }
+
+    url: manifest.drs_uri;
+
+    title: manifest.file_name; 
+}
+
+def DatasetDocumentReference(study, manifest) {
+    meta.tag[]: StudyMeta(study);
+
+    var access_url: manifest.file_s3_location;
+
+    // Handle inconsistent field names
+    if (manifest.drs_uri?) {
+        var drs_url: manifest.drs_uri;
+    } else {
+        var drs_url: manifest.file_s3_location;
+    }
+
+
+    // DRS DocRef requires an actual DRS ID, which can only happen if our magic 
+    // column is present and isn't just a placeholder
+    // 
+    // I'm skipping this profile for now (2024-03-22) due to the fact that we are
+    // also adding links to the s3 bucket, which isn't a DRS URL and fails 
+    // validation. We can switch back later, if need be. 
+    // if (drs_url? and drs_url ~= "NA") {
+    //    meta.profile[]: "https://nih-ncpi.github.io/ncpi-fhir-ig/StructureDefinition/ncpi-drs-document-reference";
+    // }
+
+    identifier[]: Key_Identifier(study, "DocumentReference", DocumentReferenceID(study, manifest.file_name));
+    identifier[0].use: "official";
+
+    status: "current";
+    docStatus: "final";
+    type: FileCategoryMap(study, "Data Type", manifest.data_type);
+
+    securityLabel[].coding[]: HarmonizeMappedFirst(manifest.data_access, "Data Access");
+
+    // This doesn't seem to be present in the current data
+    if (manifest.data_access?) {
+        var acls: $StrSplit(manifest.data_access, ";");
+        securityLabel[]: FileAcl(study, acls[]);
+    }
+    category[]: FileCategoryMap(study, "Experimental Strategy", manifest.experimental_strategy);
+    category[]: FileCategoryMap(study, "Data Category", manifest.data_category);
+    
+    content[0].attachment: DatasetFileDetailExtension(study, manifest);
+    content[0].format.display: manifest.file_format
+
+    //  Robert suggested we shouldn't be loading s3 Bucket URLS
+    //if (access_url? and access_url ~= "NA") {
+    //    content[].attachment.url: $StrCat("s3://", access_url);
+    //}
+    //
+
+    resourceType: "DocumentReference";
+}
+
+def ProcessDatasetFiles(study, file) {
+    out files: DatasetDocumentReference(study, file);
+}
