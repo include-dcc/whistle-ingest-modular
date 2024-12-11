@@ -22,6 +22,7 @@ def Group(study, subjects) {
 
     type: "person";
     actual: true;
+    member: Reference_Enrollment(study, subjects[]);
     quantity: $ListLen(subjects[*]);
     resourceType: "Group";
 }

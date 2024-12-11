@@ -169,8 +169,8 @@ def StudyPageObservation(study, studymeta, colname, value, datatype) {
 
         status: "final";
         
-        //code.coding[]: HarmonizeMapped(colname, "Study Page Codes");
-        code.coding[]: HarmonizeMappedFirst(colname, "Study Page Codes");
+        code.coding[]: HarmonizeMapped(colname, "Study Page Codes");
+        //code.coding[]: HarmonizeMappedFirst(colname, "Study Page Codes");
         code.text: colname;
 
         // Not sure why this is here. I assume this is right? 
