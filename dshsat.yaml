@@ -1,0 +1,41 @@
+study_id: DS-HSAT
+study_accession:  
+study_title: 
+study_desc: "A preliminary study of acceptability, feasibility, and performance of home sleep apnea testing in youth with Down syndrome"
+url: 
+identifier_prefix: https://includedcc.org/fhir/ds-hsat
+dd_prefix: https://includedcc.org/fhir
+output_filename: dshsat
+id_colname: Participant ID
+whistle_src: projector/study_only/_entry.wstl
+code_harmonization_dir: harmony/common
+require_official: True
+curies:
+  http://purl.obolibrary.org/obo/hp.owl: HP
+  http://purl.obolibrary.org/obo/mondo.owl: MONDO
+  http://purl.obolibrary.org/obo/maxo.owl: MAXO
+  http://purl.obolibrary.org/obo/ncit.owl: NCIT
+projector_lib: projector/study_only/current
+env:
+  local: dev
+  dev: dev
+  qa: qa-kf2-inc
+  prod: prod-kf2-inc
+dataset:
+  study_meta: 
+    filename: data/tables/DS-HSAT/study.csv
+    data_dictionary:
+      filename: data/dd/study.csv
+    code_harmonization: harmony/common/data-harmony.csv
+  study_contacts:
+    hidden: true
+    filename: data/tables/DS-HSAT/contacts.csv
+    data_dictionary: 
+      filename: data/dd/contacts.csv
+    code_harmonization: harmony/common/data-harmony.csv
+    embed:
+      dataset: study_meta
+      colname: Study Code
+active_tables:
+  ALL: true
+#  family: true

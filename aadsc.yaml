@@ -8,7 +8,7 @@ dd_prefix: https://includedcc.org/fhir
 output_filename: aadsc
 id_colname: Participant ID
 whistle_src: projector/study_only/_entry.wstl
-code_harmonization_dir: harmony/aadsc
+code_harmonization_dir: harmony/common
 require_official: True
 curies:
   http://purl.obolibrary.org/obo/hp.owl: HP
@@ -26,13 +26,13 @@ dataset:
     filename: data/tables/AADSC/study.csv
     data_dictionary:
       filename: data/dd/study.csv
-    code_harmonization: harmony/aadsc/data-harmony.csv
+    code_harmonization: harmony/common/data-harmony.csv
   study_contacts:
     hidden: true
     filename: data/tables/AADSC/contacts.csv
     data_dictionary: 
       filename: data/dd/contacts.csv
-    code_harmonization: harmony/aadsc/data-harmony.csv
+    code_harmonization: harmony/common/data-harmony.csv
     embed:
       dataset: study_meta
       colname: Study Code

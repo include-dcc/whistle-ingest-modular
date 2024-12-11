@@ -7,7 +7,7 @@ identifier_prefix: https://includedcc.org/fhir/htp
 dd_prefix: https://includedcc.org/fhir
 output_filename: htp
 id_colname: Participant ID
-whistle_src: projector/study_only/_entry.wstl
+whistle_src: projector/dataset/_entry.wstl
 annotations:
   virtual_biorepository:
     email: dsresearch@cuanschutz.edu
@@ -20,7 +20,7 @@ curies:
   http://purl.obolibrary.org/obo/mondo.owl: MONDO
   http://purl.obolibrary.org/obo/maxo.owl: MAXO
   http://purl.obolibrary.org/obo/ncit.owl: NCIT
-projector_lib: projector/study_only/current
+projector_lib: projector/dataset/current
 env:
   local: dev
   dev: dev
@@ -46,14 +46,19 @@ dataset:
     data_dictionary: 
       filename: data/dd/dataset_meta.csv
     code_harmonization: harmony/common/data-harmony.csv
-    embed:
-      dataset: study_meta
-      colname: Study Code
   participant:
     filename: data/tables/HTP/htp_v4_participant_updated_2024-06-21.csv
     data_dictionary: 
       filename: data/dd/participant.csv
     code_harmonization: harmony/common/data-harmony.csv
+  dataset_manifest:
+    filename: data/tables/HTP/htp_dataset_manifest_combined.csv
+    data_dictionary: 
+      filename: data/dd/dataset_manifest.csv
+    code_harmonization: harmony/common/data-harmony.csv
+    embed:
+      dataset: dataset_meta
+      colname: Dataset External ID
 active_tables:
   ALL: true
 #  family: true
