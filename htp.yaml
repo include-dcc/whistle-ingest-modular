@@ -66,9 +66,6 @@ dataset:
     filename: data/tables/HTP/datasets.csv
     data_dictionary: 
       filename: data/dd/dataset_meta.csv
-    embed:
-      dataset: study_meta
-      colname: Study Code
   participant:
     filename: data/tables/HTP/htp_v4_participant_updated_2024-06-21.csv
     data_dictionary: 
