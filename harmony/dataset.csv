@@ -45,6 +45,7 @@ X01-Hakonarson Whole Genome Sequencing,X01-Hakonarson Whole Genome Sequencing,da
 Genomics,Genomics,dataset_meta,Data Category,Data Category,Genomics,Genomics,https://includedcc.org/fhir/code-systems/expected_data_category,
 Metabolomics,Metabolomics,dataset_meta,Data Category,Data Category,Metabolomics,Metabolomics,https://includedcc.org/fhir/code-systems/expected_data_category,
 Proteomics,Proteomics,dataset_meta,Data Category,Data Category,Proteomics,Proteomics,https://includedcc.org/fhir/code-systems/expected_data_category,
+Transcriptomic,Transcriptomics,datafile,Data Category,Data Category,Transcriptomics,Transcriptomics,https://includedcc.org/fhir/code-systems/data_categories,
 Transcriptomics,Transcriptomics,dataset_meta,Data Category,Data Category,Transcriptomics,Transcriptomics,https://includedcc.org/fhir/code-systems/expected_data_category,
 Unharmonized Demographic/Clinical Data,Unharmonized Demographic/Clinical Data,dataset_meta,Data Category,Data Category,unharmonized_demographic_clinical_data,Unharmonized Demographic/Clinical Data,https://includedcc.org/fhir/code-systems/expected_data_category,
 Harmonized Demographic/Clinical Data,Harmonized Demographic/Clinical Data,study_meta,Data Category,Data Category,harmonized_demographic_clinical_data,Harmonized Demographic/Clinical Data,https://includedcc.org/fhir/code-systems/expected_data_category,
