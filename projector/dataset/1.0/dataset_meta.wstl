@@ -51,7 +51,6 @@ def DatasetMetadataObservation(study, dataset) {
 
     var data_category: $StrSplit(dataset.data_category, "|");
     component[]: BuildMetadataComponent("Data Category", "string", data_category[])
-
     var data_types: $StrSplit(dataset.data_type, "|");
     component[]: BuildMetadataComponent("Data Type", "string", data_types[])
     var experimental_strategy: $StrSplit(dataset.experimental_strategy, "|");

@@ -14,3 +14,4 @@ fhir_hosts
 
 # Don't check in results
 output
+data/archive
