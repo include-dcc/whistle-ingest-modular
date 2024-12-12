@@ -40,7 +40,7 @@ Data Category,Data Category,study,study_meta,Study Page Codes,data-category,Data
 Study Website,Study Website,study,study_meta,Study Page Codes,study-website,Study Website,https://includedcc.org/fhir/code-systems/study_page_codes,
 dbGaP,dbGaP,study,study_meta,Study Page Codes,dbgap,dbGaP,https://includedcc.org/fhir/code-systems/study_page_codes,
 Publication,Publication,study,study_meta,Study Page Codes,publication,Publication,https://includedcc.org/fhir/code-systems/study_page_codes,
-Study Expected Number of Participants,Study Expected Number of Participants,study,study_meta,Study Page Codes,study-expected-number-of-participants,Study Expected Number of Participants,https://includedcc.org/fhir/code-systems/study_page_codes,
+Expected Number of Participants,Expected Number of Participants,study,study_meta,Study Page Codes,expected-number-of-participants,Expected Number of Participants,https://includedcc.org/fhir/code-systems/study_page_codes,
 GUID Type,GUID Type,study,study_meta,Study Page Codes,guid-type,GUID type,https://includedcc.org/fhir/code-systems/study_page_codes,
 GUID Mapped,GUID Mapped,study,study_meta,Study Page Codes,guid_mapped,GUID Mapped,https://includedcc.org/fhir/code-systems/study_page_codes,
 INCLUDE,INCLUDE,study,study_meta,Program,include,INCLUDE,https://includedcc.org/fhir/code-systems/programs,
