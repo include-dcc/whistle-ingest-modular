@@ -1,0 +1,107 @@
+// Description: Build Out Family Relationships as Observations
+// 
+// Arguments:
+//  study - This is the full study object created by Whistler
+//  subject_id - is a participantid and is the participant described by the code
+//  focus_id - is a participantid
+//  code - Code describing subject_id's relationship to focus_id
+// Note:
+//  Subject is the individual we whose relationship with focus_id we are describing in code
+//  so if code=mother, then subject_id is the "mother" of focus_id
+def FamilyRelationshipObservation(study, relationship, focus_id, subject_id, local_system) {
+    if (subject_id ~= focus_id) {
+        // var varcode: HarmonizeMapped(relationship, local_system);
+        // This would normally contain the extra data-dictionary mappings, but
+        // the current IG is too strict, I think, to support these codes in 
+        // addition to the formal ones.
+        var varcode: HarmonizeMappedFirst(relationship, local_system);
+
+        meta.tag[]: StudyMeta(study);
+        meta.profile[]: "https://nih-ncpi.github.io/ncpi-fhir-ig/StructureDefinition/family-relationship";
+
+        identifier[]: Key_Identifier(study, "Observation",  $StrCat(study.id, ".", subject_id, ".", relationship, ".", focus_id));
+        identifier[0].use: "official";
+        subject: Reference_Key_Identifier(study, "Patient", subject_id);
+        focus[]: Reference_Key_Identifier(study, "Patient", focus_id);
+
+        code.coding[]: BuildCoding("FAMMEMB", "family member", "http://terminology.hl7.org/CodeSystem/v3-RoleCode");
+        code.text: "Family Relationship";
+        valueCodeableConcept.coding[]: varcode;
+        valueCodeableConcept.text: varcode[0].display;
+        
+        status: "final";
+        resourceType: "Observation";
+    }
+}
+
+def ProbandRelationshipObservation(study, subject_id, proband_relationship) {
+    var varcode: HarmonizeMappedFirst("Proband", "Family Relationship");
+    meta.tag[]: StudyMeta(study);
+    // meta.profile[]: "https://nih-ncpi.github.io/ncpi-fhir-ig/StructureDefinition/family-relationship";
+
+    identifier[]: Key_Identifier(study, "Observation",  $StrCat(study.id, ".", subject_id, ".", "is_proband"));
+    identifier[0].use: "official";
+    subject: Reference_Key_Identifier(study, "Patient", subject_id);
+
+    code.coding[]: BuildCoding("85900004", "Proband (finding)", "http://snomed.info/sct");
+    code.coding[]: BuildCoding("Proband", "Proband", "https://includedcc.org/fhir/CodeSystem/data-dictionary/participant/family_relationship");
+    code.text: "Family Relationship";
+
+    
+    if (proband_relationship="Proband") {
+        valueCodeableConcept.coding[]: BuildCoding("Y", "YES", "http://terminology.hl7.org/CodeSystem/v2-0136");
+    } else {
+        valueCodeableConcept.coding[]: BuildCoding("N", "NO", "http://terminology.hl7.org/CodeSystem/v2-0136");
+    }
+    
+    status: "final";
+    resourceType: "Observation";
+}
+
+def FamilyRelationshipTypeObservation(study, family_relationship) {
+    var subject_id: family_relationship.id1;
+    var varcode: HarmonizeMappedFirst(family_relationship.family_type, "Family Relationship");
+
+    meta.tag[]: StudyMeta(study);
+    //meta.profile[]: "https://nih-ncpi.github.io/ncpi-fhir-ig/StructureDefinition/family-relationship";
+
+    identifier[]: Key_Identifier(study, "Observation",  $StrCat(study.id, ".", subject_id, ".", family_relationship.relationship));
+    identifier[0].use: "official";
+    subject: Reference_Key_Identifier(study, "Patient", subject_id);
+
+    code.coding[]: BuildCoding("FAMMEMB", "family member", "http://terminology.hl7.org/CodeSystem/v3-RoleCode");
+    code.text: "Family Relationship";
+    valueCodeableConcept.coding[]: varcode;
+    valueCodeableConcept.text: varcode[0].display;
+    
+    status: "final";
+    resourceType: "Observation";
+}
+
+
+// Iterate over family_members and build all possible "relationships" with subject_id
+// 
+// Arguments:
+//  study - This is the full study object created by Whistler
+//  subject_id - is a participantid and is the participant described by the code
+//  family_members - is all participant IDs related to subject_id
+//  code - Code describing subject_id's relationship to focus_id
+// Note:
+//  It should be noted that a relationship between subject_id and all ids in 
+//  family_members will be created using the exact same code. This probably
+//  doesn't apply to most situations, but for HTP, all we have is the fact
+//  that any related paticipants will have the same "parent_id" (or be the 
+//  one pointed to with parent_id). In this case, parent_id is not an 
+//  appropriate descriptor for the contents of the variable 
+def ProcessFamilyRelationships(study, family_relationship) {
+    
+    if (family_relationship.id2 ~= "NA") {
+        out family_relationships: FamilyRelationshipObservation(study, family_relationship.relationship, family_relationship.id1, family_relationship.id2, "Family Relationship");
+        //out family_relationships: FamilyRelationshipObservation(study, family_relationship.relationship, family_relationship.id2, family_relationship.id1, "Inverse Family Relationship");
+    } else {
+        //out family_relationship: family_relationship;
+        out family_relationships: ProbandRelationshipObservation(study, family_relationship.id1, family_relationship.relationship);
+        //out family_relationship_type: FamilyRelationshipTypeObservation(study, family_relationship);
+    }
+
+}

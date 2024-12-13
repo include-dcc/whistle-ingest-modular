@@ -1,0 +1,37 @@
+def Transform_Dataset(resource) {
+    $this: CreateDataDictionaryTerminologies(resource);
+    $this: CreateDataDictionaryConceptMap(resource);
+    $this: CreateDataDictionaryDefinitions(resource);
+
+    if resource.study? {
+        $this: ProcessStudy(resource.study, resource.study_meta[], resource.participant);
+    }
+
+    if resource.participant? {
+        $this: ProcessGroup(resource.study, resource.participant[*]);
+        $this: ProcessResearchSubject(resource.study, resource.participant[]);
+        $this: ProcessEncounters(resource.study, resource.encounter[]);
+        $this: ProcessParticipant(resource.study, resource.participant[]);
+        var familyids: $Unique(resource.participant[*].family_id);
+        $this: ProcessFamilyGroups(resource.study, resource.participant[*], familyids[]);
+        $this: ProcessPatientConditions(resource.study, resource.participant[]);
+        $this: ProcessFamilyMemberships(resource.study, resource.participant);
+    }
+
+    if resource.family? {
+        $this: ProcessFamilyRelationships(resource.study, resource.family[])
+    }
+
+    if resource.additive? {
+        $this: ProcessSubstanceData(resource.study, resource.additive[]);
+    }
+    if resource.specimen? {
+        $this: ProcessSpecimenData(resource.study, resource.specimen[]);
+    } else {
+        $this: ProcessPatientSpecimen(resource.study, resource.participant[]);
+    }
+
+    if resource.file_manifest? {
+        $this: ProcessFileManifestData(resource.study, resource.file_manifest[]);
+    } 
+}

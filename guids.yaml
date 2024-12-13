@@ -7,9 +7,33 @@ identifier_prefix: https://includedcc.org/fhir/include-guids
 dd_prefix: https://includedcc.org/fhir
 output_filename: guids
 id_colname: Participant ID
-whistle_src: projector/dataset/_entry.wstl
-code_harmonization_dir: harmony/common
+whistle_src: _entry.wstl
 require_official: True
+
+projection_version: current
+# This is where the harmony file will be written 
+code_harmonization_dir: harmony/guids
+
+# This is the prefix associated with the final study harmony file
+# This must match whatever is used in the whistle code (which is data-harmony
+# at this time)
+harmony_prefix: data-harmony
+
+# List each file required to support the level of harmonized terms required
+# by this project. 
+code_harmonization: 
+ - harmony/study.csv
+ - harmony/dataset.csv
+ - harmony/demographics.csv
+ - harmony/encounter.csv
+ - harmony/misc.csv
+ - harmony/specimen.csv
+
+projections: 
+  study: projector/study_only
+  dataset: projector/dataset
+  harmonized: projector/harmonized
+
 curies:
   http://purl.obolibrary.org/obo/hp.owl: HP
   http://purl.obolibrary.org/obo/mondo.owl: MONDO
@@ -26,13 +50,11 @@ dataset:
     filename: data/tables/INCLUDE-GUIDs/study.csv
     data_dictionary:
       filename: data/dd/study.csv
-    code_harmonization: harmony/common/data-harmony.csv
   study_contacts:
     hidden: true
     filename: data/tables/INCLUDE-GUIDs/contacts.csv
     data_dictionary: 
       filename: data/dd/contacts.csv
-    code_harmonization: harmony/common/data-harmony.csv
     embed:
       dataset: study_meta
       colname: Study Code
@@ -40,7 +62,6 @@ dataset:
     filename: data/tables/INCLUDE-GUIDs/guids_dataset_manifest_2024-10-08.csv
     data_dictionary: 
       filename: data/dd/dataset_manifest.csv
-    code_harmonization: harmony/common/data-harmony.csv
     embed:
       dataset: dataset_meta
       colname: Dataset External ID
@@ -48,12 +69,10 @@ dataset:
     filename: data/tables/INCLUDE-GUIDs/datasets.csv
     data_dictionary:
       filename: data/dd/dataset_meta.csv
-    code_harmonization: harmony/common/data-harmony.csv
   dataset_file_manifest:
     filename: data/tables/INCLUDE-GUIDs/guids_datafile_manifest_2024-10-08.csv
     data_dictionary:
       filename: data/dd/datafile.csv
-    code_harmonization: harmony/common/data-harmony.csv
 active_tables:
   ALL: true
 #  family: true

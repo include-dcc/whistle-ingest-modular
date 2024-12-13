@@ -42,7 +42,7 @@ NCPI-FHIR-IG:
 
 NCPI-FHIR-IG-2:
   source_type: IG
-  url: https://torstees.github.io/ncpi-fhir-ig-2/
+  url: https://nih-ncpi.github.io/ncpi-fhir-ig-2/
 
   resources: 
   -  CodeSystem
@@ -72,6 +72,7 @@ INCLUDE-Terms:
     - https://raw.githubusercontent.com/include-dcc/include-model-forge/main/output/CodeSystem-study-page-codes.json
     - https://raw.githubusercontent.com/include-dcc/include-model-forge/main/output/CodeSystem-expected-data-category.json
     - https://raw.githubusercontent.com/include-dcc/include-model-forge/main/output/CodeSystem-include-study-tables.json
+    - https://raw.githubusercontent.com/include-dcc/include-model-forge/main/output/CodeSystem-study-design.json
     - https://raw.githubusercontent.com/include-dcc/include-model-forge/main/output/ValueSet-family-types-vs.json
     - https://raw.githubusercontent.com/include-dcc/include-model-forge/main/output/ValueSet-study-program-vs.json
     - https://raw.githubusercontent.com/include-dcc/include-model-forge/main/output/ValueSet-sample-types-vs.json
