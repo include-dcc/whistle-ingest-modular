@@ -35,7 +35,7 @@ def DatasetMetadataObservation(study, dataset) {
     code.text: "Dataset";
     code.coding[]: BuildCoding("D064886", "Dataset", "urn:oid:2.16.840.1.113883.6.177");
 
-    focus[].identifier: Dataset_Key_Identifier(study, dataset.dataset_global_id);
+    focus[].identifier: Reference_Key_Identifier(study, "List", dataset.dataset_global_id);
 
     status: "final";
     resourceType: "Observation";
@@ -54,7 +54,7 @@ def DatasetMetadataObservation(study, dataset) {
     var data_types: $StrSplit(dataset.data_type, "|");
     component[]: BuildMetadataComponent("Data Type", "string", data_types[])
     var experimental_strategy: $StrSplit(dataset.experimental_strategy, "|");
-    component[]: BuildMetadataComponent("Experimental Strategy", "string", dataset.experimental_strategy[])
+    component[]: BuildMetadataComponent("Experimental Strategy", "string", experimental_strategy[])
     component[]: BuildMetadataComponent("Experimental Platform", "string", dataset.experimental_platform)
     component[]: BuildMetadataComponent("Publication", "string", dataset.publication)
     component[]: BuildMetadataComponent("Access Limitations", "string", dataset.access_limitations)
