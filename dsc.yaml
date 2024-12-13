@@ -6,9 +6,9 @@ url: https://includedcc.org/studies/ds-connect
 identifier_prefix: https://includedcc.org/fhir/dsc
 dd_prefix: https://includedcc.org/fhir
 output_filename: dsc
+id_colname: Participant ID
 
 projection_version: current
-id_colname: Participant ID
 whistle_src: _entry.wstl
 
 # This is where the harmony file will be written 
@@ -40,7 +40,6 @@ curies:
   http://purl.obolibrary.org/obo/mondo.owl: MONDO
   http://purl.obolibrary.org/obo/maxo.owl: MAXO
   http://purl.obolibrary.org/obo/ncit.owl: NCIT
-projector_lib: projector/dataset/current
 env:
   local: dev
   dev: dev
