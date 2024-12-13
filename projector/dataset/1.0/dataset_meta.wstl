@@ -35,7 +35,7 @@ def DatasetMetadataObservation(study, dataset) {
     code.text: "Dataset";
     code.coding[]: BuildCoding("D064886", "Dataset", "urn:oid:2.16.840.1.113883.6.177");
 
-    focus[].identifier: Reference_Key_Identifier(study, "List", dataset.dataset_global_id);
+    focus[]: Reference_Key_Identifier(study, "List", dataset.dataset_global_id);
 
     status: "final";
     resourceType: "Observation";
