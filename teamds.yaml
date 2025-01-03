@@ -63,6 +63,13 @@ dataset:
     filename: data/tables/TEAM-DS/teamds_participant_harmonized_2024-04-12.csv
     data_dictionary: 
       filename: data/dd/participant.csv
+  condition:
+    filename: data/tables/TEAM-DS/teamds_conditions_harmonized_2024-12-18.csv
+    embed:
+      dataset: participant
+      colname: Participant External ID
+    data_dictionary: 
+      filename: data/dd/condition.csv
 active_tables:
   ALL: true
 #  family: true
