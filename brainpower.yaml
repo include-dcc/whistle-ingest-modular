@@ -7,8 +7,33 @@ identifier_prefix: https://includedcc.org/fhir/brainpower
 dd_prefix: https://includedcc.org/fhir
 output_filename: brainpower
 id_colname: Participant ID
-whistle_src: projector/study_only/_entry.wstl
-code_harmonization_dir: harmony/common
+
+projection_version: current
+whistle_src: _entry.wstl
+
+# This is where the harmony file will be written 
+code_harmonization_dir: harmony/brainpower
+
+# This is the prefix associated with the final study harmony file
+# This must match whatever is used in the whistle code (which is data-harmony
+# at this time)
+harmony_prefix: data-harmony
+
+# List each file required to support the level of harmonized terms required
+# by this project. 
+code_harmonization: 
+ - harmony/study.csv
+ - harmony/dataset.csv
+ - harmony/demographics.csv
+ - harmony/encounter.csv
+ - harmony/misc.csv
+ - harmony/specimen.csv
+ - harmony/dsc-conditions.csv
+projections: 
+  study: projector/study_only
+  dataset: projector/dataset
+  harmonized: projector/harmonized
+
 require_official: True
 curies:
   http://purl.obolibrary.org/obo/hp.owl: HP
@@ -26,13 +51,11 @@ dataset:
     filename: data/tables/BrainPower/study.csv
     data_dictionary:
       filename: data/dd/study.csv
-    code_harmonization: harmony/common/data-harmony.csv
   study_contacts:
     hidden: true
     filename: data/tables/BrainPower/contacts.csv
     data_dictionary: 
       filename: data/dd/contacts.csv
-    code_harmonization: harmony/common/data-harmony.csv
     embed:
       dataset: study_meta
       colname: Study Code
@@ -40,7 +63,6 @@ dataset:
     filename: data/tables/BrainPower/BrainPower_participants_GlobalID_15Apr2024.csv
     data_dictionary: 
       filename: data/dd/participant.csv
-    code_harmonization: harmony/common/data-harmony.csv
 active_tables:
   ALL: true
 #  family: true
