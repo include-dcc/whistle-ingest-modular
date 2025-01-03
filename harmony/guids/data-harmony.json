@@ -259,6 +259,17 @@
               "equivalence": "equivalent"
             }
           ]
+        },
+        {
+          "code": "GUID Mapped",
+          "display": "GUID Mapped",
+          "target": [
+            {
+              "code": "guid_mapped",
+              "display": "GUID Mapped",
+              "equivalence": "equivalent"
+            }
+          ]
         }
       ]
     },
@@ -526,6 +537,17 @@
             {
               "code": "GUID Type",
               "display": "GUID Type",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "GUID Mapped",
+          "display": "GUID Mapped",
+          "target": [
+            {
+              "code": "GUID Mapped",
+              "display": "GUID Mapped",
               "equivalence": "equivalent"
             }
           ]
@@ -1355,6 +1377,216 @@
             {
               "code": "Other",
               "display": "Other",
+              "equivalence": "equivalent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "Study Design",
+      "target": "https://includedcc.org/fhir/code-systems/study-design",
+      "element": [
+        {
+          "code": "Case Control",
+          "display": "Case Control",
+          "target": [
+            {
+              "code": "case_control",
+              "display": "Case Control",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "Case Set",
+          "display": "Case Set",
+          "target": [
+            {
+              "code": "case_set",
+              "display": "Case Set",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "Control Set",
+          "display": "Control Set",
+          "target": [
+            {
+              "code": "control_set",
+              "display": "Control Set",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "Clinical Trial",
+          "display": "Clinical Trial",
+          "target": [
+            {
+              "code": "clinical_trial",
+              "display": "Clinical Trial",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "Cross Sectional",
+          "display": "Cross Sectional",
+          "target": [
+            {
+              "code": "cross_sectional",
+              "display": "Cross Sectional",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "Family/Twins/Trios",
+          "display": "Family/Twins/Trios",
+          "target": [
+            {
+              "code": "family_twins_trios",
+              "display": "Family/Twins/Trios",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "Interventional",
+          "display": "Interventional",
+          "target": [
+            {
+              "code": "interventional",
+              "display": "Interventional",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "Longitudinal",
+          "display": "Longitudinal",
+          "target": [
+            {
+              "code": "longitudinal",
+              "display": "longitudinal",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "Tumor vs Matched Normal",
+          "display": "Tumor vs Matched Normal",
+          "target": [
+            {
+              "code": "tumor_vs_matched_normal",
+              "display": "Tumor vs Matched Normal",
+              "equivalence": "equivalent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "Study Design",
+      "target": "self",
+      "element": [
+        {
+          "code": "Case Control",
+          "display": "Case Control",
+          "target": [
+            {
+              "code": "Case Control",
+              "display": "Case Control",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "Case Set",
+          "display": "Case Set",
+          "target": [
+            {
+              "code": "Case Set",
+              "display": "Case Set",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "Control Set",
+          "display": "Control Set",
+          "target": [
+            {
+              "code": "Control Set",
+              "display": "Control Set",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "Clinical Trial",
+          "display": "Clinical Trial",
+          "target": [
+            {
+              "code": "Clinical Trial",
+              "display": "Clinical Trial",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "Cross Sectional",
+          "display": "Cross Sectional",
+          "target": [
+            {
+              "code": "Cross Sectional",
+              "display": "Cross Sectional",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "Family/Twins/Trios",
+          "display": "Family/Twins/Trios",
+          "target": [
+            {
+              "code": "Family/Twins/Trios",
+              "display": "Family/Twins/Trios",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "Interventional",
+          "display": "Interventional",
+          "target": [
+            {
+              "code": "Interventional",
+              "display": "Interventional",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "Longitudinal",
+          "display": "Longitudinal",
+          "target": [
+            {
+              "code": "Longitudinal",
+              "display": "Longitudinal",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "Tumor vs Matched Normal",
+          "display": "Tumor vs Matched Normal",
+          "target": [
+            {
+              "code": "Tumor vs Matched Normal",
+              "display": "Tumor vs Matched Normal",
               "equivalence": "equivalent"
             }
           ]
@@ -2653,6 +2885,17 @@
           ]
         },
         {
+          "code": "Transcriptomic",
+          "display": "Transcriptomics",
+          "target": [
+            {
+              "code": "Transcriptomic",
+              "display": "Transcriptomics",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
           "code": "Transcriptomics",
           "display": "Transcriptomics",
           "target": [
@@ -2747,6 +2990,23 @@
             {
               "code": "Sleep Study",
               "display": "Sleep Study",
+              "equivalence": "equivalent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "Data Category",
+      "target": "https://includedcc.org/fhir/code-systems/data_categories",
+      "element": [
+        {
+          "code": "Transcriptomic",
+          "display": "Transcriptomics",
+          "target": [
+            {
+              "code": "Transcriptomics",
+              "display": "Transcriptomics",
               "equivalence": "equivalent"
             }
           ]
@@ -7706,6 +7966,111 @@
       ]
     },
     {
+      "source": "Study Design",
+      "target": "https://includedcc.org/fhir/CodeSystem/data-dictionary/study_meta/study_design",
+      "element": [
+        {
+          "code": "Case-Control",
+          "display": "Case-Control",
+          "target": [
+            {
+              "code": "Case-Control",
+              "display": "Case-Control",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "Case Set",
+          "display": "Case Set",
+          "target": [
+            {
+              "code": "Case Set",
+              "display": "Case Set",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "Control Set",
+          "display": "Control Set",
+          "target": [
+            {
+              "code": "Control Set",
+              "display": "Control Set",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "Clinical Trial",
+          "display": "Clinical Trial",
+          "target": [
+            {
+              "code": "Clinical Trial",
+              "display": "Clinical Trial",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "Cross-Sectional",
+          "display": "Cross-Sectional",
+          "target": [
+            {
+              "code": "Cross-Sectional",
+              "display": "Cross-Sectional",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "Family/Twins/Trios",
+          "display": "Family/Twins/Trios",
+          "target": [
+            {
+              "code": "Family/Twins/Trios",
+              "display": "Family/Twins/Trios",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "Interventional",
+          "display": "Interventional",
+          "target": [
+            {
+              "code": "Interventional",
+              "display": "Interventional",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "Longitudinal",
+          "display": "Longitudinal",
+          "target": [
+            {
+              "code": "Longitudinal",
+              "display": "Longitudinal",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "Tumor vs Matched Normal",
+          "display": "Tumor vs Matched Normal",
+          "target": [
+            {
+              "code": "Tumor vs Matched Normal",
+              "display": "Tumor vs Matched Normal",
+              "equivalence": "equivalent"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "source": "Clinical Data Source Type",
       "target": "https://includedcc.org/fhir/CodeSystem/data-dictionary/study_meta/clinical_data_source_type",
       "element": [
@@ -7887,6 +8252,17 @@
             {
               "code": "Other",
               "display": "Other",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "Sleep Study",
+          "display": "Sleep Study",
+          "target": [
+            {
+              "code": "Sleep Study",
+              "display": "Sleep Study",
               "equivalence": "equivalent"
             }
           ]
