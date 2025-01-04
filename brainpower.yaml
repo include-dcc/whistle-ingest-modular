@@ -60,9 +60,16 @@ dataset:
       dataset: study_meta
       colname: Study Code
   participant:
-    filename: data/tables/BrainPower/BrainPower_participants_GlobalID_15Apr2024.csv
+    filename: data/tables/BrainPower/BrainPower_Participants_v6.csv
     data_dictionary: 
       filename: data/dd/participant.csv
+  condition:
+    filename: data/tables/BrainPower/BrainPower_Conditions_v6.csv
+    embed:
+      dataset: participant
+      colname: Participant External ID
+    data_dictionary: 
+      filename: data/dd/condition.csv
 active_tables:
   ALL: true
 #  family: true
