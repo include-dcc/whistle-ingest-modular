@@ -92,7 +92,6 @@ if __name__ == "__main__":
         with open(condition_filename, "rt") as condf:
             conditions = csv.DictReader(condf, delimiter=",", quotechar='"')
 
-            pdb.set_trace()
             for line in conditions:
                 # For actual conditions, there is no actual event, so we have
                 # neither age nor event id. So, those are ignored for these

@@ -59,6 +59,22 @@ dataset:
     embed:
       dataset: study_meta
       colname: Study Code
+  condition:
+    filename: data/tables/AECOM-DS/AECOMDS_harmonized_conditions.csv
+    embed:
+      dataset: participant
+      colname: Participant External ID
+    data_dictionary: 
+      filename: data/dd/condition.csv
+  participant:
+    filename: data/tables/AECOM-DS/AECOMDS_harmonized_participants.csv
+    data_dictionary: 
+      filename: data/dd/participant.csv
+  encounter:
+    hidden: true
+    filename: data/tables/AECOM-DS/encounter.csv    
+    data_dictionary: 
+      filename: data/dd/encounter.csv
 active_tables:
   ALL: true
 #  family: true

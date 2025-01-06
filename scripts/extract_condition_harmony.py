@@ -8,12 +8,13 @@ from pathlib import Path
 
 
 class MissingCurie(Exception):
-    def __init__(self, code):
+    def __init__(self, code, harmonizedCode):
         self.code = code
-        super().__ionit__(self.message())
+        self.harmonizedCode = harmonizedCode
+        super().__init__(self.message())
 
     def message(self):
-        return f"There was no curie associated with the code, {self.code}"
+        return f"There was no curie associated with the code, {self.code} ({self.harmonizedCode})"
 
 
 class Coding:
@@ -39,7 +40,7 @@ class Coding:
         try:
             self.curie, self.code = code.split(":")
         except:
-            raise MissingCurie(code)
+            raise MissingCurie(local_code, code)
 
         self.system = Coding.fhir_system[self.curie]
 
@@ -62,7 +63,7 @@ def ExtractCoding(line, writer, code_colname, display_colname, observed_codes):
     code = line[code_colname]
     display = line[display_colname]
 
-    if code != "NA":
+    if code != "NA" and code != "":
         if code not in observed_codes:
             coding = Coding(
                 line["Condition or Measure Source Text"],
