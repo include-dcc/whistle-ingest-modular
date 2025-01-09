@@ -70,6 +70,11 @@ dataset:
       colname: Participant External ID
     data_dictionary: 
       filename: data/dd/condition.csv
+  encounter:
+    hidden: true
+    filename: data/tables/BrainPower/encounter.csv    
+    data_dictionary: 
+      filename: data/dd/encounter.csv
 active_tables:
   ALL: true
 #  family: true
