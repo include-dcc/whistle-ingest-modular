@@ -1,7 +1,7 @@
 def Transform_Dataset(resource) {
     $this: CreateDataDictionaryTerminologies(resource);
     $this: CreateDataDictionaryConceptMap(resource);
-    $this: CreateDataDictionaryDefinitions(resource);
+    // $this: CreateDataDictionaryDefinitions(resource);
 
     if resource.study? {
         $this: ProcessStudy(resource.study, resource.study_meta[], resource.participant);

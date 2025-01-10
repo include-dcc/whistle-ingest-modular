@@ -28,7 +28,7 @@ code_harmonization:
  - harmony/encounter.csv
  - harmony/misc.csv
  - harmony/specimen.csv
- - harmony/dsc-conditions.csv
+ - harmony/brainpower-conditions.csv
 projections: 
   study: projector/study_only
   dataset: projector/dataset
@@ -40,7 +40,7 @@ curies:
   http://purl.obolibrary.org/obo/mondo.owl: MONDO
   http://purl.obolibrary.org/obo/maxo.owl: MAXO
   http://purl.obolibrary.org/obo/ncit.owl: NCIT
-projector_lib: projector/study_only/current
+# projector_lib: projector/study_only/current
 env:
   local: dev
   dev: dev

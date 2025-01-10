@@ -28,7 +28,7 @@ code_harmonization:
  - harmony/encounter.csv
  - harmony/misc.csv
  - harmony/specimen.csv
- - harmony/dsc-conditions.csv
+ - harmony/team-ds-conditions.csv
 projections: 
   study: projector/study_only
   dataset: projector/dataset
@@ -70,6 +70,11 @@ dataset:
       colname: Participant External ID
     data_dictionary: 
       filename: data/dd/condition.csv
+  encounter:
+    hidden: true
+    filename: data/tables/TEAM-DS/encounter.csv    
+    data_dictionary: 
+      filename: data/dd/encounter.csv
 active_tables:
   ALL: true
 #  family: true
