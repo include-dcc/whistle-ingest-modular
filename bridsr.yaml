@@ -28,7 +28,7 @@ code_harmonization:
  - harmony/encounter.csv
  - harmony/misc.csv
  - harmony/specimen.csv
- - harmony/dsc-conditions.csv
+ # - harmony/bri-dsr-conditions.csv
 projections: 
   study: projector/study_only
   dataset: projector/dataset

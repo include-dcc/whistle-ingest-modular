@@ -109,7 +109,7 @@ def Study(study, studymeta, participants) {
 
     relatedArtifact[] (if studymeta.study_website?): StudyArtifactUrl("documentation", "Study Website", studymeta.study_website);
     relatedArtifact[] (if studymeta.selection_criteria?): StudyArtifactCitation("documentation", "SelectionCriteria", studymeta.selection_criteria);
-    // relatedArtifact[] (if studymeta.study_design?): StudyArtifactCitation("citation", "StudyDesign", studymeta.study_design);
+    relatedArtifact[] (if studymeta.study_design?): StudyArtifactCitation("citation", "StudyDesign", studymeta.study_design);
 
     // Publications
     var publications: $StrSplit(studymeta.publication, "|");
@@ -259,6 +259,9 @@ def ProcessStudy(study, studymeta, participants) {
     out research_study: StudyPageObservationSingular(study, studymeta, "Expected Number of Participants", exp_participant_count, "integer");
 
     out research_study: StudyPageObservationSingular(study, studymeta, "Selection Criteria", studymeta.selection_criteria, "string");
+
+    var studydesigns: $StrSplit(studymeta.study_design, "|");
+    out research_study: StudyPageObservation(study, studymeta, "Study Design", studydesigns[], "code");
 
     var lifespans: $StrSplit(studymeta.participant_lifespan_stage, "|");
     out research_study: StudyPageObservation(study, studymeta, "Participant Lifespan Stage", lifespans[], "code");
