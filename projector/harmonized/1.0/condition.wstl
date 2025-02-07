@@ -19,7 +19,7 @@ def DownSyndrome(study, participant) {
         
         identifier[]: Key_Identifier(study, "Condition", BuildDSConditionId(study, participant));
         identifier[0].use: "official";
-        subject: Reference_Key_Identifier(study, "Patient", subject_id);
+        subject: Reference_Global_ID("Patient", participant.participant_global_id);
 
         // Strip out the local coding. DS status is different. We can't get 
         // here if it's not confirmed so we'll hard code the term we would
@@ -52,7 +52,7 @@ def Condition(study, condition) {
         
         identifier[]: Key_Identifier(study, "Condition", BuildConditionId(study, subject_id, condition));
         identifier[0].use: "official";
-        subject: Reference_Key_Identifier(study, "Patient", subject_id);
+        subject: Reference_Global_ID("Patient", condition.participant_global_id);
 
         // Strip out the local coding
         verificationStatus.coding: HarmonizeWithFilter(condition.condition_interpretation, "Condition Interpretation", "hl7.org");

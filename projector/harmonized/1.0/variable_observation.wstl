@@ -9,14 +9,14 @@
 //  
 // Notes:
 //  
-def VariableObservation(study, subject_id, tablename, varname, value) {
+def VariableObservation(study, subject_id, participant_global_id, tablename, varname, value) {
     var coding: HarmonizeMapped(value, varname);
 
     meta.tag[]: StudyMeta(study);
     
     identifier[]: Key_Identifier(study, "Observation", BuildObservationId(study, subject_id, tablename, $StrCat(varname, "-", $StrJoin(".", $StrSplit(value, " ")))));
     identifier[0].use: "official";
-    subject: Reference_Key_Identifier(study, "Patient", subject_id);
+    subject: Reference_Global_ID("Patient", participant_global_id);
     // This is technically how you are expected to link to ODs, but it isn't working in the current version of FHIR
     // basedOn[].identifier: Key_Identifier(study, "ObservationDefinition", DdVariableId(study.id, tablename, varname));
     code.text: HarmonizedLocalDisplay(varname, tablename);

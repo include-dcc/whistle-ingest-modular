@@ -8,7 +8,7 @@
 def Patient_Reference(study, row) {
     // I believe the external ID will be used throughout future releases, 
     // however, if 
-    $this: Reference_Key_Identifier(study, "Patient", row.participant_external_id);
+    $this: Reference_Global_ID("Patient", row.participant_global_id);
 }
 
 // Description: Our Participant is basically a limited Patient record
@@ -18,23 +18,22 @@ def Patient_Reference(study, row) {
 //  subject - Must have a participant_id
 // 
 def Participant(study, subject) {
-    meta.tag[]: StudyMeta(study);
+    //meta.tag[]: StudyMeta(study);
+    
+    var study_code: $StrSplit(subject.study_code, "|");
+    meta.tag[]: StudyMetaMultiple(study_code[], study.dd-prefix, "Patient");
+    
     resourceType : "Patient"
 
-    identifier[]: Key_Identifier(study, "Patient", subject.participant_external_id);
-    if (subject.participant_global_id ~= "NA") {
-        identifier[0].use: "secondary";
-        identifier[]: Key_Identifier(study, "Patient", subject.participant_global_id);
-        identifier[1].use: "official";
+    // identifier[]: Key_Identifier(study, "Patient", subject.participant_global_id);
+    // identifier[0].use: "official";
 
-        // The plan is to use this ID for the resource ids, however, we aren't
-        // able to use that with the current version of the participant file. 
-        // Hopefully, I won't forget to drop the affected study prior to reload
-        // since those IDs will definitely not match. 
-        id: StringReplace(subject.participant_global_id, "_", "-");
-    } else {
-        identifier[0].use: "official";
-    }
+    var external_ids: $StrSplit(subject.participant_external_id, "|");
+    var study_codes: $StrSplit(subject.study_code, "|");
+    identifier[]: Key_Identifier_From_Code(study.dd-prefix, study_codes[], "Patient", external_ids[]);
+    identifier[0].use: "official";
+    id: StringReplace(subject.participant_global_id, "_", "-");
+    
     gender (if subject.sex ~= "."): HarmonizeAsCode(subject.sex, "Sex");
     extension[]: RaceExtension(subject.race);
     extension[]: EthnicityExtension(subject.ethnicity);
@@ -52,5 +51,5 @@ def ProcessParticipant(study, demo) {
     //out patient: AgeAtEnrollmentObservation(study, demo);
     //out patient: AgeAt(study, demo, "AgeAtLastVitalStatus", "participant", demo.age_at_last_vital_status);
     out patient: Participant(study, demo);
-    out ds_status: VariableObservation(study, demo.participant_external_id, "participant", "Down Syndrome Status", demo.down_syndrome_status);
+    out ds_status: VariableObservation(study, demo.participant_external_id, demo.participant_global_id, "participant", "Down Syndrome Status", demo.down_syndrome_status);
 }

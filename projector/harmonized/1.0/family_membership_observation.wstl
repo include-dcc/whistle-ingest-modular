@@ -9,7 +9,7 @@ def FamilyMemberRationshipType(study, participant_row) {
     identifier[]: Key_Identifier(study, "Observation",  $StrCat(study.id, ".", subject_id, ".", family_relationship));
     identifier[0].use: "official";
         
-    subject: Reference_Key_Identifier(study, "Patient", subject_id);
+    subject: Reference_Global_ID("Patient", participant_row.participant_global_id);
     code.coding[]: BuildCoding("NCIT:C25648", "Relationship", "http://purl.obolibrary.org/obo/ncit.owl");
     code.text: "Relationship Within Family";
 

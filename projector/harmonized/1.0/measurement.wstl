@@ -21,7 +21,7 @@ def BodyMeasurement(study, measurement) {
 
     identifier[]: Key_Identifier(study, "Observation", BuildObservationId(study, subject_id, measurement.event_id, measure_type));
     identifier[0].use: "official";
-    subject: Reference_Key_Identifier(study, "Patient", subject_id);
+    subject: Reference_Global_ID("Patient", measurement.participant_global_id);
 
     meta.tag[]: StudyMeta(study);
 
@@ -139,7 +139,7 @@ def Measurement(study, measurement) {
 
     identifier[]: Key_Identifier(study, "Observation", BuildObservationId(study, subject_id, measurement.event_id, varname));
     identifier[0].use: "official";
-    subject: Reference_Key_Identifier(study, "Patient", subject_id);
+    subject: Reference_Global_ID("Patient", measurement.participant_global_id);
     // This is technically how you are expected to link to ODs, but it isn't working in the current version of FHIR
     // basedOn[].identifier: Key_Identifier(study, "ObservationDefinition", DdVariableId(study.id, "condition", varname));
 

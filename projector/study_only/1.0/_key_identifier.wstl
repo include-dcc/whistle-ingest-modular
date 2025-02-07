@@ -14,3 +14,8 @@ def Key_Identifier(study, required resourceType, required value) {
     value: value;
     system: $StrCat(study.identifier-prefix, "/", $ToLower(resourceType));
 }
+
+def Key_Identifier_From_Code(dd_prefix, study_code, required resourceType, required value) {
+    value: value;
+    system: $StrCat(dd_prefix, "/", $ToLower(study_code), "/", $ToLower(resourceType));
+}

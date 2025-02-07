@@ -12,7 +12,7 @@ def ResearchSubject(study, subject) {
     identifier[0].use: "official";
     status: "on-study";
     study: Reference_Key_Identifier(study, "ResearchStudy", study.id);
-    individual: Reference_Key_Identifier(study, "Patient", subject.participant_external_id);
+    individual: Reference_Global_ID("Patient", subject.participant_global_id);
     resourceType: "ResearchSubject";
 }
 

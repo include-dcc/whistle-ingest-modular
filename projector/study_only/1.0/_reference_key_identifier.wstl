@@ -12,4 +12,6 @@ def Reference_Key_Identifier(study, required resourceType, required value) {
     identifier: Key_Identifier(study, resourceType, value);
 }
 
-
+def Reference_Global_ID(resourceType, global_id){
+    reference: $StrCat(resourceType, "/", global_id); 
+}
