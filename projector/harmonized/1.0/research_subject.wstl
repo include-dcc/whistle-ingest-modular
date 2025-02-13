@@ -7,9 +7,15 @@
 //  study - This is the full study object created by Whistler
 //  subject - Must have a participant_id
 def ResearchSubject(study, subject) {
-    meta.tag[]: StudyMeta(study);
-    identifier[]: Key_Identifier(study, "ResearchSubject", subject.participant_external_id);
+    var study_code: $StrSplit(subject.study_code, "|");
+    meta.tag[]: StudyMetaMultiple(study_code[], study.dd-prefix, "Patient");
+
+    var external_ids: $StrSplit(subject.participant_external_id, "|");
+    var study_codes: $StrSplit(subject.study_code, "|");
+    identifier[]: Key_Identifier(study, "ResearchSubject", subject.participant_global_id);
     identifier[0].use: "official";
+    identifier[]: Key_Identifier_From_Code(study.dd-prefix, study_codes[], "Patient", external_ids[], "secondary");
+
     status: "on-study";
     study: Reference_Key_Identifier(study, "ResearchStudy", study.id);
     individual: Reference_Global_ID("Patient", subject.participant_global_id);

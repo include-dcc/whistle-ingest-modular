@@ -1,14 +1,22 @@
 
 def FamilyMemberRationshipType(study, participant_row) {
 
-    var subject_id: participant_row.participant_external_id;
+    var subject_id: participant_row.participant_global_id;
     var family_relationship: participant_row.family_relationship;
     var varcode: HarmonizeMappedFirst(family_relationship, "Family Membership");
 
+
+    // I feel like this should probably be using the two, but I think that would mess up the portal
+    // so leaving it alone. EST 2025-02-12
     meta.tag[]: StudyMeta(study);
     identifier[]: Key_Identifier(study, "Observation",  $StrCat(study.id, ".", subject_id, ".", family_relationship));
     identifier[0].use: "official";
-        
+    // Technically, I feel like we should be adding in external IDs into this...but that is a totally new can of worms that 
+    // seems too big for the timing. EST 2025-02-12
+    // var external_ids: $StrSplit(subject.participant_external_id, "|");
+    // var study_codes: $StrSplit(subject.study_code, "|");
+    // identifier[]: Key_Identifier_From_Code(study.dd-prefix, study_codes[], "Patient", external_ids[], "secondary");
+
     subject: Reference_Global_ID("Patient", participant_row.participant_global_id);
     code.coding[]: BuildCoding("NCIT:C25648", "Relationship", "http://purl.obolibrary.org/obo/ncit.owl");
     code.text: "Relationship Within Family";

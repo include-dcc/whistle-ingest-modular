@@ -1695,7 +1695,7 @@
     },
     {
       "source": "Clinical Data Source Type",
-      "target": "https://includedcc.org/fhir/CodeSystem/data-dictionary/study_meta/clinical_data_source_type",
+      "target": "https://includedcc.org/fhir/code-systems/clinical_data_source_type",
       "element": [
         {
           "code": "Medical Record",
@@ -4434,7 +4434,7 @@
           "display": "White",
           "target": [
             {
-              "code": "2028-9",
+              "code": "2106-3",
               "display": "White",
               "equivalence": "equivalent"
             }
@@ -4467,7 +4467,7 @@
           "display": "UK only; do not use for US data",
           "target": [
             {
-              "code": "2028-9",
+              "code": "2106-3",
               "display": "White",
               "equivalence": "equivalent"
             }

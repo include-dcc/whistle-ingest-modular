@@ -124,7 +124,7 @@ def BMI(study, measurement) {
 //  value - the value for the given variable
 //  units - the units associated with the variable
 //  
-def Measurement(study, measurement) {
+def Measurement(study, measurement, participant_global_id) {
     var subject_id: measurement.participant_external_id;
     var varcode: HarmonizeMapped(measurement.condition_or_measure_source_text, "encounter");
     var unitcode: HarmonizeMappedFirst(measurement.measure_units, "units");
@@ -139,7 +139,7 @@ def Measurement(study, measurement) {
 
     identifier[]: Key_Identifier(study, "Observation", BuildObservationId(study, subject_id, measurement.event_id, varname));
     identifier[0].use: "official";
-    subject: Reference_Global_ID("Patient", measurement.participant_global_id);
+    subject: Reference_Global_ID("Patient", participant_global_id);
     // This is technically how you are expected to link to ODs, but it isn't working in the current version of FHIR
     // basedOn[].identifier: Key_Identifier(study, "ObservationDefinition", DdVariableId(study.id, "condition", varname));
 

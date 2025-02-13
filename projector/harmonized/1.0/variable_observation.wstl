@@ -9,14 +9,20 @@
 //  
 // Notes:
 //  
-def VariableObservation(study, subject_id, participant_global_id, tablename, varname, value) {
+def VariableObservation(study, subject, tablename, varname, value) {
     var coding: HarmonizeMapped(value, varname);
 
-    meta.tag[]: StudyMeta(study);
-    
-    identifier[]: Key_Identifier(study, "Observation", BuildObservationId(study, subject_id, tablename, $StrCat(varname, "-", $StrJoin(".", $StrSplit(value, " ")))));
+    // Is this valid to rely solely on the study for this code for these resources?
+    var study_code: $StrSplit(subject.study_code, "|");
+    meta.tag[]: StudyMetaMultiple(study_code[0], study.dd-prefix, "Patient");
+
+    var external_ids: $StrSplit(subject.participant_external_id, "|");
+    var study_codes: $StrSplit(subject.study_code, "|");
+    identifier[]: Key_Identifier(study, "Observation", BuildObservationId(study, subject.participant_global_id, tablename, $StrCat(varname, "-", $StrJoin(".", $StrSplit(value, " ")))));
     identifier[0].use: "official";
-    subject: Reference_Global_ID("Patient", participant_global_id);
+    identifier[]: Key_Identifier_From_Code(study.dd-prefix, study_codes[], "Patient", external_ids[], "secondary");
+
+    subject: Reference_Global_ID("Patient", subject.participant_global_id);
     // This is technically how you are expected to link to ODs, but it isn't working in the current version of FHIR
     // basedOn[].identifier: Key_Identifier(study, "ObservationDefinition", DdVariableId(study.id, tablename, varname));
     code.text: HarmonizedLocalDisplay(varname, tablename);

@@ -9,6 +9,6 @@ def StudyMeta(study) {
 }
 
 def StudyMetaMultiple(study_code, dd_prefix, resourceType){
-    value: study_code;
+    code: study_code;
     system: $StrCat(dd_prefix, "/", $ToLower(study_code), "/", $ToLower(resourceType));
 }
