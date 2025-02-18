@@ -1,0 +1,67 @@
+study_id: DS-COG-ALL
+study_accession:  
+study_title: "INCLUDE: (Lupo) Genomic Analysis of Congenital Heart Defects and Acute Lymphoblastic Leukemia in Children with Down Syndrome"
+study_desc: "This study is a collaboration with the trans-NIH INvestigation of Co-occurring conditions across the Lifespan to Understand Down syndrome (INCLUDE) Project, which seeks to improve health and quality-of-life for individuals with Down syndrome, and NHLBI's TransOmics for Precision Medicine (TOPMed) program, which seeks to apply omics technologies to improve scientific understanding of the fundamental biological processes that underlie heart, lung, blood, and sleep (HLBS) disorders. Additional Pediatric Cardiac Genetics Consortium (PCGC) data from children affected with Down syndrome and congenital heart disease are accessible through two separate dbGaP studies: phs001138 (Kids First) and phs001194 (TOPMed)."
+url: https://includedcc.org/studies/dscogall
+identifier_prefix: https://includedcc.org/fhir/dsgocall
+dd_prefix: https://includedcc.org/fhir
+output_filename: dscogall
+id_colname: Participant ID
+
+projection_version: current
+whistle_src: _entry.wstl
+
+# This is where the harmony file will be written 
+code_harmonization_dir: harmony/dscogall
+
+# This is the prefix associated with the final study harmony file
+# This must match whatever is used in the whistle code (which is data-harmony
+# at this time)
+harmony_prefix: data-harmony
+
+# List each file required to support the level of harmonized terms required
+# by this project. 
+code_harmonization: 
+ - harmony/study.csv
+ - harmony/dataset.csv
+ - harmony/demographics.csv
+ - harmony/encounter.csv
+ - harmony/misc.csv
+ - harmony/specimen.csv
+
+projections: 
+  study: projector/study_only
+  dataset: projector/dataset
+  harmonized: projector/harmonized
+
+require_official: True
+curies:
+  http://purl.obolibrary.org/obo/hp.owl: HP
+  http://purl.obolibrary.org/obo/mondo.owl: MONDO
+  http://purl.obolibrary.org/obo/maxo.owl: MAXO
+  http://purl.obolibrary.org/obo/ncit.owl: NCIT
+env:
+  local: dev
+  dev: dev
+  qa: qa-kf2-inc
+  prod: prod-kf2-inc
+dataset:
+  study_meta: 
+    filename: data/tables/DS-COG-ALL/study.csv
+    data_dictionary:
+      filename: data/dd/study.csv
+  study_contacts:
+    hidden: true
+    filename: data/tables/DS-COG-ALL/contacts.csv
+    data_dictionary: 
+      filename: data/dd/contacts.csv
+    embed:
+      dataset: study_meta
+      colname: Study Code
+  dataset_meta:
+    filename: data/tables/DS-COG-ALL/datasets.csv
+    data_dictionary:
+      filename: data/dd/dataset_meta.csv
+active_tables:
+  ALL: true
+#  family: true
