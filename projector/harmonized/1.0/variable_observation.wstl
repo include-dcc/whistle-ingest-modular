@@ -10,7 +10,9 @@
 // Notes:
 //  
 def VariableObservation(study, subject, tablename, varname, value) {
-    var coding: HarmonizeMapped(value, varname);
+    // Inputting this system directly defeats the purpose of using a function but it is only being used for one
+    // field for now (Down Syndrome Status) ALH 2025-03-10
+    var coding: Harmonize(varname, "https://includedcc.org/fhir/CodeSystem/data-dictionary/participant/down_syndrome_status");
 
     // Is this valid to rely solely on the study for this code for these resources?
     var study_code: $StrSplit(subject.study_code, "|");
@@ -25,11 +27,11 @@ def VariableObservation(study, subject, tablename, varname, value) {
     subject: Reference_Global_ID("Patient", subject.participant_global_id);
     // This is technically how you are expected to link to ODs, but it isn't working in the current version of FHIR
     // basedOn[].identifier: Key_Identifier(study, "ObservationDefinition", DdVariableId(study.id, tablename, varname));
-    code.text: HarmonizedLocalDisplay(varname, tablename);
-    code.coding[]: HarmonizeMapped(varname, tablename);
+    code.text: HarmonizedLocalDisplay(varname, "https://includedcc.org/fhir/CodeSystem/data-dictionary/participant/down_syndrome_status");
+    code.coding[]: coding;
     
     valueCodeableConcept.text: value;
-    valueCodeableConcept.coding[]: coding;
+    valueCodeableConcept.coding[]: HarmonizeMapped(varname, tablename);
     status: "final";
     resourceType: "Observation";
 }

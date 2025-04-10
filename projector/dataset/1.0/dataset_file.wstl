@@ -64,6 +64,6 @@ def DatasetDocumentReference(study, manifest) {
     resourceType: "DocumentReference";
 }
 
-def ProcessDatasetFiles(study, file) {
-    out files: DatasetDocumentReference(study, file);
+def ProcessDatasetFiles(study, dataset) {
+    out files: DatasetDocumentReference(study, dataset.dataset_manifest[]);
 }
