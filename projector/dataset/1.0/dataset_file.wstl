@@ -12,7 +12,7 @@ def DatasetFileDetailExtension(study, manifest) {
     title: manifest.file_name; 
 }
 
-def DatasetDocumentReference(study, manifest) {
+def DatasetDocumentReference(study, required manifest) {
     meta.tag[]: StudyMeta(study);
 
     var access_url: manifest.file_s3_location;
