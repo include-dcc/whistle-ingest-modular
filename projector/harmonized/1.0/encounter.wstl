@@ -38,7 +38,7 @@ def Encounter(study, encounter, participant_global_id) {
 
     // For now, I think it's safe to assume that we will always have an 
     // "Age at Event"
-    period._start.extension[0]: AgeAtExtension(study, encounter.participant_external_id, encounter.age_at_event, "days");
+    period._start.extension[0]: AgeAtExtension(study, participant_global_id, encounter.age_at_event, "days");
 }
 
 def BuildEncounter(study, encounter, participant_global_id) {

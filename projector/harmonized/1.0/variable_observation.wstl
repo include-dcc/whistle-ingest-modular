@@ -9,18 +9,26 @@
 //  
 // Notes:
 //  
+
+def Build_Measurement_id(study, visit_name, table, varname){
+    if table.vitalid? {
+        $this: BuildObservationId(study, table.vitalid, visit_name, varname);
+    } else {
+        $this: BuildObservationId(study, $StrCat(table.participant_global_id, ".", table.event_id, ".", table.age_at_condition_or_measure_observation), visit_name, varname);
+    }
+}
+
 def VariableObservation(study, subject, tablename, varname, value) {
     // Inputting this system directly defeats the purpose of using a function but it is only being used for one
     // field for now (Down Syndrome Status) ALH 2025-03-10
-    var coding: Harmonize(varname, "https://includedcc.org/fhir/CodeSystem/data-dictionary/participant/down_syndrome_status");
-
+    var coding: Harmonize(varname, "participant");
     // Is this valid to rely solely on the study for this code for these resources?
     var study_code: $StrSplit(subject.study_code, "|");
     meta.tag[]: StudyMetaMultiple(study_code[0], study.dd-prefix, "Patient");
 
     var external_ids: $StrSplit(subject.participant_external_id, "|");
     var study_codes: $StrSplit(subject.study_code, "|");
-    identifier[]: Key_Identifier(study, "Observation", BuildObservationId(study, subject.participant_global_id, tablename, $StrCat(varname, "-", $StrJoin(".", $StrSplit(value, " ")))));
+    identifier[]: Key_Identifier(study, "Observation", Build_Measurement_id(study, tablename, subject, $StrCat(varname, "-", $StrJoin(".", $StrSplit(value, " ")))));
     identifier[0].use: "official";
     identifier[]: Key_Identifier_From_Code(study.dd-prefix, study_codes[], "Patient", external_ids[], "secondary");
 

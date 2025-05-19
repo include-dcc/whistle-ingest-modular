@@ -30,6 +30,7 @@ def DownSyndrome(study, participant) {
 
         code.coding[]: coding;
         code.coding[]: HarmonizeMapped("Down Syndrome Status", "participant");
+
         code.text: participant.down_syndrome_status;
 
         resourceType: "Condition";
@@ -46,7 +47,7 @@ def Condition(study, condition, participant_global_id) {
     var subject_id: condition.participant_external_id;
     var coding: HarmonizeMapped(condition.condition_or_measure_source_text, "condition_description");
 
-    //if (~$IsNil(coding) and condition.condition_interpretation = "Observed") {
+    //if (~$IsNil(coding) and condition.condition_interpretation = "Observed") 
     if (~$IsNil(coding)) {
         meta.tag[]: StudyMeta(study);
         
@@ -64,6 +65,8 @@ def Condition(study, condition, participant_global_id) {
         code.text: condition.condition_or_measure_source_text;
 
         resourceType: "Condition";
+
+        encounter: Reference_Key_Identifier(study, "Encounter", Build_Encounter_ID(study, condition));
     } 
 }
 
