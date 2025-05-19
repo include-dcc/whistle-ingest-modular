@@ -38,7 +38,7 @@ def exec(args=None):
     parser.add_argument(
         "-r",
         "--resource-type",
-        choices=["Patient", "Condition", "Observation"],
+        choices=["Patient", "Condition", "Observation", "List", "Person"],
         help="The resource type of the resources to be deleted",
     )
     parser.add_argument(
