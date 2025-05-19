@@ -40,12 +40,13 @@ curies:
   http://purl.obolibrary.org/obo/mondo.owl: MONDO
   http://purl.obolibrary.org/obo/maxo.owl: MAXO
   http://purl.obolibrary.org/obo/ncit.owl: NCIT
+  http://snomed.info/sct: SNOMED
 projector_lib: projector/study_only/current
 env:
   local: dev
   dev: dev
   qa: qa-kf2-inc
-  prod: prod-kf2-inc
+  prod: prd-kf2-inc
 dataset:
   study_meta: 
     filename: data/tables/AECOM-DS/study.csv
@@ -75,6 +76,9 @@ dataset:
     filename: data/tables/AECOM-DS/encounter.csv    
     data_dictionary: 
       filename: data/dd/encounter.csv
+    embed: 
+      dataset: participant 
+      colname: Participant External ID
 active_tables:
   ALL: true
 #  family: true

@@ -45,7 +45,7 @@ env:
   local: dev
   dev: dev
   qa: qa-kf2-inc
-  prod: prod-kf2-inc
+  prod: prd-kf2-inc
 dataset:
   study_meta: 
     filename: data/tables/DS-Sleep/study.csv
@@ -70,6 +70,14 @@ dataset:
     filename: data/tables/DS-Sleep/participant.csv
     data_dictionary: 
       filename: data/dd/participant.csv
+  encounter:
+    hidden: true
+    filename: data/tables/DS-Sleep/encounter.csv    
+    data_dictionary: 
+      filename: data/dd/encounter.csv
+    embed: 
+      dataset: participant 
+      colname: Participant External ID
 active_tables:
   ALL: true
 #  family: true

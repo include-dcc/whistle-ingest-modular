@@ -45,7 +45,7 @@ env:
   local: dev
   dev: dev
   qa: qa-kf2-inc
-  prod: prod-kf2-inc
+  prod: prd-kf2-inc
 dataset:
   study_meta: 
     filename: data/tables/DECIDAS/study.csv

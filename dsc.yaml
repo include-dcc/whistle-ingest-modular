@@ -44,7 +44,7 @@ env:
   local: dev
   dev: dev
   qa: qa-kf2-inc
-  prod: prod-kf2-inc
+  prod: prd-kf2-inc
 dataset:
   study_meta: 
     filename: data/tables/DSC/study.csv
@@ -74,8 +74,8 @@ dataset:
     data_dictionary:
       filename: data/dd/datafile.csv
   participant:
-    filename: data/tables/DSC/DSC_DSD_shared_participants_draft.csv
-    # filename: data/tables/DSC/dsc_participant_harmonized_2024-04-12.csv
+    # filename: data/tables/DSC/DSC_DSD_shared_participants_draft.csv
+    filename: data/tables/DSC/dsc_participant_harmonized_2024-04-12.csv
     data_dictionary: 
       filename: data/dd/participant.csv
   condition:

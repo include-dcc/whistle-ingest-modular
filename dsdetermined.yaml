@@ -28,7 +28,7 @@ code_harmonization:
  - harmony/encounter.csv
  - harmony/misc.csv
  - harmony/specimen.csv
- # - harmony/ds-determined-conditions.csv
+ - harmony/ds-determined-conditions.csv
 projections: 
   study: projector/study_only
   dataset: projector/dataset
@@ -40,12 +40,14 @@ curies:
   http://purl.obolibrary.org/obo/mondo.owl: MONDO
   http://purl.obolibrary.org/obo/maxo.owl: MAXO
   http://purl.obolibrary.org/obo/ncit.owl: NCIT
+  http://snomed.info/sct: SNOMED
+  # https://loinc.org/: LOINC
 projector_lib: projector/study_only/current
 env:
   local: dev
   dev: dev
   qa: qa-kf2-inc
-  prod: prod-kf2-inc
+  prod: prd-kf2-inc
 dataset:
   study_meta: 
     filename: data/tables/DS-DETERMINED/study.csv
@@ -59,6 +61,25 @@ dataset:
     embed:
       dataset: study_meta
       colname: Study Code
+  participant:
+    filename: data/tables/DS-DETERMINED/DS_DETERMINED_participant_05142025.csv
+    data_dictionary: 
+      filename: data/dd/participant.csv
+  condition:
+    filename: data/tables/DS-DETERMINED/DS_DETERMINED_conditions_05152025_vitalids.csv
+    embed:
+      dataset: participant
+      colname: Participant External ID
+    data_dictionary: 
+      filename: data/dd/condition.csv
+  encounter:
+    hidden: true
+    filename: data/tables/DS-DETERMINED/encounter.csv    
+    data_dictionary: 
+      filename: data/dd/encounter.csv
+    embed: 
+      dataset: participant 
+      colname: Participant External ID
 active_tables:
   ALL: true
 #  family: true

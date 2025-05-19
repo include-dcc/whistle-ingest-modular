@@ -43,7 +43,7 @@ env:
   local: dev
   dev: dev
   qa: qa-kf2-inc
-  prod: prod-kf2-inc
+  prod: prd-kf2-inc
 dataset:
   study_meta: 
     filename: data/tables/INCLUDE-GUIDs/study.csv
@@ -68,7 +68,7 @@ dataset:
     filename: data/tables/INCLUDE-GUIDs/datasets.csv
     data_dictionary:
       filename: data/dd/dataset_meta.csv
-  dataset_file_manifest:
+  file_manifest:
     filename: data/tables/INCLUDE-GUIDs/guids_datafile_manifest_2024-10-08.csv
     data_dictionary:
       filename: data/dd/datafile.csv
