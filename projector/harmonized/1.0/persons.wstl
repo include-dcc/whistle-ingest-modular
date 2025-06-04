@@ -7,14 +7,15 @@ def Persons(persons, PersonGlobalId, study) {
     link[]: ParticipantLink(people[]);
 
     resourceType: "Person";
-    meta.tag[]: StudyMeta(study);
+    var studycodes: people[*].studyCode;
+    meta.tag[]: StudyMetaMultiple(studycodes[], study.identifier-prefix, "Person");
     identifier[]: Key_Identifier(study, "Person", PersonGlobalId);
     identifier[0].use: "official";
     id: PersonGlobalId;
 }
 
 def ProcessPersons (persons, study) {
-    var uniquePersons: $Unique(persons[*].globalid);
+    var uniquePersons: $Unique(persons[*].personglobalid);
     out persons: Persons(persons, uniquePersons[], study);
 }
 
