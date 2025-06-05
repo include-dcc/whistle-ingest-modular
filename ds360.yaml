@@ -1,18 +1,18 @@
-study_id: INCLUDE-GUIDs
+study_id: DS360-CHD
 study_accession:  
-study_title: INCLUDE-GUIDs
-study_desc: 
-url: https://includedcc.org/studies/include-guids
-identifier_prefix: https://includedcc.org/fhir/include-guids
+study_title: "INCLUDE: (Sherman) Genomic Analysis of Congenital Heart Defects and Acute Lymphoblastic Leukemia in Children with Down Syndrome"
+study_desc: "This study is a collaboration with the trans-NIH INvestigation of Co-occurring conditions across the Lifespan to Understand Down syndrome (INCLUDE) Project, which seeks to improve health and quality-of-life for individuals with Down syndrome, and NHLBI's TransOmics for Precision Medicine (TOPMed) program, which seeks to apply omics technologies to improve scientific understanding of the fundamental biological processes that underlie heart, lung, blood, and sleep (HLBS) disorders. Additional Pediatric Cardiac Genetics Consortium (PCGC) data from children affected with Down syndrome and congenital heart disease are accessible through two separate dbGaP studies: phs001138 (Kids First) and phs001194 (TOPMed)."
+url: https://includedcc.org/studies/ds360chd
+identifier_prefix: https://includedcc.org/fhir/ds360chd
 dd_prefix: https://includedcc.org/fhir
-output_filename: guids
+output_filename: ds360chd
 id_colname: Participant ID
-whistle_src: _entry.wstl
-require_official: True
 
 projection_version: current
+whistle_src: _entry.wstl
+
 # This is where the harmony file will be written 
-code_harmonization_dir: harmony/guids
+code_harmonization_dir: harmony/ds360chd
 
 # This is the prefix associated with the final study harmony file
 # This must match whatever is used in the whistle code (which is data-harmony
@@ -34,6 +34,7 @@ projections:
   dataset: projector/dataset
   harmonized: projector/harmonized
 
+require_official: True
 curies:
   http://purl.obolibrary.org/obo/hp.owl: HP
   http://purl.obolibrary.org/obo/mondo.owl: MONDO
@@ -43,35 +44,24 @@ env:
   local: dev
   dev: dev
   qa: qa-kf2-inc
-  prod: prd-kf2-inc
+  prod: prod-kf2-inc
 dataset:
   study_meta: 
-    filename: data/tables/INCLUDE-GUIDs/study.csv
+    filename: data/tables/DS360-CHD/study.csv
     data_dictionary:
       filename: data/dd/study.csv
   study_contacts:
     hidden: true
-    filename: data/tables/INCLUDE-GUIDs/contacts.csv
+    filename: data/tables/DS360-CHD/contacts.csv
     data_dictionary: 
       filename: data/dd/contacts.csv
     embed:
       dataset: study_meta
       colname: Study Code
-  dataset_manifest:
-    filename: data/tables/INCLUDE-GUIDs/guids_dataset_manifest_2024-10-08.csv
-    data_dictionary: 
-      filename: data/dd/dataset_manifest.csv
-    embed:
-      dataset: dataset_meta
-      colname: Dataset External ID
   dataset_meta:
-    filename: data/tables/INCLUDE-GUIDs/datasets.csv
+    filename: data/tables/DS360-CHD/datasets.csv
     data_dictionary:
       filename: data/dd/dataset_meta.csv
-  file_manifest:
-    filename: data/tables/INCLUDE-GUIDs/guids_datafile_manifest_2024-10-08.csv
-    data_dictionary:
-      filename: data/dd/datafile.csv
 active_tables:
   ALL: true
 #  family: true

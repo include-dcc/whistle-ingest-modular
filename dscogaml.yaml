@@ -1,0 +1,63 @@
+study_id: DS-COG-AML
+study_accession:  
+study_title: "Germline and Somatic Variants in Myeloid Malignancies in Children"
+study_desc: "Clinical outcomes in children with AML have remained poor, in part due to lack of deep understanding of the genomic makeup of the disease and its host. Comprehensive sequencing of the tumor and the host (germline) may lead to discovery of better therapies and optimized targeting of the leukemia (while minimizing short and long-term toxicities) which could improve survival.  Additionally, study of the host’s genome (germline) may identify predisposing variants that could help identify children at risk of developing leukemia.  The goal of this study is to develop a comprehensive database of genomic variants in a large cohort of children (>1000, Children’s Oncology Group protocol AAML1031), correlate variants with extensive clinical characteristics and survival data, and identify prognostic and therapeutic targets for a more personalized approach to treatment. The data shared in the INCLUDE Data Hub are from a subset of participants with Down syndrome AML (DS-AML) in COG trials AAML1531 (“Risk Stratified Therapy for Acute Myeloid Leukemia in Down Syndrome”) and AAML08B1 (“Biology Study of Transient Myeloproliferative Disorder (TMD) in Children with Down Syndrome). Clinical data was provided by COG statisticians."
+url: https://includedcc.org/studies/dscogaml
+identifier_prefix: https://includedcc.org/fhir/dscogaml
+dd_prefix: https://includedcc.org/fhir
+output_filename: dscogaml
+id_colname: Participant ID
+
+projection_version: current
+whistle_src: _entry.wstl
+
+# This is where the harmony file will be written 
+code_harmonization_dir: harmony/dscogaml
+
+# This is the prefix associated with the final study harmony file
+# This must match whatever is used in the whistle code (which is data-harmony
+# at this time)
+harmony_prefix: data-harmony
+
+# List each file required to support the level of harmonized terms required
+# by this project. 
+code_harmonization: 
+ - harmony/study.csv
+ - harmony/dataset.csv
+ - harmony/demographics.csv
+ - harmony/encounter.csv
+ - harmony/misc.csv
+ - harmony/specimen.csv
+
+projections: 
+  study: projector/study_only
+  dataset: projector/dataset
+  harmonized: projector/harmonized
+
+require_official: True
+curies:
+  http://purl.obolibrary.org/obo/hp.owl: HP
+  http://purl.obolibrary.org/obo/mondo.owl: MONDO
+  http://purl.obolibrary.org/obo/maxo.owl: MAXO
+  http://purl.obolibrary.org/obo/ncit.owl: NCIT
+env:
+  local: dev
+  dev: dev
+  qa: qa-kf2-inc
+  prod: prod-kf2-inc
+dataset:
+  study_meta: 
+    filename: data/tables/DS-COG-AML/study.csv
+    data_dictionary:
+      filename: data/dd/study.csv
+  study_contacts:
+    hidden: true
+    filename: data/tables/DS-COG-AML/contacts.csv
+    data_dictionary: 
+      filename: data/dd/contacts.csv
+    embed:
+      dataset: study_meta
+      colname: Study Code
+active_tables:
+  ALL: true
+#  family: true

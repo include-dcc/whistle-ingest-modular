@@ -1,7 +1,7 @@
 
 
 
-def Encounter(study, encounter) {
+def Encounter(study, encounter, participant_global_id) {
     meta.tag[]: StudyMeta(study);
 
     identifier[]: Build_Encounter_Identifier(study, encounter);
@@ -20,7 +20,7 @@ def Encounter(study, encounter) {
     // we have an ID minting service that is slowly coming online. So, unlike
     // some of the prior approaches, we'll try to cordon off those id 
     // references to singular functions to avoid multi-point changes. 
-    subject: Patient_Reference(study, encounter);
+    subject: Reference_Global_ID("Patient", participant_global_id); //Patient_Reference(study, encounter);
 
     type[].coding[]: BuildCoding("C1512346", "Patient Visit", "http://purl.obolibrary.org/obo/ncit.owl");
     
@@ -38,7 +38,13 @@ def Encounter(study, encounter) {
 
     // For now, I think it's safe to assume that we will always have an 
     // "Age at Event"
-    period._start.extension[0]: AgeAtExtension(study, encounter.participant_external_id, encounter.age_at_event, "days");
+    period._start.extension[0]: AgeAtExtension(study, participant_global_id, encounter.age_at_event, "days");
+}
+
+def BuildEncounter(study, encounter, participant_global_id) {
+    if encounter.age_at_event? and encounter.event_id? {
+        $this: Encounter(study, encounter[], participant_global_id);
+    }
 }
 
 // Description: Wrapper for generating encounters
@@ -47,10 +53,8 @@ def Encounter(study, encounter) {
 //  study - This is the full study object created by Whistler
 //  patient - we must have the one or more encounters
 // 
-def ProcessEncounters(study, encounter) {
+def ProcessEncounters(study, participant) {
     //out patient: AgeAtEnrollmentObservation(study, demo);
     //out patient: AgeAt(study, demo, "AgeAtLastVitalStatus", "participant", demo.age_at_last_vital_status);
-    if encounter.age_at_event? and encounter.event_id? {
-        out patient: Encounter(study, encounter);
-    }
+    out patient_encounters: Encounter(study, participant.encounter[], participant.participant_global_id);
 }

@@ -1,17 +1,20 @@
 def Transform_Dataset(resource) {
-    $this: CreateDataDictionaryTerminologies(resource);
-    $this: CreateDataDictionaryConceptMap(resource);
+    if resource.persons? {
+        $this: ProcessPersons(resource.persons,resource.study);
+    }
     // $this: CreateDataDictionaryDefinitions(resource);
 
     if resource.study? {
         $this: ProcessStudy(resource.study, resource.study_meta[], resource.participant);
+        $this: CreateDataDictionaryTerminologies(resource);
+        $this: CreateDataDictionaryConceptMap(resource);
     }
 
     if resource.participant? {
+        $this: ProcessParticipant(resource.study, resource.participant[]);
         $this: ProcessGroup(resource.study, resource.participant[*]);
         $this: ProcessResearchSubject(resource.study, resource.participant[]);
-        $this: ProcessEncounters(resource.study, resource.encounter[]);
-        $this: ProcessParticipant(resource.study, resource.participant[]);
+        $this: ProcessEncounters(resource.study, resource.participant[]);
         var familyids: $Unique(resource.participant[*].family_id);
         $this: ProcessFamilyGroups(resource.study, resource.participant[*], familyids[]);
         $this: ProcessPatientConditions(resource.study, resource.participant[]);

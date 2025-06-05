@@ -7,3 +7,8 @@ def StudyMeta(study) {
     code: study_identifier.value;
     system: study_identifier.system;
 }
+
+def StudyMetaMultiple(study_code, dd_prefix, resourceType){
+    code: study_code;
+    system: $StrCat(dd_prefix, "/", $ToLower(study_code), "/", $ToLower(resourceType));
+}

@@ -23,7 +23,7 @@
 // be present. 
 def DataDictionaryVocabularyURL(required study, role) {
     var vocab_type: "ValueSet";
-    $this: $StrCat(study.identifier-prefix, "/data-dictionary/ConceptMap/", vocab_type, "/", study.id, "/", role);
+    $this: $StrCat(study.identifier_prefix, "/data-dictionary/ConceptMap/", vocab_type, "/", study.id, "/", role);
 }
 
 // Add target entry to the element.target

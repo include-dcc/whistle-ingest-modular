@@ -6,10 +6,15 @@ def Build_Encounter_ID(study, encounter) {
 
     // Some encounters have "NA" for the event ID, which isn't very helpful, So
     // we'll just assign the age as the event ID for those
-    if (encounter.event_id ~= "NA") {
-        var event_id: encounter.event_id;
+    if (encounter.age_at_condition_or_measure_observation?) {
+        var ageAt: encounter.age_at_condition_or_measure_observation;
     } else {
-        var event_id: encounter.age_at_event;
+        var ageAt: encounter.age_at_event;
+    }
+    if (encounter.event_id? and ageAt?) {
+        var event_id: $StrCat(encounter.event_id, ".", ageAt);
+    } else {
+        var event_id: encounter.event_id;
     }
     $this: $StrCat(encounter.participant_external_id, ".", event_id);
             

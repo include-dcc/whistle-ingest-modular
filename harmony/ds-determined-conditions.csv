@@ -1,0 +1,32 @@
+local code,text,table_name,parent_varname,local code system,code,display,code system,comment
+Observed,Condition was observed or reported (this will be the case for most conditions),condition,Condition Interpretation,Condition Interpretation,LA33635-6,Observed,http://loinc.org
+Observed,Condition was observed or reported (this will be the case for most conditions),Condition,Condition Interpretation,Condition Interpretation,confirmed,Confirmed,http://terminology.hl7.org/CodeSystem/condition-ver-status
+Not Observed,Not Observed,condition,Condition Interpretation,Condition Interpretation,LA19655-2,Not Observed,http://loinc.org
+Current,Condition is ongoing,Condition,Condition Status,Condition Status,LA9040-2,Ongoing,http://loinc.org
+Resolved,Condition has been resolved,Condition,Condition Status,Condition Status,LA9041-0,Resolved,http://loinc.org
+History Of,History Of,condition,Condition Status,Condition Status,392521001,Histor of,SMOMED,http://snomed.info/sct
+"If yes, what is your primary disability? Check only one:(other) - Down Syndrome","If yes, what is your primary disability? Check only one:(other) - Down Syndrome",condition,MONDO Code,condition_description,0008608,Down syndrome,http://purl.obolibrary.org/obo/mondo.owl,
+intellectual disability - Yes,intellectual disability - Yes,condition,HPO Code,condition_description,0001249,Intellectual disability,http://purl.obolibrary.org/obo/hp.owl,
+intellectual disability - Yes,intellectual disability - Yes,condition,MONDO Code,condition_description,0001071,intellectual disability,http://purl.obolibrary.org/obo/mondo.owl,
+speech/language disability - Yes,speech/language disability - Yes,condition,HPO Code,condition_description,0002463,Language impairment,http://purl.obolibrary.org/obo/hp.owl,
+speech/language disability - Yes,speech/language disability - Yes,condition,MONDO Code,condition_description,0004750,language disorder,http://purl.obolibrary.org/obo/mondo.owl,
+autism spectrum disorder - Yes,autism spectrum disorder - Yes,condition,HPO Code,condition_description,0000729,Autistic behavior,http://purl.obolibrary.org/obo/hp.owl,
+autism spectrum disorder - Yes,autism spectrum disorder - Yes,condition,MONDO Code,condition_description,0005258,autism spectrum disorder,http://purl.obolibrary.org/obo/mondo.owl,
+mental health disability - Yes,mental health disability - Yes,condition,HPO Code,condition_description,0033667,Diminished mental health,http://purl.obolibrary.org/obo/hp.owl,
+mental health disability - Yes,mental health disability - Yes,condition,MONDO Code,condition_description,0005084,mental disorder,http://purl.obolibrary.org/obo/mondo.owl,
+learning disability - Yes,learning disability - Yes,condition,HPO Code,condition_description,0012759,Neurodevelopmental abnormality,http://purl.obolibrary.org/obo/hp.owl,
+learning disability - Yes,learning disability - Yes,condition,MONDO Code,condition_description,0004681,learning disability,http://purl.obolibrary.org/obo/mondo.owl,
+hearing loss or deafness - Yes,hearing loss or deafness - Yes,condition,HPO Code,condition_description,0000365,Hearing impairment,http://purl.obolibrary.org/obo/hp.owl,
+hearing loss or deafness - Yes,hearing loss or deafness - Yes,condition,MONDO Code,condition_description,0005365,hearing loss disorder,http://purl.obolibrary.org/obo/mondo.owl,
+vision loss or blindness - Yes,vision loss or blindness - Yes,condition,HPO Code,condition_description,0000618,Blindness,http://purl.obolibrary.org/obo/hp.owl,
+vision loss or blindness - Yes,vision loss or blindness - Yes,condition,MONDO Code,condition_description,0001941,blindness (disorder),http://purl.obolibrary.org/obo/mondo.owl,
+"If you have other disabilities, check all that apply:(other) - Down syndrome","If you have other disabilities, check all that apply:(other) - Down syndrome",condition,MONDO Code,condition_description,0008608,Down syndrome,http://purl.obolibrary.org/obo/mondo.owl,
+"If yes, what is your primary disability? Check only one:(other) - Down&#39;s Syndrome","If yes, what is your primary disability? Check only one:(other) - Down&#39;s Syndrome",condition,MONDO Code,condition_description,0008608,Down syndrome,http://purl.obolibrary.org/obo/mondo.owl,
+physical disability - Yes,physical disability - Yes,condition,HPO Code,condition_description,0033695,Occupational disability,http://purl.obolibrary.org/obo/hp.owl,
+"If yes, what is your primary disability? Check only one:(other) - Down syndrome","If yes, what is your primary disability? Check only one:(other) - Down syndrome",condition,MONDO Code,condition_description,0008608,Down syndrome,http://purl.obolibrary.org/obo/mondo.owl,
+traumatic brain injury (TBI) - Yes,traumatic brain injury (TBI) - Yes,condition,MONDO Code,condition_description,0858950,traumatic brain injury,http://purl.obolibrary.org/obo/mondo.owl,
+original_bmi,original_bmi,condition,Other Code,condition_description,39156-5,Body Mass Index,https://loinc.org/,
+diastolic,diastolic,condition,Other Code,condition_description,8462-4,Diastolic blood pressure,https://loinc.org/,
+systolic,systolic,condition,Other Code,condition_description,8480-6,Systolic blood pressure,https://loinc.org/,
+wt,wt,condition,Other Code,condition_description,29463-7,Body Weight,https://loinc.org/,
+ht,ht,condition,Other Code,condition_description,8302-2,Body Height,https://loinc.org/,

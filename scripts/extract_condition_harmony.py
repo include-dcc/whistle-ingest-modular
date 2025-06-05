@@ -6,6 +6,7 @@ from yaml import safe_load
 from argparse import ArgumentParser, FileType
 from pathlib import Path
 
+import pdb
 
 class MissingCurie(Exception):
     def __init__(self, code, harmonizedCode):
@@ -63,8 +64,10 @@ def ExtractCoding(line, writer, code_colname, display_colname, observed_codes):
     code = line[code_colname]
     display = line[display_colname]
 
+    code_key = f"{line['Condition or Measure Source Text']}-{code}"
+
     if code != "NA" and code != "":
-        if code not in observed_codes:
+        if code_key not in observed_codes:
             coding = Coding(
                 line["Condition or Measure Source Text"],
                 line["Condition or Measure Source Text"],
@@ -73,7 +76,7 @@ def ExtractCoding(line, writer, code_colname, display_colname, observed_codes):
                 display,
             )
             writer.writerow(coding.row())
-            observed_codes[code] = coding
+            observed_codes[code_key] = coding
 
 
 if __name__ == "__main__":

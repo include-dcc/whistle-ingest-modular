@@ -1,0 +1,21 @@
+def ParticipantLink (person) {
+    target.reference: $StrCat("Patient/", person.participantglobalid);
+}
+
+def Persons(person, study) {
+    var people: person.content;
+    link[]: ParticipantLink(people[]);
+
+    resourceType: "Person";
+    var studycodes: people[*].studycode;
+    meta.tag[]: StudyMetaMultiple(studycodes[], study.dd-prefix, "Person");
+    identifier[]: Key_Identifier(study, "Person", person.personglobalid);
+    identifier[0].use: "official";
+    id: person.personglobalid;
+}
+
+def ProcessPersons (persons, study) {
+    out persons: Persons(persons[], study);
+}
+
+

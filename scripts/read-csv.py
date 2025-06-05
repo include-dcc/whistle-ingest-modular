@@ -23,7 +23,7 @@ if __name__ == "__main__":
     parser.add_argument("-c", "--row-count", type=int, default=-1)
     args = parser.parse_args()
 
-    if len(args.index) == 0:
+    if args.index is None or len(args.index) == 0:
         # We'll assume no index means just start at the beginning
         args.index = set([1])
     else:

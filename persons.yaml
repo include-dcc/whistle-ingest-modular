@@ -1,18 +1,18 @@
-study_id: X01-deSmith
+study_id: INCLUDE-Persons
 study_accession:  
-study_title: The epidemiology of transient leukemia in newborns with Down syndrome
+study_title: 
 study_desc: 
-url: https://includedcc.org/studies/x01-desmith
-identifier_prefix: https://includedcc.org/fhir/x01-desmith
+url: 
+identifier_prefix: https://includedcc.org/fhir/include-persons
 dd_prefix: https://includedcc.org/fhir
-output_filename: x01-desmith
-id_colname: Participant ID
+output_filename: include-persons
+id_colname: PersonGlobalId
 
 projection_version: current
 whistle_src: _entry.wstl
 
 # This is where the harmony file will be written 
-code_harmonization_dir: harmony/x01-desmith
+code_harmonization_dir: harmony/include-persons
 
 # This is the prefix associated with the final study harmony file
 # This must match whatever is used in the whistle code (which is data-harmony
@@ -28,7 +28,6 @@ code_harmonization:
  - harmony/encounter.csv
  - harmony/misc.csv
  - harmony/specimen.csv
- # - harmony/x01-desmith-conditions.csv
 projections: 
   study: projector/study_only
   dataset: projector/dataset
@@ -47,30 +46,10 @@ env:
   qa: qa-kf2-inc
   prod: prd-kf2-inc
 dataset:
-  study_meta: 
-    filename: data/tables/x01-deSmith/study.csv
+  persons: 
+    filename: data/tables/INCLUDE-Persons/DSC_DSD_Person_GlobalIDs_active_participants.csv
     data_dictionary:
       filename: data/dd/study.csv
-  study_contacts:
-    hidden: true
-    filename: data/tables/x01-deSmith/contacts.csv
-    data_dictionary: 
-      filename: data/dd/contacts.csv
-    embed:
-      dataset: study_meta
-      colname: Study Code
-  participant:
-    filename: data/tables/x01-deSmith/participant.csv
-    data_dictionary: 
-      filename: data/dd/participant.csv
-  encounter:
-    hidden: true
-    filename: data/tables/X01-deSmith/encounter.csv    
-    data_dictionary: 
-      filename: data/dd/encounter.csv
-    embed: 
-      dataset: participant 
-      colname: Participant External ID
+    group_by: personglobalid
 active_tables:
   ALL: true
-#  family: true

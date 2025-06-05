@@ -14,7 +14,7 @@ def AgeAt(study, subject, varname, table_name, required age_at) {
         identifier[]: Key_Identifier(study, "Observation", $StrCat(study.id, ".", subject_id, ".", varname));
         identifier[0].use: "official";
 
-        subject: Reference_Key_Identifier(study, "Patient", subject_id);
+        subject: Reference_Global_ID("Patient", subject.participant_global_id);
         // Technically, this is supposed to work, but it doesn't
         // basedOn[].identifier: Key_Identifier(study, "ObservationDefinition", DdVariableId(study.id, table_name, varname));
         code.text: HarmonizedLocalDisplay(varname, table_name);

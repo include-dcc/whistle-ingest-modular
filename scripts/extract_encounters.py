@@ -33,7 +33,10 @@ class Encounter:
 
     @property
     def key(self):
-        return f"P{self.participant_id}-{self.age_at}"
+        key_members=[self.participant_id, self.age_at]
+        if self.encounter_id:
+            key_members.append(self.encounter_id)
+        return "-".join(key_members)
 
     @property
     def id(self):
@@ -66,6 +69,12 @@ class Encounter:
             ]
         )
 
+def build_event_key(line):
+    key_members=[line[PID_COLNAME], line[AGE_COLNAME]]
+    if "Event ID" in line:
+        key_members.append(line["Event ID"])
+    return "-".join(key_members)
+    
 
 if __name__ == "__main__":
     parser = ArgumentParser(
@@ -88,15 +97,18 @@ if __name__ == "__main__":
 
         encounters = {}
 
+        print(condition_filename)
         # Pull Condition events out and build out our discrete event list
         with open(condition_filename, "rt") as condf:
             conditions = csv.DictReader(condf, delimiter=",", quotechar='"')
 
             for line in conditions:
+                # if line ["Event ID"] == "0c861c8f654d6319":
+                # pdb.set_trace()
                 # For actual conditions, there is no actual event, so we have
                 # neither age nor event id. So, those are ignored for these
                 if line[AGE_COLNAME] not in ["NA", "Not collected"]:
-                    key = "-".join([line[PID_COLNAME], line[AGE_COLNAME]])
+                    key = build_event_key(line)
                     if key not in encounters:
                         encounters[key] = Encounter(
                             line[PID_COLNAME],
@@ -114,7 +126,7 @@ if __name__ == "__main__":
                 age1_type = line[FIRST_ENCOUNTER_TYPE]
                 age2 = line[LAST_ENCOUNTER]
 
-                if age1 not in ["NA", "Not collected"]:
+                if age1 not in ["NA", "Not collected", ""]:
                     k1 = "-".join([pid, age1])
                     if k1 not in encounters:
                         encounters[k1] = Encounter(
@@ -124,7 +136,7 @@ if __name__ == "__main__":
                     encounters[k1].first_encounter = True
 
                 # These won't always exist
-                if age2 not in ["NA", "Not collected"]:
+                if age2 not in ["NA", "Not collected", ""]:
                     # pdb.set_trace()
                     k2 = "-".join([pid, age2])
                     if k2 not in encounters:

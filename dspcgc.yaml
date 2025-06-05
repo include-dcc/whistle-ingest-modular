@@ -1,18 +1,18 @@
-study_id: DS-Sleep
+study_id: DS-PCGC
 study_accession:  
-study_title: Dimensional, Sleep, and Genomic Analyses of Down Syndrome to Elucidate Phenotypic Variability
-study_desc: 
-url: https://includedcc.org/studies/ds-sleep
-identifier_prefix: https://includedcc.org/fhir/ds-sleep
+study_title: "INCLUDE: (PCGC) Genomic Analysis of Congenital Heart Defects and Acute Lymphoblastic Leukemia in Children with Down Syndrome"
+study_desc: "This study is a collaboration with the trans-NIH INvestigation of Co-occurring conditions across the Lifespan to Understand Down syndrome (INCLUDE) Project, which seeks to improve health and quality-of-life for individuals with Down syndrome, and NHLBI's TransOmics for Precision Medicine (TOPMed) program, which seeks to apply omics technologies to improve scientific understanding of the fundamental biological processes that underlie heart, lung, blood, and sleep (HLBS) disorders. Additional Pediatric Cardiac Genetics Consortium (PCGC) data from children affected with Down syndrome and congenital heart disease are accessible through two separate dbGaP studies: phs001138 (Kids First) and phs001194 (TOPMed)."
+url: https://includedcc.org/studies/dspcgc
+identifier_prefix: https://includedcc.org/fhir/dspcgc
 dd_prefix: https://includedcc.org/fhir
-output_filename: dssleep
+output_filename: dspcgc
 id_colname: Participant ID
 
 projection_version: current
 whistle_src: _entry.wstl
 
 # This is where the harmony file will be written 
-code_harmonization_dir: harmony/dssleep
+code_harmonization_dir: harmony/dspcgc
 
 # This is the prefix associated with the final study harmony file
 # This must match whatever is used in the whistle code (which is data-harmony
@@ -28,7 +28,7 @@ code_harmonization:
  - harmony/encounter.csv
  - harmony/misc.csv
  - harmony/specimen.csv
- # - harmony/ds-sleep-conditions.csv
+
 projections: 
   study: projector/study_only
   dataset: projector/dataset
@@ -40,44 +40,28 @@ curies:
   http://purl.obolibrary.org/obo/mondo.owl: MONDO
   http://purl.obolibrary.org/obo/maxo.owl: MAXO
   http://purl.obolibrary.org/obo/ncit.owl: NCIT
-projector_lib: projector/study_only/current
 env:
   local: dev
   dev: dev
   qa: qa-kf2-inc
-  prod: prd-kf2-inc
+  prod: prod-kf2-inc
 dataset:
   study_meta: 
-    filename: data/tables/DS-Sleep/study.csv
+    filename: data/tables/DS-PCGC/study.csv
     data_dictionary:
       filename: data/dd/study.csv
   study_contacts:
     hidden: true
-    filename: data/tables/DS-Sleep/contacts.csv
+    filename: data/tables/DS-PCGC/contacts.csv
     data_dictionary: 
       filename: data/dd/contacts.csv
     embed:
       dataset: study_meta
       colname: Study Code
-  # dataset_meta:
-    # filename: data/tables/abcds/datasets.csv
-    # data_dictionary: 
-    #   filename: data/dd/dataset_meta.csv
-    # embed:
-    #   dataset: study_meta
-    #   colname: Study Code
-  participant:
-    filename: data/tables/DS-Sleep/participant.csv
-    data_dictionary: 
-      filename: data/dd/participant.csv
-  encounter:
-    hidden: true
-    filename: data/tables/DS-Sleep/encounter.csv    
-    data_dictionary: 
-      filename: data/dd/encounter.csv
-    embed: 
-      dataset: participant 
-      colname: Participant External ID
+  dataset_meta:
+    filename: data/tables/DS-PCGC/datasets.csv
+    data_dictionary:
+      filename: data/dd/dataset_meta.csv
 active_tables:
   ALL: true
 #  family: true

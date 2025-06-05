@@ -4,10 +4,12 @@
 //   * processing[x].additive - References to the appropriate Substance associated with the preservation_method
 //   * aliquots are stored inside the .container array
 //
-def ProcessSpecimen(study, subject_external_id, sample_external_id, subject_id, sample_id, specimen, aliquots) {
+def ProcessSpecimen(study, subject, sample_external_id, sample_id, specimen, aliquots) {
+    var subject_id: subject.participant_id;
     if subject_id? {
         var sample_status: HarmonizeMappedFirst(specimen.sample_availability, "Sample Availability");
-
+        var subject_external_id: subject.participant_external_id;
+        
         meta.tag[]: StudyMeta(study);
         id: sample_id;
 
@@ -55,7 +57,7 @@ def ProcessSpecimen(study, subject_external_id, sample_external_id, subject_id, 
         container[]: ProcessAliquot(study, subject_id, aliquots[]);
         // container[]: ProcessAliquot(study, subject_id, specimen.aliquot[]);
 
-        subject: Reference_Key_Identifier(study, "Patient", subject_external_id);
+        subject: Reference_Global_ID("Patient", subject.participant_global_id);
 
     } else {
         subject_id: subject_id;

@@ -5,7 +5,7 @@
 //
 // The result here is only external mappings will be returned
 def NonSelfOnly(coding) {
-    if (coding.system ~= "self" and ~$MatchesRegex(coding.system, "-unharmonized")) {
+    if (coding.system ~= "self" and ~$MatchesRegex(coding.system, "-unharmonized") and ~$MatchesRegex(coding.system, "data-dictionary")) {
         $this: coding;
     }
 }
