@@ -126,7 +126,7 @@ if __name__ == "__main__":
                 age1_type = line[FIRST_ENCOUNTER_TYPE]
                 age2 = line[LAST_ENCOUNTER]
 
-                if age1 not in ["NA", "Not collected"]:
+                if age1 not in ["NA", "Not collected", ""]:
                     k1 = "-".join([pid, age1])
                     if k1 not in encounters:
                         encounters[k1] = Encounter(
@@ -136,7 +136,7 @@ if __name__ == "__main__":
                     encounters[k1].first_encounter = True
 
                 # These won't always exist
-                if age2 not in ["NA", "Not collected"]:
+                if age2 not in ["NA", "Not collected", ""]:
                     # pdb.set_trace()
                     k2 = "-".join([pid, age2])
                     if k2 not in encounters:
