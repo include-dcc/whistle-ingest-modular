@@ -39,7 +39,7 @@ def VariableObservation(study, subject, tablename, varname, value) {
     code.coding[]: coding;
     
     valueCodeableConcept.text: value;
-    valueCodeableConcept.coding[]: HarmonizeMapped(varname, tablename);
+    valueCodeableConcept.coding[]: HarmonizeMapped(value, varname);
     status: "final";
     resourceType: "Observation";
 }

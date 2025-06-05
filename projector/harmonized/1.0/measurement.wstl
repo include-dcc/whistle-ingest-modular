@@ -1,5 +1,4 @@
 
-
 def BodyMeasurement(study, measurement) {
     var subject_id: measurement.participant_external_id;
     var value: measurement.measure_value;

@@ -2,21 +2,20 @@ def ParticipantLink (person) {
     target.reference: $StrCat("Patient/", person.participantglobalid);
 }
 
-def Persons(persons, PersonGlobalId, study) {
-    var people: persons[where $.personglobalid=PersonGlobalId];
+def Persons(person, study) {
+    var people: person.content;
     link[]: ParticipantLink(people[]);
 
     resourceType: "Person";
-    var studycodes: people[*].studyCode;
-    meta.tag[]: StudyMetaMultiple(studycodes[], study.identifier-prefix, "Person");
-    identifier[]: Key_Identifier(study, "Person", PersonGlobalId);
+    var studycodes: people[*].studycode;
+    meta.tag[]: StudyMetaMultiple(studycodes[], study.dd-prefix, "Person");
+    identifier[]: Key_Identifier(study, "Person", person.personglobalid);
     identifier[0].use: "official";
-    id: PersonGlobalId;
+    id: person.personglobalid;
 }
 
 def ProcessPersons (persons, study) {
-    var uniquePersons: $Unique(persons[*].personglobalid);
-    out persons: Persons(persons, uniquePersons[], study);
+    out persons: Persons(persons[], study);
 }
 
 
