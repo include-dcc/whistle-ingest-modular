@@ -61,14 +61,14 @@ dataset:
       dataset: study_meta
       colname: Study Code
   condition:
-    filename: data/tables/AECOM-DS/AECOMDS_harmonized_conditions.csv
+    filename: data/tables/AECOM-DS/AECOMDS_harmonized_conditions_05232025.csv
     embed:
       dataset: participant
       colname: Participant External ID
     data_dictionary: 
       filename: data/dd/condition.csv
   participant:
-    filename: data/tables/AECOM-DS/AECOMDS_harmonized_participants.csv
+    filename: data/tables/AECOM-DS/AECOMDS_harmonized_participants_05232025.csv
     data_dictionary: 
       filename: data/dd/participant.csv
   encounter:

@@ -50,5 +50,6 @@ dataset:
     filename: data/tables/INCLUDE-Persons/DSC_DSD_Person_GlobalIDs_active_participants.csv
     data_dictionary:
       filename: data/dd/study.csv
+    group_by: personglobalid
 active_tables:
   ALL: true

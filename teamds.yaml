@@ -60,11 +60,11 @@ dataset:
       dataset: study_meta
       colname: Study Code
   participant:
-    filename: data/tables/TEAM-DS/teamds_participant_harmonized_2024-04-12.csv
+    filename: data/tables/TEAM-DS/teamds_participant_harmonized_2025-06-04.csv
     data_dictionary: 
       filename: data/dd/participant.csv
   condition:
-    filename: data/tables/TEAM-DS/teamds_conditions_harmonized_2024-12-18.csv
+    filename: data/tables/TEAM-DS/teamds_conditions_harmonized_2025-05-29.csv
     embed:
       dataset: participant
       colname: Participant External ID
