@@ -1,0 +1,66 @@
+study_id: DSpostBFmulti
+study_accession:  
+study_title: "Down syndrome early postnatal basal forebrain multiome"
+study_desc:
+url: 
+identifier_prefix: https://includedcc.org/fhir/dspostbfmulti
+dd_prefix: https://includedcc.org/fhir
+output_filename: dspostbfmulti
+id_colname: Participant ID
+
+projection_version: current
+whistle_src: _entry.wstl
+
+# This is where the harmony file will be written 
+code_harmonization_dir: harmony/dspostbfmulti
+
+# This is the prefix associated with the final study harmony file
+# This must match whatever is used in the whistle code (which is data-harmony
+# at this time)
+harmony_prefix: data-harmony
+
+# List each file required to support the level of harmonized terms required
+# by this project. 
+code_harmonization: 
+ - harmony/study.csv
+ - harmony/dataset.csv
+ - harmony/demographics.csv
+ - harmony/encounter.csv
+ - harmony/misc.csv
+ - harmony/specimen.csv
+ # - harmony/dspostbfmulti-conditions.csv
+projections: 
+  study: projector/study_only
+  dataset: projector/dataset
+  harmonized: projector/harmonized
+
+require_official: True
+curies:
+  http://purl.obolibrary.org/obo/hp.owl: HP
+  http://purl.obolibrary.org/obo/mondo.owl: MONDO
+  http://purl.obolibrary.org/obo/maxo.owl: MAXO
+  http://purl.obolibrary.org/obo/ncit.owl: NCIT
+  http://snomed.info/sct: SNOMED
+  https://loinc.org/: LOINC
+projector_lib: projector/study_only/current
+env:
+  local: dev
+  dev: dev
+  qa: qa-kf2-inc
+  prod: prd-kf2-inc
+dataset:
+  study_meta: 
+    filename: data/tables/DSpostBFmulti/study.csv
+    data_dictionary:
+      filename: data/dd/study.csv
+  study_contacts:
+    hidden: true
+    filename: data/tables/DSpostBFmulti/contacts.csv
+    data_dictionary: 
+      filename: data/dd/contacts.csv
+    embed:
+      dataset: study_meta
+      colname: Study Code
+active_tables:
+  ALL: true
+#  family: true
