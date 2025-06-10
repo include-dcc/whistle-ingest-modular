@@ -64,6 +64,8 @@ def DatasetMetadataObservation(study, dataset) {
     
     var dbgap_ids: $StrSplit(dataset.dbgap, "|");
     component[]: BuildMetadataComponent("dbGaP", "string", dbgap_ids[])
+    component[]: BuildMetadataComponent("DOI", "url", dataset.doi);
+    component[]: BuildMetadataComponent("DOI Citation", "string", dataset.doi_citation);
     
     component[]: BuildMetadataComponent("Is Harmonized", "boolean", dataset.is_harmonized)
 
