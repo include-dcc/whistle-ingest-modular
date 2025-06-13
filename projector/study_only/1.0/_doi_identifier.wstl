@@ -1,0 +1,8 @@
+// For creating identifiers for study & dataset(s) using DOI
+def DOIIdentifier(system, doi) {
+    if (doi?) {
+        system: system;
+        value: doi;
+        type.coding[]: HarmonizeMappedFirst("DOI", "dataset_meta");
+    }  
+}

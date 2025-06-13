@@ -19,6 +19,8 @@ def Dataset(study, studymeta, dataset) {
     } 
     identifier[]: Key_Identifier(study, "List", dataset.dataset_external_id);
     identifier[0].use: "official";
+    identifier[]: DOIIdentifier("https://doi.org/10.71738/", StringReplace(dataset.doi, "https://doi.org/10.71738/", ""));
+
 
     entry[]: DatasetEntry(study, dataset.dataset_manifest[]);
     

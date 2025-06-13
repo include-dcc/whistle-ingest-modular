@@ -66,7 +66,6 @@ def ResearchStudyAssociatedParty(investigator_name) {
     extension[0].valueString: investigator_name
 }
 
-
 // Definition: Build the ResearchStudy resource
 //
 // Argument:
@@ -91,6 +90,7 @@ def Study(study, studymeta, participants) {
 
     identifier[0]: Key_Identifier(study, "ResearchStudy", studymeta.study_code);
     identifier[0].use: "official";
+    identifier[]: DOIIdentifier("https://doi.org/10.71738/", StringReplace(studymeta.doi, "https://doi.org/10.71738/", ""));
 
     // IG V1 Compliance
     category[].coding[0]: BuildCoding("StudyCohort", "Study Cohort", "https://nih-ncpi.github.io/ncpi-fhir-ig/CodeSystem/ncpi");
@@ -110,7 +110,7 @@ def Study(study, studymeta, participants) {
     relatedArtifact[] (if studymeta.study_website?): StudyArtifactUrl("documentation", "Study Website", studymeta.study_website);
     relatedArtifact[] (if studymeta.selection_criteria?): StudyArtifactCitation("documentation", "SelectionCriteria", studymeta.selection_criteria);
     relatedArtifact[] (if studymeta.study_design?): StudyArtifactCitation("citation", "StudyDesign", studymeta.study_design);
-    relatedArtifact[] (if studymeta.doi?): StudyArtifactUrl("documentation", "DOI", studymeta.doi);
+    relatedArtifact[] (if studymeta.doi_citation?): StudyArtifactCitation("citation", "DOI Citation", studymeta.doi_citation);
 
 
     // Publications
@@ -278,5 +278,5 @@ def ProcessStudy(study, studymeta, participants) {
     out research_study: StudyPageObservation(study, studymeta, "Acknowledgments", studymeta.acknowledgments, "string")
     out research_study: StudyPageObservation(study, studymeta, "Citation Statement", studymeta.citation_statement, "string");
     // out research_study: StudyPageObservation(study, studymeta, "DOI", studymeta.doi, "string");
-    out research_study: StudyPageObservation(study, studymeta, "DOI Citation", studymeta.doi_citation, "string");
+    // out research_study: StudyPageObservation(study, studymeta, "DOI Citation", studymeta.doi_citation, "string");
 }
