@@ -2,13 +2,24 @@ def ParticipantLink (person) {
     target.reference: $StrCat("Patient/", person.participantglobalid);
 }
 
+def PersonMetaTag(study_code, system) {
+    code: study_code;
+    system: system;
+}
+
+def PersonMetaTag2(study_code, system) {
+    code: study_code;
+    system: $StrCat(system, "/", study_code);
+}
+
 def Persons(person, study) {
     var people: person.content;
     link[]: ParticipantLink(people[]);
 
     resourceType: "Person";
     var studycodes: people[*].studycode;
-    meta.tag[]: StudyMetaMultiple(studycodes[], study.dd-prefix, "Person");
+    meta.tag[]: PersonMetaTag(studycodes[], "https://includedcc.org/fhir/researchstudy");
+    // meta.tag[]: PersonMetaTag(studycodes[], "https://portal.includedcc.org/studies/");
     identifier[]: Key_Identifier(study, "Person", person.personglobalid);
     identifier[0].use: "official";
     id: person.personglobalid;
