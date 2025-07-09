@@ -39,49 +39,18 @@ def FileDetailExtension(study, manifest) {
     if (manifest.sha1_hash?) {
         hash: manifest.sha1_hash;
     }
-    if (manifest.drs_access_url?) {
-        url: manifest.drs_access_url;
-    } else {
-        url: manifest.access_url;
+     if (manifest.etag?) {
+        extension[]: FileHashExtension(study, manifest.etag_hash, "etag");
+    }
+    if (manifest.file_hash?) {
+        extension[]: FileHashExtension(study, manifest.file_hash, "md5");
+    }
+    if (manifest.drs_uri?) {
+        url: manifest.drs_uri;
     }
     title: manifest.file_name; 
 }
 
-def KfDocReference(study, manifest, category) {
-    var subject_id: manifest.participant_id;
-
-    meta.tag[]: StudyMeta(study);
-    meta.profile[]: "https://nih-ncpi.github.io/ncpi-fhir-ig/StructureDefinition/ncpi-drs-document-reference";
-
-    identifier[]: Key_Identifier(study, "DocumentReference", DocumentReferenceID(study, manifest.filename));
-    identifier[0].use: "official";
-
-    status: "current";
-    docStatus: "final";
-    type: manifest.data_category;
-    subject: Reference_Key_Identifier(study, "Patient", subject_id);
-    securityLabel: manifest.data_access;
-    category[].text: manifest.experimental_strategy;
-    category[].text: category;
-    //content[]: KfDocAttachment(study, manifest);
-    content[0].attachment.url: manifest.drs_uri;
-    if (manifest.sha1_hash?) {
-        content[0].attachment.hash: manifest.sha1_hash;
-    }
-    content[].attachment: KfFileDetailExtension(study, manifest);
-
-    // Makeshift mechanism to link Index files to their parent
-    if (manifest.source_file?) {
-        relatesTo[0].code: "transforms";
-        relatesTo[0].target: Reference_Key_Identifier(study, "DocumentReference",  DocumentReferenceID(study, manifest.source_file));
-    } else {
-        context.related[]: FileSpecimenReference(study, manifest);
-    }
-
-    format.display: manifest.file_format;
-
-    resourceType: "DocumentReference";
-}
 
 def FileSpecimenReference(study, manifest) {
     $this: Reference_Key_Identifier(study, "Specimen", BuildSpecimenIdentifier(study, manifest.participant_external_id, manifest.sample_external_id));
@@ -107,13 +76,13 @@ def KfFileTask(study, fileid, all_manifests) {
     input[]: FileSpecimen(study, manifests[]);
 
     output[0].type.text: "DocumentReference";
-    output[0].valueReference: Reference_Key_Identifier(study, "DocumentReference", DocumentReferenceID(study, manifests[0].subject_id, manifests[0].file_id));
+    output[0].valueReference: Reference_Key_Identifier(study, "DocumentReference", DocumentReferenceID(study, manifests[0].file_name));
 
     // This permits one to search for Tasks where the focus is a given specimen instance
-    focus (if $ListLen(manifests) = 1): Reference_Key_Identifier(study, "Specimen", SpecimenIdentifier(study, manifests[0].subject_id, manifests[0].sample_id));
+    focus (if $ListLen(manifests) = 1): Reference_Key_Identifier(study, "Specimen", SpecimenIdentifier(study, manifests[0].participant_external_id, manifests[0].sample_id));
 
     // This is the patient, allowing one to query for all tasks associated with a given patient
-    for (if $ListLen(manifests) = 1): Reference_Key_Identifier(study, "Patient", manifests[0].subject_id);
+    for (if $ListLen(manifests) = 1): Reference_Key_Identifier(study, "Patient", manifests[0].participant_global_id);
 
     resourceType: "Task";
 }
@@ -159,11 +128,11 @@ def FileAcl(study, acl) {
 }
 
 def FileDocumentReference(study, fileid, manifests) {
-    // var manifests: all_manifests[where $.file_external_id=fileid];
+    // var manifests: all_manifests[where $.file_s3_location=fileid];
     var subject_ids: $Unique(manifests[*].participant_external_id);
     var manifest: manifests[0];
 
-    var subject_id: manifest.participant_external_id;
+    var subject_id: manifest.participant_global_id;
     // var specimen_id: manifest.sample_external_id;
 
     // Identify derivative file types and link back to their parent file
@@ -173,6 +142,18 @@ def FileDocumentReference(study, fileid, manifests) {
     if ($MatchesRegex(manifest.file_name, ".crai$")) {
         var source_file: StringReplace(manifest.file_name, ".crai", "");
     }
+    // 2025-07-07 ALH: Currently .bam files are not set up like .crai (.cram.crai) and .vcf (.vcf.tbi)
+    // StringReplace for these kinds of files does not work like we think likely because the replacement is at the end of the file
+    // so we have to use $StrCat to accually replace the .bai with the .bam
+    if ($MatchesRegex(manifest.file_name, ".bam.bai$")) {
+        var source_file: StringReplace(manifest.file_name, ".bai", "");
+    } else {
+        if ($MatchesRegex(manifest.file_name, ".bai$")) {
+            var source_file: $StrCat(StringReplace(manifest.file_name, ".bai", ""), ".bam");
+        }
+    }
+    
+
 
     meta.tag[]: StudyMeta(study);
 
@@ -197,12 +178,15 @@ def FileDocumentReference(study, fileid, manifests) {
     identifier[]: Key_Identifier(study, "DocumentReference", DocumentReferenceID(study, manifest.file_name));
     identifier[0].use: "official";
 
+    identifier[]: Key_Identifier(study, "DocumentReference", manifest.file_global_id);
+    identifier[1].use: "secondary";
+
     status: "current";
     docStatus: "final";
     type: FileCategoryMap(study, "Data Type", manifest.data_type);
 
-    if ($ListLen(subject_ids) = 1) {
-        subject: Reference_Key_Identifier(study, "Patient", subject_id);
+    if (subject_id?) {
+        subject: Reference_Global_ID("Patient", subject_id);
     }
 
     securityLabel[].coding[]: HarmonizeMappedFirst(manifest.data_access, "Data Access");
@@ -217,9 +201,9 @@ def FileDocumentReference(study, fileid, manifests) {
     
     content[0].attachment: FileDetailExtension(study, manifest);
     content[0].format.display: manifest.file_format
-    if (fileid? and fileid ~= "NA") {
-        content[].attachment.url: $StrCat("s3://", fileid);
-    }
+    // if (fileid? and fileid ~= "NA") {
+       //  content[].attachment.url: $StrCat("s3://", fileid);
+    // }
 
     // Makeshift mechanism to link Index files to their parent
     if (source_file?) {
@@ -233,10 +217,10 @@ def FileDocumentReference(study, fileid, manifests) {
 }
 
 def ProcessFileManifestData(study, file) {
-    // var fileids: $Unique(files[*].file_external_id);
+    // var fileids: $Unique(files[*].file_s3_location);
 
     //out files: KfFileTask(study, fileids[], files[*]);
     // out files: FileDocumentReference(study, fileids[], files[*]);
-    out files: FileDocumentReference(study, file.file_external_id, file.content);
+    out files: FileDocumentReference(study, file.file_s3_location, file.content);
     //out files: KfDocReference(study, files[], category);
 }
