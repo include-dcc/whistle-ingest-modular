@@ -7,6 +7,7 @@ identifier_prefix: https://includedcc.org/fhir/x01-hakon
 dd_prefix: https://includedcc.org/fhir
 output_filename: x01-hakon
 id_colname: Participant ID
+organization: INCLUDE DCC
 
 projection_version: current
 whistle_src: _entry.wstl
@@ -28,7 +29,7 @@ code_harmonization:
  - harmony/encounter.csv
  - harmony/misc.csv
  - harmony/specimen.csv
- # - harmony/x01-hakon-conditions.csv
+ - harmony/x01-hakonarson-conditions.csv
 projections: 
   study: projector/study_only
   dataset: projector/dataset
@@ -54,88 +55,66 @@ env:
   prod: prd-kf2-inc
 dataset:
   study_meta: 
-    filename: data/tables/X01-Hakon/study.csv
+    filename: data/tables/X01-Hakonarson/study.csv
     data_dictionary:
       filename: data/dd/study.csv
   study_contacts:
     hidden: true
-    filename: data/tables/X01-Hakon/contacts.csv
+    filename: data/tables/X01-Hakonarson/contacts.csv
     data_dictionary: 
       filename: data/dd/contacts.csv
     embed:
       dataset: study_meta
       colname: Study Code
   participant:
-    filename: data/tables/X01-Hakon/participant.csv
+    filename: data/tables/X01-Hakonarson/participant.csv
     data_dictionary: 
       filename: data/dd/participant.csv
-
-# dataset:
-#   study_meta: 
-#     filename: data/tables/X01-Hakon/study.csv
-#     data_dictionary:
-#       filename: data/dd/study.csv
-#     code_harmonization: harmony/x01-hakon/data-harmony.csv
-#   dataset_meta:
-#     filename: data/tables/X01-Hakon/datasets.csv
-#     data_dictionary: 
-#       filename: data/dd/dataset_meta.csv
-#     code_harmonization: harmony/x01-hakon/data-harmony.csv
-#     embed:
-#       dataset: study_meta
-#       colname: Study Code
-#   study_contacts:
-#     hidden: true
-#     filename: data/tables/X01-Hakon/contacts.csv
-#     data_dictionary: 
-#       filename: data/dd/contacts.csv
-#     code_harmonization: harmony/x01-hakon/data-harmony.csv
-#     embed:
-#       dataset: study_meta
-#       colname: Study Code
-#   participant:
-#     filename: data/tables/X01-Hakon/participant.csv
-#     data_dictionary: 
-#       filename: data/dd/participant.csv
-#     code_harmonization: harmony/x01-hakon/data-harmony.csv
-#   condition:
-#     filename: data/tables/X01-Hakon/condition.csv
-#     embed:
-#       dataset: participant
-#       colname: Participant External ID
-#     data_dictionary: 
-#       filename: data/dd/condition.csv
-#     code_harmonization: harmony/x01-hakon/data-harmony.csv
-#   encounter:
-#     hidden: true
-#     filename: data/tables/X01-Hakon/encounter.csv    
-#     data_dictionary: 
-#       filename: data/dd/encounter.csv
-#     code_harmonization: harmony/x01-hakon/data-harmony.csv
-#   family:
-#     hidden: true
-#     #group_by: Family ID,Family Type
-#     filename: data/tables/X01-Hakon/family.csv    
-#     data_dictionary: 
-#       filename: data/dd/family.csv
-#     code_harmonization: harmony/x01-hakon/data-harmony.csv
-#   specimen:
-#     filename: data/tables/X01-Hakon/FV_CFPDTD0T_hakon_biospecimen_manifest.csv
-#     # group_by: Participant External ID, Sample External ID
-#     embed:
-#       dataset: participant
-#       colname: Participant External ID
-#     data_dictionary:
-#       filename: data/dd/specimen.csv
-#     code_harmonization: harmony/x01-hakon/data-harmony.csv
-#   file_manifest:
-#     #filename: data/tables/X01-Hakon/final_hakon_datafile_manfiest_w_controlled_and_registered_data_v2.csv
-#     filename: data/tables/X01-Hakon/hakon_file_manifest_controlled-20240314.csv,data/tables/X01-Hakon/hakon_file_manifest_registered-20240314.csv
-#     # filename: data/tables/X01-Hakon/hakon_file_manifest_registered-20240314.csv
-#     data_dictionary:
-#       filename: data/dd/datafile.csv
-#     group_by: File External ID
-#     code_harmonization: harmony/x01-hakon/data-harmony.csv
+  dataset_meta:
+    filename: data/tables/X01-Hakonarson/datasets.csv
+    data_dictionary: 
+      filename: data/dd/dataset_meta.csv
+  dataset_manifest:
+    filename: data/tables/X01-Hakonarson/hakon-rna-dataset-manifests-global-ids.csv,data/tables/X01-Hakonarson/hakon-wgs-dataset-manifest-global-ids.csv,data/tables/X01-Hakonarson/X01-Hakonarson-UH-Clinical_dataset_manifest_2025-06-26.csv
+    data_dictionary: 
+      filename: data/dd/dataset_manifest.csv
+    embed:
+      dataset: dataset_meta
+      colname: Dataset External ID
+  condition:
+    filename: data/tables/X01-Hakonarson/condition.csv
+    embed:
+      dataset: participant
+      colname: Participant External ID
+    data_dictionary: 
+      filename: data/dd/condition.csv
+  encounter:
+    hidden: true
+    filename: data/tables/X01-Hakonarson/encounter.csv    
+    data_dictionary: 
+      filename: data/dd/encounter.csv
+  family:
+    hidden: true
+    #group_by: Family ID,Family Type
+    filename: data/tables/X01-Hakonarson/family.csv    
+    data_dictionary: 
+      filename: data/dd/family.csv
+  specimen:
+    filename: data/tables/X01-Hakonarson/FV_CFPDTD0T_hakon_biospecimen_manifest.csv
+    # group_by: Participant External ID, Sample External ID
+    embed:
+      dataset: participant
+      colname: Participant External ID
+    data_dictionary:
+      filename: data/dd/specimen.csv
+  file_manifest:
+    filename: data/tables/X01-Hakonarson/hakon_file_manifest_registered-2025-07-03.csv,data/tables/X01-Hakonarson/hakon_file_manifest_controlled-2025-07-03.csv,data/tables/X01-Hakonarson/X01-Hakonarson-UH-Clinical_datafile_manifest_2025-06-26.csv
+    # filename: data/tables/X01-Hakonarson/hakon_file_manifest_controlled-20240314.csv,data/tables/X01-Hakonarson/hakon_file_manifest_registered-20240314.csv
+    # filename: data/tables/X01-Hakonarson/hakon_file_manifest_registered-20240314.csv
+    data_dictionary:
+      filename: data/dd/datafile.csv
+    group_by: File S3 Location
+    # group_by: File External ID
 active_tables:
   ALL: true
 

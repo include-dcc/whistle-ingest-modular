@@ -61,13 +61,22 @@ dataset:
     embed:
       dataset: study_meta
       colname: Study Code
-  # dataset_meta:
-    # filename: data/tables/abcds/datasets.csv
-    # data_dictionary: 
-    #   filename: data/dd/dataset_meta.csv
-    # embed:
-    #   dataset: study_meta
-    #   colname: Study Code
+  dataset_meta:
+    filename: data/tables/BRI-DSR/datasets.csv
+    data_dictionary:
+      filename: data/dd/dataset_meta.csv
+  dataset_manifest:
+    filename: data/tables/BRI-DSR/khor-rnaseq-dataset-manifests-dataset-global-id.csv
+    data_dictionary:
+      filename: data/dd/dataset_manifest.csv
+    embed: 
+      dataset: dataset_meta
+      colname: Dataset External ID
+  file_manifest:
+    filename: data/tables/BRI-DSR/bridsr_datafile_manifest_2025-07-03.csv
+    data_dictionary:
+      filename: data/dd/datafile.csv
+    group_by: File S3 Location
   participant:
     filename: data/tables/BRI-DSR/participant.csv
     data_dictionary: 
