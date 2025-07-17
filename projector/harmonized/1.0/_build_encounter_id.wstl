@@ -14,7 +14,14 @@ def Build_Encounter_ID(study, encounter) {
     if (encounter.event_id? and ageAt?) {
         var event_id: $StrCat(encounter.event_id, ".", ageAt);
     } else {
-        var event_id: encounter.event_id;
+        if (encounter.event_id?) {
+            var event_id: encounter.event_id;
+        } else {
+        // ALH 2025-07-16 If there is no event ID, the encounter script does create them with Event ID = Baseline
+        // so this is sort of hacking the behavior of encounters to make sure the data reference real encounters.
+            var event_id: $StrCat("Baseline", ".", ageAt);
+        }
+         
     }
     $this: $StrCat(encounter.participant_external_id, ".", event_id);
             
