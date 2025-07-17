@@ -42,6 +42,9 @@ curies:
   http://purl.obolibrary.org/obo/ncit.owl: NCIT
   http://snomed.info/sct: SNOMED
   https://loinc.org/: LOINC
+  http://hl7.org/fhir/sid/icd-10-cm: ICDCM10
+  http://hl7.org/fhir/sid/icd-9-cm: ICD9CM
+  http://hl7.org/fhir/sid/icd-9-cm: ICD9Proc
 projector_lib: projector/study_only/current
 env:
   local: dev
@@ -61,12 +64,28 @@ dataset:
     embed:
       dataset: study_meta
       colname: Study Code
+  dataset_meta:
+    filename: data/tables/DS-DETERMINED/datasets.csv
+    data_dictionary:
+      filename: data/dd/dataset_meta.csv
+  dataset_manifest:
+    filename: data/tables/DS-DETERMINED/dsd_dataset_manifest_2025-05-23.csv
+    data_dictionary:
+      filename: data/dd/dataset_manifest.csv
+    embed: 
+      dataset: dataset_meta
+      colname: Dataset External ID
+  file_manifest:
+    filename: data/tables/DS-DETERMINED/dsd_datafile_manifest_2025-07-17.csv
+    data_dictionary:
+      filename: data/dd/datafile.csv
+    group_by: File S3 Location
   participant:
     filename: data/tables/DS-DETERMINED/DS_DETERMINED_participant_05232025.csv
     data_dictionary: 
       filename: data/dd/participant.csv
   condition:
-    filename: data/tables/DS-DETERMINED/DS_DETERMINED_conditions_05232025_vitalids.csv
+    filename: data/tables/DS-DETERMINED/DS_DETERMINED_conditions_V7_update_vitalids.csv
     embed:
       dataset: participant
       colname: Participant External ID

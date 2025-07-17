@@ -108,7 +108,7 @@ dataset:
     data_dictionary:
       filename: data/dd/additive.csv
   specimen:
-    filename: data/tables/HTP/vbr_biospecimens_harmonized_2025-05-28.csv
+    filename: data/tables/HTP/vbr_biospecimens_harmonized_2025-07-15.csv
     subject_id: Participant External ID
     key_columns: Sample Global ID
     group_by: Participant External ID, Sample External ID

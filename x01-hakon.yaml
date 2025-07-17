@@ -93,6 +93,9 @@ dataset:
     filename: data/tables/X01-Hakonarson/encounter.csv    
     data_dictionary: 
       filename: data/dd/encounter.csv
+    embed: 
+      dataset: participant 
+      colname: Participant External ID
   family:
     hidden: true
     #group_by: Family ID,Family Type
