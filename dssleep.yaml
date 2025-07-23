@@ -27,6 +27,7 @@ code_harmonization:
  - harmony/demographics.csv
  - harmony/encounter.csv
  - harmony/misc.csv
+ - harmony/datafile.csv
  - harmony/specimen.csv
  # - harmony/ds-sleep-conditions.csv
 projections: 

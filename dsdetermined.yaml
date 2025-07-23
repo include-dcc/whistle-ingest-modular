@@ -28,6 +28,7 @@ code_harmonization:
  - harmony/encounter.csv
  - harmony/misc.csv
  - harmony/specimen.csv
+ - harmony/datafile.csv
  - harmony/ds-determined-conditions.csv
 projections: 
   study: projector/study_only
@@ -42,9 +43,9 @@ curies:
   http://purl.obolibrary.org/obo/ncit.owl: NCIT
   http://snomed.info/sct: SNOMED
   https://loinc.org/: LOINC
-  http://hl7.org/fhir/sid/icd-10-cm: ICDCM10
-  http://hl7.org/fhir/sid/icd-9-cm: ICD9CM
-  http://hl7.org/fhir/sid/icd-9-cm: ICD9Proc
+  # http://hl7.org/fhir/sid/icd-10-cm: ICDCM10
+  # http://hl7.org/fhir/sid/icd-9-cm: ICD9CM
+  # http://hl7.org/fhir/sid/icd-9-cm: ICD9Proc
 projector_lib: projector/study_only/current
 env:
   local: dev

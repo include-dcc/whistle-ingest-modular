@@ -29,6 +29,7 @@ code_harmonization:
  - harmony/encounter.csv
  - harmony/misc.csv
  - harmony/specimen.csv
+ - harmony/datafile.csv
  - harmony/x01-hakonarson-conditions.csv
 projections: 
   study: projector/study_only
