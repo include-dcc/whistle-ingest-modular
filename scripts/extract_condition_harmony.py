@@ -31,19 +31,32 @@ class Coding:
         "MESH": "urn:oid:2.16.840.1.113883.6.177",
         "UCUM": "http://unitsofmeasure.org",
         "OMIT": "http://purl.obolibrary.org/obo/omit.owl",
+        "ICD10CM": "http://hl7.org/fhir/sid/icd-10-cm",
+        "ICD9CM": "http://hl7.org/fhir/sid/icd-9-cm",
+        "ICD9Proc": "http://hl7.org/fhir/sid/icd-9-cm"
     }
+    no_curie = [
+        "ICD10CM", "ICD9CM", "ICD9Proc"
+    ]
 
     def __init__(self, local_code, local_display, parent_varname, code, display):
         self.local_code = local_code
         self.local_display = local_display
         self.parent_varname = parent_varname
         self.display = display
+        self.valid = True
         try:
             self.curie, self.code = code.split(":")
+            self.system = Coding.fhir_system[self.curie]
         except:
-            raise MissingCurie(local_code, code)
+            print(f"There was no curie associated with the code, {local_code} ({code})")
+            self.valid = False
+            self.curie = "UNK"
+            self.system = "NO-CURIE-IN-INPUT"
+            self.code = code 
+            # raise MissingCurie(local_code, code)
 
-        self.system = Coding.fhir_system[self.curie]
+        
 
     def row(self):
         "local code,text,table_name,parent_varname,local code system,code,display,code system,comment"
@@ -75,8 +88,9 @@ def ExtractCoding(line, writer, code_colname, display_colname, observed_codes):
                 code,
                 display,
             )
-            writer.writerow(coding.row())
-            observed_codes[code_key] = coding
+            if coding.valid:
+                writer.writerow(coding.row())
+                observed_codes[code_key] = coding
 
 
 if __name__ == "__main__":
