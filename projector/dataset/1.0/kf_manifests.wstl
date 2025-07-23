@@ -196,8 +196,15 @@ def FileDocumentReference(study, fileid, manifests) {
         var acls: $StrSplit(manifest.data_access, ";");
         securityLabel[]: FileAcl(study, acls[]);
     }
-    category[]: FileCategoryMap(study, "Experimental Strategy", manifest.experimental_strategy);
-    category[]: FileCategoryMap(study, "Data Category", manifest.data_category);
+
+    var categories[]: $StrSplit(manifest.data_category, "|");
+    category[]: FileCategoryMap(study, "Data Category", categories[]);
+
+    var strategies[]: $StrSplit(manifest.experimental_strategy, "|");
+    category[]: FileCategoryMap(study, "Experimental Strategy", strategies[]);
+    
+    // ALH 2025-07-23: Experimental Platform is not making it into FHIR because we are lacking an ontology
+    // to use that would enumerate the options for experimental platforms.
     
     content[0].attachment: FileDetailExtension(study, manifest);
     content[0].format.display: manifest.file_format

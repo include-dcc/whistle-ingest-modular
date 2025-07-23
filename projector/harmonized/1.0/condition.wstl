@@ -65,7 +65,6 @@ def Condition(study, condition, participant_global_id) {
         code.text: condition.condition_or_measure_source_text;
 
         resourceType: "Condition";
-
         encounter: Reference_Key_Identifier(study, "Encounter", Build_Encounter_ID(study, condition));
     } 
 }
