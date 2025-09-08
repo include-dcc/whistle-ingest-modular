@@ -62,11 +62,11 @@ dataset:
       dataset: study_meta
       colname: Study Code
   participant:
-    filename: data/tables/AADSC/participant.csv
+    filename: data/tables/AADSC/participant_aadsc.csv
     data_dictionary: 
       filename: data/dd/participant.csv
   condition:
-    filename: data/tables/AADSC/condition.csv
+    filename: data/tables/AADSC/condition_aadsc_updated.csv
     data_dictionary: 
       filename: data/dd/condition.csv
     embed:

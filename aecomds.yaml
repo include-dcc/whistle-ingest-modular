@@ -30,6 +30,7 @@ code_harmonization:
  - harmony/specimen.csv
  - harmony/datafile.csv
  - harmony/aecom-ds-conditions.csv
+ - harmony/data_types_and_experimental_strategies.csv
 projections: 
   study: projector/study_only
   dataset: projector/dataset
