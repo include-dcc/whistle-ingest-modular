@@ -66,7 +66,7 @@ dataset:
       dataset: dataset_meta
       colname: Dataset External ID
   file_manifest:
-    filename: data/tables/X01-deSmith/desmith_final_datafile_manifest_w_controlled_and_registered_data_v2_2025-07-03.csv,data/tables/X01-deSmith/X01-deSmith-UH-Clinical_datafile_manifest_2025-06-26.csv
+    filename: data/tables/X01-deSmith/desmith_final_datafile_manifest_w_controlled_and_registered_data_v2_2025-07-03.csv,data/tables/X01-deSmith/X01-deSmith-UH-Clinical_datafile_manifest_2025-10-15.csv
     data_dictionary:
       filename: data/dd/datafile.csv
     group_by: File S3 Location

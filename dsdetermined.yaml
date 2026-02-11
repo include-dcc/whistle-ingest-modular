@@ -77,7 +77,7 @@ dataset:
       dataset: dataset_meta
       colname: Dataset External ID
   file_manifest:
-    filename: data/tables/DS-DETERMINED/dsd_datafile_manifest_2025-07-17.csv
+    filename: data/tables/DS-DETERMINED/dsd_datafile_manifest_2025-10-15.csv
     data_dictionary:
       filename: data/dd/datafile.csv
     group_by: File S3 Location

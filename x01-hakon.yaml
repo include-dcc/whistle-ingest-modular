@@ -104,15 +104,16 @@ dataset:
     data_dictionary: 
       filename: data/dd/family.csv
   specimen:
-    filename: data/tables/X01-Hakonarson/FV_CFPDTD0T_hakon_biospecimen_manifest.csv
-    # group_by: Participant External ID, Sample External ID
-    embed:
-      dataset: participant
-      colname: Participant External ID
+    filename: data/tables/X01-Hakonarson/FV_CFPDTD0T_hakon_biospecimen_manifest_11_03_2025_guid.csv
+    subject_id: Participant External ID
+    key_columns: Sample Global ID
+    group_by: Participant External ID, Sample External ID
     data_dictionary:
       filename: data/dd/specimen.csv
+    # filename: data/tables/X01-Hakonarson/FV_CFPDTD0T_hakon_biospecimen_manifest.csv
+    # group_by: Participant External ID, Sample External ID
   file_manifest:
-    filename: data/tables/X01-Hakonarson/hakon_file_manifest_registered-2025-07-03.csv,data/tables/X01-Hakonarson/hakon_file_manifest_controlled-2025-07-03.csv,data/tables/X01-Hakonarson/X01-Hakonarson-UH-Clinical_datafile_manifest_2025-06-26.csv
+    filename: data/tables/X01-Hakonarson/hakon_file_manifest_registered-2025-07-03.csv,data/tables/X01-Hakonarson/hakon_file_manifest_controlled-2025-07-03.csv,data/tables/X01-Hakonarson/X01-Hakonarson-UH-Clinical_datafile_manifest_2025-10-15.csv
     # filename: data/tables/X01-Hakonarson/hakon_file_manifest_controlled-20240314.csv,data/tables/X01-Hakonarson/hakon_file_manifest_registered-20240314.csv
     # filename: data/tables/X01-Hakonarson/hakon_file_manifest_registered-20240314.csv
     data_dictionary:

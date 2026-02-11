@@ -72,7 +72,7 @@ dataset:
       filename: data/dd/dataset_meta.csv
   dataset_manifest:
     # 7 Dataset manifests for December 2024 dataset release
-    filename: data/tables/HTP/htp-donated-rnaseq-wb-dataset-manifest-v3.csv,data/tables/HTP/htp-fy18-crossover-dataset-manifest-v3.csv,data/tables/HTP/htp-fy22-x01-rna-paxgene-dataset-manifest-v3.csv,data/tables/HTP/htp-fy22-x01-rna-wbc-dataset-manifest-v3.csv,data/tables/HTP/htp-fy22-x01-wgs-dataset-manifest-v3.csv,data/tables/HTP/htp-metabolomics-dataset-manifest-v3.csv,data/tables/HTP/htp-proteomics-dataset-manifest-v3.csv,data/tables/HTP/HTP-TCRseq-2022-X01_dataset_manifest_globalIDs.csv,data/tables/HTP/HTP-BCRseq-2022-X01_dataset_manifest_globalIDs.csv
+    filename: data/tables/HTP/HTP_RNASeq_WB_2020_dataset_manifest.csv,data/tables/HTP/HTP_WGS_2018_X01_dataset_manifest.csv,data/tables/HTP/htp-fy22-x01-rna-paxgene-dataset-manifest-v3.csv,data/tables/HTP/htp-fy22-x01-rna-wbc-dataset-manifest-v3.csv,data/tables/HTP/htp-fy22-x01-wgs-dataset-manifest-v3.csv,data/tables/HTP/htp-metabolomics-dataset-manifest-v3.csv,data/tables/HTP/htp-proteomics-dataset-manifest-v3.csv,data/tables/HTP/HTP-TCRseq-2022-X01_dataset_manifest_globalIDs.csv,data/tables/HTP/HTP-BCRseq-2022-X01_dataset_manifest_globalIDs.csv
     data_dictionary: 
       filename: data/dd/dataset_manifest.csv
     embed:
@@ -110,7 +110,7 @@ dataset:
     data_dictionary:
       filename: data/dd/additive.csv
   specimen:
-    filename: data/tables/HTP/vbr_biospecimens_harmonized_2025-07-15.csv
+    filename: data/tables/HTP/vbr_biospecimens_harmonized_2025-12-11.csv
     subject_id: Participant External ID
     key_columns: Sample Global ID
     group_by: Participant External ID, Sample External ID
@@ -119,8 +119,8 @@ dataset:
   # File manifest is the name for referencing datafile manifests if harmonized data exists!
   # If using file_manifest, use the "harmonized" projection, too!
   file_manifest:
-    # These files are all the HTP file manifest in the most recent model form: USE THESE FOR LOADING IN V7
-    filename: data/tables/HTP/htp_v1_omics_datafiles_2025-06-26.csv,data/tables/HTP/FV_PJ79R4DY_FV_9Q2N4BTN_FV_7MVH1YCE_htp_datafile_manifest_w_crnic_files_v5_2025-06-26.csv,data/tables/HTP/htp_v5_datafile_manifest_new_data_controlled_access_only_2025-06-26.csv,data/tables/HTP/htp_v5_datafile_manifest_new_data_updated_registered_access_only_2025-06-26.csv,data/tables/HTP/htp_bcr_files_updated_sample_globalIds.csv,data/tables/HTP/htp_tcr_files_updated_sample_globalIds.csv
+    # File manifests for HTP were combined into a single file for November 2025 dataset release
+    filename: data/tables/HTP/HTP_datafile_manifest_2025_12_10.csv
     data_dictionary:
       filename: data/dd/datafile.csv
     group_by: File S3 Location

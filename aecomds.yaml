@@ -96,7 +96,7 @@ dataset:
   # File manifest is the name for referencing datafile manifests if harmonized data exists!
   # If using file_manifest, use the "harmonized" projection, too!
   file_manifest:
-    filename: data/tables/AECOM-DS/AECOM-DS-UH-Clinical-MRI_datafile_manifest_2025-06-27.csv
+    filename: data/tables/AECOM-DS/AECOM-DS-UH-Clinical-MRI_datafile_manifest_2025-10-15.csv
     data_dictionary:
       filename: data/dd/datafile.csv
     group_by: File S3 Location

@@ -1,11 +1,11 @@
-study_id: DSpostBFmulti
+study_id: DS-HPBM
 study_accession:  
 study_title: "Down syndrome early postnatal basal forebrain multiome"
 study_desc:
 url: 
-identifier_prefix: https://includedcc.org/fhir/dspostbfmulti
+identifier_prefix: https://includedcc.org/fhir/dshpbm
 dd_prefix: https://includedcc.org/fhir
-output_filename: dspostbfmulti
+output_filename: dshpbm
 id_colname: Participant ID
 organization: INCLUDE DCC
 
@@ -13,7 +13,7 @@ projection_version: current
 whistle_src: _entry.wstl
 
 # This is where the harmony file will be written 
-code_harmonization_dir: harmony/dspostbfmulti
+code_harmonization_dir: harmony/dshpbm
 
 # This is the prefix associated with the final study harmony file
 # This must match whatever is used in the whistle code (which is data-harmony
@@ -25,11 +25,12 @@ harmony_prefix: data-harmony
 code_harmonization: 
  - harmony/study.csv
  - harmony/dataset.csv
+ - harmony/datafile.csv
  - harmony/demographics.csv
  - harmony/encounter.csv
  - harmony/misc.csv
  - harmony/specimen.csv
- - harmony/dspostbfmulti-conditions.csv
+ - harmony/ds-hpbm-conditions.csv
 projections: 
   study: projector/study_only
   dataset: projector/dataset
@@ -51,30 +52,30 @@ env:
   prod: prd-kf2-inc
 dataset:
   study_meta: 
-    filename: data/tables/DSpostBFmulti/study.csv
+    filename: data/tables/DS-HPBM/study.csv
     data_dictionary:
       filename: data/dd/study.csv
   study_contacts:
     hidden: true
-    filename: data/tables/DSpostBFmulti/contacts.csv
+    filename: data/tables/DS-HPBM/contacts.csv
     data_dictionary: 
       filename: data/dd/contacts.csv
     embed:
       dataset: study_meta
       colname: Study Code
   participant:
-    filename: data/tables/DSpostBFmulti/DSpostBFmulti_harmonized_participant_2025-06-17.csv
+    filename: data/tables/DS-HPBM/DS-HPBM_harmonized_participant_2025-09-24.csv
     data_dictionary: 
       filename: data/dd/participant.csv
   condition:
-    filename: data/tables/DSpostBFmulti/DSpostBFmulti_harmonized_condition_2025-06-17.csv
+    filename: data/tables/DS-HPBM/DS-HPBM_harmonized_condition_2025-09-24.csv
     embed:
       dataset: participant
       colname: Participant External ID
     data_dictionary: 
       filename: data/dd/condition.csv
   specimen:
-    filename: data/tables/DSpostBFmulti/DSpostBFmulti_harmonized_biospecimen_2025-06-17.csv
+    filename: data/tables/DS-HPBM/DS-HPBM_harmonized_biospecimen_2025-10-15.csv
     subject_id: Participant External ID
     key_columns: Sample Global ID
     group_by: Participant External ID, Sample External ID
@@ -82,24 +83,28 @@ dataset:
       filename: data/dd/specimen.csv
   encounter:
     hidden: true
-    filename: data/tables/DSpostBFmulti/encounter.csv    
+    filename: data/tables/DS-HPBM/encounter.csv
     data_dictionary: 
       filename: data/dd/encounter.csv
     embed: 
       dataset: participant 
       colname: Participant External ID
-  # dataset_meta:
-  #   filename: data/tables/DSpostBFmulti/datasets.csv
-  #   data_dictionary:
-  #     filename: data/dd/dataset_meta.csv
-  # dataset_manifest:
-  #   filename: data/tables/DSpostBFmulti/DSpostBFmulti-BF-UH-Clinical_dataset_manifest_2025-05-29.csv,data/tables/DSpostBFmulti/DSpostBFmulti-BF-snATACseq_dataset_manifest_2025-05-29.csv,data/tables/DSpostBFmulti/DSpostBFmulti-BF-snRNAseq_dataset_manifest_2025-05-29.csv,data/tables/DSpostBFmulti/DSpostBFmulti_UH_clinical_datafile_2025-05-29.csv,data/tables/DSpostBFmulti/DSpostBFmulti-UH-clinical_participant_datafile_2025-06-02.csv
-  #   data_dictionary:
-  #     filename: data/dd/dataset_manifest.csv
-  # dataset_file_manifest:
-  #   filename: data/tables/DSpostBFmulti/DSpostBFmulti_harmonized_datafile_snRNAseq_2025-05-29.csv,data/tables/DSpostBFmulti/DSpostBFmulti_harmonized_datafile_snATACseq_2025-05-29.csv
-  #   data_dictionary:
-  #     filename: data/dd/datafile.csv
+  dataset_meta:
+    filename: data/tables/DS-HPBM/datasets.csv
+    data_dictionary:
+      filename: data/dd/dataset_meta.csv
+  dataset_manifest:
+    filename: data/tables/DS-HPBM/DS-HPBM-BF-UH-Clinical_dataset_manifest_2025-10-15.csv,data/tables/DS-HPBM/DS-HPBM-BF-snATACseq_dataset_manifest_2025-10-15.csv,data/tables/DS-HPBM/DS-HPBM-BF-snRNAseq_dataset_manifest_2025-10-15.csv
+    data_dictionary:
+      filename: data/dd/dataset_manifest.csv
+    embed: 
+      dataset: dataset_meta
+      colname: Dataset External ID
+  file_manifest:
+    filename: data/tables/DS-HPBM/DS-HPBM-BF-UH-clinical_datafile_2025-10-14.csv,data/tables/DS-HPBM/DS-HPBM-BF-snATACseq_harmonized_datafile_2025-10-14.csv,data/tables/DS-HPBM/DS-HPBM-BF-snRNAseq_harmonized_datafile_2025-10-14.csv
+    data_dictionary:
+      filename: data/dd/datafile.csv
+    group_by: File S3 Location
 active_tables:
   ALL: true
 #  family: true
