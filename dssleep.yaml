@@ -27,6 +27,7 @@ code_harmonization:
  - harmony/demographics.csv
  - harmony/encounter.csv
  - harmony/misc.csv
+ - harmony/datafile.csv
  - harmony/specimen.csv
  # - harmony/ds-sleep-conditions.csv
 projections: 
@@ -40,6 +41,8 @@ curies:
   http://purl.obolibrary.org/obo/mondo.owl: MONDO
   http://purl.obolibrary.org/obo/maxo.owl: MAXO
   http://purl.obolibrary.org/obo/ncit.owl: NCIT
+  http://snomed.info/sct: SNOMED
+  https://loinc.org/: LOINC
 projector_lib: projector/study_only/current
 env:
   local: dev
@@ -59,13 +62,22 @@ dataset:
     embed:
       dataset: study_meta
       colname: Study Code
-  # dataset_meta:
-    # filename: data/tables/abcds/datasets.csv
-    # data_dictionary: 
-    #   filename: data/dd/dataset_meta.csv
-    # embed:
-    #   dataset: study_meta
-    #   colname: Study Code
+  dataset_meta:
+    filename: data/tables/DS-Sleep/datasets.csv
+    data_dictionary:
+      filename: data/dd/dataset_meta.csv
+  dataset_manifest:
+    filename: data/tables/DS-Sleep/DS-Sleep-UH-Clinical_Sleep_dataset_manifests_2025-06-30.csv
+    data_dictionary:
+      filename: data/dd/dataset_manifest.csv
+    embed: 
+      dataset: dataset_meta
+      colname: Dataset External ID
+  file_manifest:
+    filename: data/tables/DS-Sleep/DS-Sleep-UH-clinical_sleep_datafile_manifest_2025_06_30.csv
+    data_dictionary:
+      filename: data/dd/datafile.csv
+    group_by: File S3 Location
   participant:
     filename: data/tables/DS-Sleep/participant.csv
     data_dictionary: 

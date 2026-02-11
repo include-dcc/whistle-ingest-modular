@@ -28,7 +28,7 @@ code_harmonization:
  - harmony/encounter.csv
  - harmony/misc.csv
  - harmony/specimen.csv
- # - harmony/aadsc-conditions.csv
+ - harmony/aadsc-conditions.csv
 projections: 
   study: projector/study_only
   dataset: projector/dataset
@@ -40,6 +40,8 @@ curies:
   http://purl.obolibrary.org/obo/mondo.owl: MONDO
   http://purl.obolibrary.org/obo/maxo.owl: MAXO
   http://purl.obolibrary.org/obo/ncit.owl: NCIT
+  http://snomed.info/sct: SNOMED
+  https://loinc.org/: LOINC
 projector_lib: projector/study_only/current
 env:
   local: dev
@@ -59,6 +61,31 @@ dataset:
     embed:
       dataset: study_meta
       colname: Study Code
+  participant:
+    filename: data/tables/AADSC/participant_aadsc.csv
+    data_dictionary: 
+      filename: data/dd/participant.csv
+  condition:
+    filename: data/tables/AADSC/condition_aadsc_updated.csv
+    data_dictionary: 
+      filename: data/dd/condition.csv
+    embed:
+      dataset: participant
+      colname: Participant External ID
+  encounter:
+    hidden: true
+    filename: data/tables/AADSC/encounter.csv    
+    data_dictionary: 
+      filename: data/dd/encounter.csv
+    embed: 
+      dataset: participant 
+      colname: Participant External ID
+  family:
+    hidden: true
+    #group_by: Family ID,Family Type
+    filename: data/tables/AADSC/family.csv    
+    data_dictionary: 
+      filename: data/dd/family.csv
 active_tables:
   ALL: true
 #  family: true

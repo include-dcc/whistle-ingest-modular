@@ -40,6 +40,8 @@ curies:
   http://purl.obolibrary.org/obo/mondo.owl: MONDO
   http://purl.obolibrary.org/obo/maxo.owl: MAXO
   http://purl.obolibrary.org/obo/ncit.owl: NCIT
+  http://snomed.info/sct: SNOMED
+  https://loinc.org/: LOINC
 projector_lib: projector/study_only/current
 env:
   local: dev
@@ -64,7 +66,7 @@ dataset:
     data_dictionary: 
       filename: data/dd/participant.csv
   condition:
-    filename: data/tables/TEAM-DS/teamds_conditions_harmonized_2025-05-29.csv
+    filename: data/tables/TEAM-DS/teamds_conditions_harmonized_2025-07-03.csv
     embed:
       dataset: participant
       colname: Participant External ID

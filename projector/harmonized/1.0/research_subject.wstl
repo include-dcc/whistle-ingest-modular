@@ -7,8 +7,7 @@
 //  study - This is the full study object created by Whistler
 //  subject - Must have a participant_id
 def ResearchSubject(study, subject) {
-    var study_code: $StrSplit(subject.study_code, "|");
-    meta.tag[]: StudyMetaMultiple(study_code[], study.dd-prefix, "Patient");
+    meta.tag[]: StudyMeta(study);
 
     var external_ids: $StrSplit(subject.participant_external_id, "|");
     var study_codes: $StrSplit(subject.study_code, "|");

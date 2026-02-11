@@ -27,10 +27,12 @@ def ProcessAliquot(study, subject_id, aliquot) {
             identifier[0].use: "official";
             identifier[]: Key_Identifier(study,"biospecimen/container/id", aliquot.container_external_id);
             identifier[1].use: "secondary";
-            specimenQuantity.value: $ParseFloat(aliquot.volume);
-            specimenQuantity.unit: "mL";
-            specimenQuantity.code: "mL";
-            specimenQuantity.system: "http://ucum.org";
+            if (aliquot.volume?) {
+                specimenQuantity.value: $ParseFloat(aliquot.volume);
+                specimenQuantity.unit: "mL";
+                specimenQuantity.code: "mL";
+                specimenQuantity.system: "http://ucum.org";
+            }
             description: aliquot.biospecimen_storage;
             extension[0]: ConcentrationQuantityExtension(study, aliquot);
 

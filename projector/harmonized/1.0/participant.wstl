@@ -18,10 +18,10 @@ def Patient_Reference(study, row) {
 //  subject - Must have a participant_id
 // 
 def Participant(study, subject) {
-    //meta.tag[]: StudyMeta(study);
+    meta.tag[]: StudyMeta(study);
     
-    var study_code: $StrSplit(subject.study_code, "|");
-    meta.tag[]: StudyMetaMultiple(study_code[], study.dd-prefix, "Patient");
+    // var study_code: $StrSplit(subject.study_code, "|");
+    // meta.tag[]: StudyMetaMultiple(study_code[], study.dd-prefix, "Patient");
     
     resourceType : "Patient"
 

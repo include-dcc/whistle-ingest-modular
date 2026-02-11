@@ -8,6 +8,7 @@ def Transform_Dataset(resource) {
     // Warning: this will only process dataset file manifests and should only be used if there is no harmonized
     // data.
     if (resource.file_manifest?) {
+        // $this: ProcessFileManifestData(resource.study, resource.file_manifest[]);
 
     } else {
         $this: ProcessDatasetFiles(resource.study, resource.dataset_meta[]);

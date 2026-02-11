@@ -39,6 +39,8 @@ curies:
   http://purl.obolibrary.org/obo/mondo.owl: MONDO
   http://purl.obolibrary.org/obo/maxo.owl: MAXO
   http://purl.obolibrary.org/obo/ncit.owl: NCIT
+  http://snomed.info/sct: SNOMED
+  https://loinc.org/: LOINC
 env:
   local: dev
   dev: dev
