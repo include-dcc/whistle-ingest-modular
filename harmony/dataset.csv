@@ -19,6 +19,8 @@ dbGaP,dbGaP,dataset_meta,,dataset_meta,dbGaP,dbGaP,https://includedcc.org/fhir/c
 Other Repository,Other Repository,dataset_meta,,dataset_meta,other-repository,Other Repository,https://includedcc.org/fhir/code-systems/dataset_meta,
 Other Access Authority,Other Access Authority,dataset_meta,,dataset_meta,other-access-authority,Other Access Authority,https://includedcc.org/fhir/code-systems/dataset_meta,
 Is Harmonized,Is Harmonized,dataset_meta,,dataset_meta,is-harmonized,Is Harmonized,https://includedcc.org/fhir/code-systems/dataset_meta,
+DOI,DOI,dataset_meta,,dataset_meta,doi,DOI,https://includedcc.org/fhir/code-systems/dataset_meta,
+DOI Citation,DOI Citaiton,dataset_meta,,dataset_meta,doi_citation,DOI Citation,https://includedcc.org/fhir/code-systems/dataset_meta,
 DS-COG-ALL,DS-COG-ALL,dataset_meta,Study Code,Study Code,DS-COG-ALL,DS-COG-ALL,https://includedcc.org/fhir/CodeSystem/data-dictionary/dataset_meta/study_code,
 DS-PCGC,DS-PCGC,dataset_meta,Study Code,Study Code,DS-PCGC,DS-PCGC,https://includedcc.org/fhir/CodeSystem/data-dictionary/dataset_meta/study_code,
 DS360-CHD,DS360-CHD,dataset_meta,Study Code,Study Code,DS360-CHD,DS360-CHD,https://includedcc.org/fhir/CodeSystem/data-dictionary/dataset_meta/study_code,
