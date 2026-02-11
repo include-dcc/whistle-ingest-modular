@@ -53,6 +53,10 @@ dataset:
     filename: data/tables/JAKi-DS/study.csv
     data_dictionary:
       filename: data/dd/study.csv
+  clinical_trials:
+    filename: data/tables/JAKi-DS/clinicaltrials.csv
+    data_dictionary:
+      filename: data/dd/clinicaltrials.csv
   study_contacts:
     hidden: true
     filename: data/tables/JAKi-DS/contacts.csv
