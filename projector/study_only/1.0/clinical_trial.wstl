@@ -1,0 +1,64 @@
+def BuildClinicalTrialComponent(code, datatype, value) {
+    if (value?) {
+        code.coding[]: HarmonizeMappedFirst(code, "Clinical Trials");
+        
+        if (datatype = "code") {
+            valueCodeableConcept.coding[]: HarmonizeMappedFirst(value, code);
+        } 
+        if (datatype = "string") {
+            valueString: value;
+        }
+        if (datatype = "integer") {
+            valueInteger: $ParseInt(value);
+        }
+
+        if (datatype = "boolean") {
+            valueBoolean: value = "TRUE";
+        }
+    }
+}
+
+def ClinicalTrialsObservation(study, clinicaltrials) {
+    meta.tag[]: StudyMeta(study);
+    
+    identifier[]: Key_Identifier(study, "Observation", $StrCat("Clinical-Trials-", clinicaltrials.nct_id));
+    identifier[0].use: "official";
+
+    code.text: "Clinical Trial";
+    code.coding[]: BuildCoding("C71104", "Clinical Trial", "http://purl.obolibrary.org/obo/ncit.owl");
+
+    focus[]: Reference_Key_Identifier(study, "ResearchStudy", study.study_code);
+
+    status: "final";
+    resourceType: "Observation";
+
+    component[]: BuildClinicalTrialComponent("Study Code", "code", HarmonizeMappedFirst(clinicaltrials.study_code, "Study Code"))
+
+    component[]: BuildClinicalTrialComponent("NCT ID", "string", clinicaltrials.nct_id);
+    
+    component[]: BuildClinicalTrialComponent("Trial Phase", "code", clinicaltrials.trial_phase);
+    component[]: BuildClinicalTrialComponent("Primary Purpose", "code", clinicaltrials.primary_purpose);
+    component[]: BuildClinicalTrialComponent("Intervention Type", "code", clinicaltrials.intervention_type);
+
+    var interventions: $StrSplit(clinicaltrials.intervention, "|");
+    component[]: BuildClinicalTrialComponent("Intervention", "string",interventions[]);
+    
+    var arm_info: $StrSplit(clinicaltrials.arm_information, "|");
+    component[]: BuildClinicalTrialComponent("Arm Information", "string",arm_info[]);
+
+    component[]: BuildClinicalTrialComponent("Arm Allocation", "code", clinicaltrials.arm_allocation);
+    component[]: BuildClinicalTrialComponent("Intervention Assignment Strategy", "code", clinicaltrials.intervention_assignment_strategy);
+
+    var primary_outcomes: $StrSplit(clinicaltrials.primary_outcome_measure, "|");
+    component[]: BuildClinicalTrialComponent("Primary Outcome Measure", "string", primary_outcomes[]);
+
+    var secondary_outcomes: $StrSplit(clinicaltrials.secondary_outcome_measure, "|");
+    component[]: BuildClinicalTrialComponent("Secondary Outcome Measure", "string", secondary_outcomes[]);
+    
+    var other_outcomes: $StrSplit(clinicaltrials.other_outcome_measure, "|");
+    component[]: BuildClinicalTrialComponent("Other Outcome Measure", "string", other_outcomes[]);
+}
+
+def ProcessClinicalTrials(study, clinicaltrials) {
+    out clinical_trials: ClinicalTrialsObservation(study, clinicaltrials);
+}

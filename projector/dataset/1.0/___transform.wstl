@@ -5,6 +5,10 @@ def Transform_Dataset(resource) {
 
     $this: ProcessDataset(resource.study, resource.study_meta[], resource.dataset_meta);
 
+    if resource.clinical_trials? {
+        $this: ProcessClinicalTrials(resource.study, resource.clinical_trials[]);
+    }
+
     // Warning: this will only process dataset file manifests and should only be used if there is no harmonized
     // data.
     if (resource.file_manifest?) {

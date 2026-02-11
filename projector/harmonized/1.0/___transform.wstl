@@ -10,6 +10,10 @@ def Transform_Dataset(resource) {
         $this: CreateDataDictionaryConceptMap(resource);
     }
 
+    if resource.clinical_trials? {
+        $this: ProcessClinicalTrials(resource.study, resource.clinical_trials[]);
+    }
+
     if resource.participant? {
         $this: ProcessParticipant(resource.study, resource.participant[]);
         $this: ProcessGroup(resource.study, resource.participant[*]);
