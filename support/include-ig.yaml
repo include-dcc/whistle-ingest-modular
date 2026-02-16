@@ -73,6 +73,12 @@ INCLUDE-Terms:
     - https://raw.githubusercontent.com/include-dcc/include-model-forge/main/output/CodeSystem-expected-data-category.json
     - https://raw.githubusercontent.com/include-dcc/include-model-forge/main/output/CodeSystem-include-study-tables.json
     - https://raw.githubusercontent.com/include-dcc/include-model-forge/main/output/CodeSystem-study-design.json
+    - https://raw.githubusercontent.com/include-dcc/include-model-forge/refs/heads/main/fsh-generated/resources/CodeSystem-arm-allocation.json
+    - https://raw.githubusercontent.com/include-dcc/include-model-forge/refs/heads/main/fsh-generated/resources/CodeSystem-clinical-trials.json
+    - https://raw.githubusercontent.com/include-dcc/include-model-forge/refs/heads/main/fsh-generated/resources/CodeSystem-intervention-assignment-strategy.json
+    - https://raw.githubusercontent.com/include-dcc/include-model-forge/refs/heads/main/fsh-generated/resources/CodeSystem-intervention-types.json
+    - https://raw.githubusercontent.com/include-dcc/include-model-forge/refs/heads/main/fsh-generated/resources/CodeSystem-primary-purpose.json
+    - https://raw.githubusercontent.com/include-dcc/include-model-forge/refs/heads/main/fsh-generated/resources/CodeSystem-trial-phase.json
     - https://raw.githubusercontent.com/include-dcc/include-model-forge/main/output/ValueSet-family-types-vs.json
     - https://raw.githubusercontent.com/include-dcc/include-model-forge/main/output/ValueSet-study-program-vs.json
     - https://raw.githubusercontent.com/include-dcc/include-model-forge/main/output/ValueSet-sample-types-vs.json
