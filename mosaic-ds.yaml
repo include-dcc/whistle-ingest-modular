@@ -1,18 +1,18 @@
-study_id: DS-COG-ALL
+study_id: MOSAIC-DS
 study_accession:  
-study_title: "INCLUDE: (Lupo) Genomic Analysis of Congenital Heart Defects and Acute Lymphoblastic Leukemia in Children with Down Syndrome"
-study_desc: "This study is a collaboration with the trans-NIH INvestigation of Co-occurring conditions across the Lifespan to Understand Down syndrome (INCLUDE) Project, which seeks to improve health and quality-of-life for individuals with Down syndrome, and NHLBI's TransOmics for Precision Medicine (TOPMed) program, which seeks to apply omics technologies to improve scientific understanding of the fundamental biological processes that underlie heart, lung, blood, and sleep (HLBS) disorders. Additional Pediatric Cardiac Genetics Consortium (PCGC) data from children affected with Down syndrome and congenital heart disease are accessible through two separate dbGaP studies: phs001138 (Kids First) and phs001194 (TOPMed)."
-url: https://includedcc.org/studies/dscogall
-identifier_prefix: https://includedcc.org/fhir/dsgocall
+study_title: "Medications for Obstructive Sleep Apnea to Improve Cognition in Children with Down Syndrome (MOSAIC DS)"
+study_desc:
+url: 
+identifier_prefix: https://includedcc.org/fhir/mosaic-ds
 dd_prefix: https://includedcc.org/fhir
-output_filename: dscogall
+output_filename: mosaic-ds
 id_colname: Participant ID
 
 projection_version: current
 whistle_src: _entry.wstl
 
 # This is where the harmony file will be written 
-code_harmonization_dir: harmony/dscogall
+code_harmonization_dir: harmony/mosaic-ds
 
 # This is the prefix associated with the final study harmony file
 # This must match whatever is used in the whistle code (which is data-harmony
@@ -28,7 +28,7 @@ code_harmonization:
  - harmony/encounter.csv
  - harmony/misc.csv
  - harmony/specimen.csv
-
+ # - harmony/mosaic-ds-conditions.csv
 projections: 
   study: projector/study_only
   dataset: projector/dataset
@@ -42,28 +42,25 @@ curies:
   http://purl.obolibrary.org/obo/ncit.owl: NCIT
   http://snomed.info/sct: SNOMED
   https://loinc.org/: LOINC
+projector_lib: projector/study_only/current
 env:
   local: dev
   dev: dev
   qa: qa-kf2-inc
-  prod: prod-kf2-inc
+  prod: prd-kf2-inc
 dataset:
   study_meta: 
-    filename: data/tables/DS-COG-ALL/study.csv
+    filename: data/tables/MOSAIC-DS/study.csv
     data_dictionary:
       filename: data/dd/study.csv
   study_contacts:
     hidden: true
-    filename: data/tables/DS-COG-ALL/contacts.csv
+    filename: data/tables/MOSAIC-DS/contacts.csv
     data_dictionary: 
       filename: data/dd/contacts.csv
     embed:
       dataset: study_meta
       colname: Study Code
-  dataset_meta:
-    filename: data/tables/DS-COG-ALL/datasets.csv
-    data_dictionary:
-      filename: data/dd/dataset_meta.csv
 active_tables:
   ALL: true
 #  family: true

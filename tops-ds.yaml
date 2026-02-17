@@ -1,18 +1,18 @@
-study_id: DS-HSAT
+study_id: TOPS-DS
 study_accession:  
-study_title: 
-study_desc: "A preliminary study of acceptability, feasibility, and performance of home sleep apnea testing in youth with Down syndrome"
+study_title: "Treatment of Obstructive Sleep Apnea with Personalized Surgery in Children with Down Syndrome"
+study_desc:
 url: 
-identifier_prefix: https://includedcc.org/fhir/ds-hsat
+identifier_prefix: https://includedcc.org/fhir/tops-ds
 dd_prefix: https://includedcc.org/fhir
-output_filename: dshsat
+output_filename: tops-ds
 id_colname: Participant ID
 
 projection_version: current
 whistle_src: _entry.wstl
 
 # This is where the harmony file will be written 
-code_harmonization_dir: harmony/dshsat
+code_harmonization_dir: harmony/tops-ds
 
 # This is the prefix associated with the final study harmony file
 # This must match whatever is used in the whistle code (which is data-harmony
@@ -28,7 +28,7 @@ code_harmonization:
  - harmony/encounter.csv
  - harmony/misc.csv
  - harmony/specimen.csv
- # - harmony/ds-hsat-conditions.csv
+ # - harmony/tops-ds-conditions.csv
 projections: 
   study: projector/study_only
   dataset: projector/dataset
@@ -50,12 +50,12 @@ env:
   prod: prd-kf2-inc
 dataset:
   study_meta: 
-    filename: data/tables/DS-HSAT/study.csv
+    filename: data/tables/TOPS-DS/study.csv
     data_dictionary:
       filename: data/dd/study.csv
   study_contacts:
     hidden: true
-    filename: data/tables/DS-HSAT/contacts.csv
+    filename: data/tables/TOPS-DS/contacts.csv
     data_dictionary: 
       filename: data/dd/contacts.csv
     embed:

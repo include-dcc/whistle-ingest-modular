@@ -1,18 +1,18 @@
-study_id: DS-Nexus
+study_id: DS-PALS
 study_accession:  
-study_title: "Nexus Translational Biobank"
-study_desc: "The Nexus is a patient registry, clinical database, and biological sample bank focused on developmental disorders. Its major goal is to advance research by (i) linking human cognitive, behavioral, neurological and other clinical phenotypes to biological samples, including DNA, plasma, and lymphoblastoid cell lines, and (ii) facilitating access to appropriate patient cohorts for research purposes. The Nexus is unique among biorepositories in that it combines extensive clinical data and biosamples, and emphasizes the inclusion of quantitative cognitive and behavioral data."
-url: https://includedcc.org/studies/dsnexus
-identifier_prefix: https://includedcc.org/fhir/dsnexus
+study_title: "Deep phenotyping and pan-omics of acute lymphoblastic leukemia (ALL) in Down syndrome (DS)"
+study_desc:
+url: 
+identifier_prefix: https://includedcc.org/fhir/ds-pals
 dd_prefix: https://includedcc.org/fhir
-output_filename: dsnexus
+output_filename: ds-pals
 id_colname: Participant ID
 
 projection_version: current
 whistle_src: _entry.wstl
 
 # This is where the harmony file will be written 
-code_harmonization_dir: harmony/dsnexus
+code_harmonization_dir: harmony/ds-pals
 
 # This is the prefix associated with the final study harmony file
 # This must match whatever is used in the whistle code (which is data-harmony
@@ -28,7 +28,7 @@ code_harmonization:
  - harmony/encounter.csv
  - harmony/misc.csv
  - harmony/specimen.csv
-
+ # - harmony/ds-pals-conditions.csv
 projections: 
   study: projector/study_only
   dataset: projector/dataset
@@ -42,19 +42,20 @@ curies:
   http://purl.obolibrary.org/obo/ncit.owl: NCIT
   http://snomed.info/sct: SNOMED
   https://loinc.org/: LOINC
+projector_lib: projector/study_only/current
 env:
   local: dev
   dev: dev
   qa: qa-kf2-inc
-  prod: prod-kf2-inc
+  prod: prd-kf2-inc
 dataset:
   study_meta: 
-    filename: data/tables/DS-Nexus/study.csv
+    filename: data/tables/DS-PALS/study.csv
     data_dictionary:
       filename: data/dd/study.csv
   study_contacts:
     hidden: true
-    filename: data/tables/DS-Nexus/contacts.csv
+    filename: data/tables/DS-PALS/contacts.csv
     data_dictionary: 
       filename: data/dd/contacts.csv
     embed:
