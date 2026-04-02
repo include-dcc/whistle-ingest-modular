@@ -112,8 +112,8 @@ def FileCategoryMap(study, varname, value) {
 
     if (code?) {
         coding: [code];
-        text: value;
     }
+    text: value;
 }
 
 def FileAcl(study, acl) {
@@ -127,10 +127,32 @@ def FileAcl(study, acl) {
     }
 }
 
-def FileDocumentReference(study, fileid, manifests) {
+// use manifest instead of manifests[] to just accept single manifest
+// remove fileid from parameters, add var inside function to create fileid from file_s3_location
+// create one object inside of contained that is a group of particpants, reference/patient will need to come from the participant
+// file manifest
+// two functions: one to make group members, one that runs the array[] through that function to make group
+
+
+def ParticipantDatafileGroup(study, participant_file_manifest) {
+    // meta.tag[]: StudyMeta(study);
+    
+    id: participant_file_manifest[0].file_global_id;
+
+    type: "person";
+    actual: true;
+    
+    member: Reference_Enrollment(study, participant_file_manifest[]);
+    quantity: $ListLen(participant_file_manifest);
+    resourceType: "Group";
+}
+
+def FileDocumentReference(study, manifest) {
     // var manifests: all_manifests[where $.file_s3_location=fileid];
-    var subject_ids: $Unique(manifests[*].participant_external_id);
-    var manifest: manifests[0];
+    // var subject_ids: $Unique(manifests[*].participant_external_id);
+    // var manifest: manifests[0];
+
+    var fileid: manifest.file_s3_location;
 
     var subject_id: manifest.participant_global_id;
     // var specimen_id: manifest.sample_external_id;
@@ -187,6 +209,11 @@ def FileDocumentReference(study, fileid, manifests) {
 
     if (subject_id?) {
         subject: Reference_Global_ID("Patient", subject_id);
+    } else {
+        if ($ListLen(manifest.participant_file_manifest) > 0) {
+            contained[]: ParticipantDatafileGroup(study, manifest.participant_file_manifest);
+            subject.reference: $StrCat("#", manifest.file_global_id);
+        }
     }
 
     securityLabel[].coding[]: HarmonizeMappedFirst(manifest.data_access, "Data Access");
@@ -217,17 +244,12 @@ def FileDocumentReference(study, fileid, manifests) {
         relatesTo[0].code: "transforms";
         relatesTo[0].target: Reference_Key_Identifier(study, "DocumentReference",  DocumentReferenceID(study, source_file));
     } else {
-        context.related[]: FileSpecimenReference(study, manifests[]);
+        context.related[]: FileSpecimenReference(study, manifest);
     }
 
     resourceType: "DocumentReference";
 }
 
 def ProcessFileManifestData(study, file) {
-    // var fileids: $Unique(files[*].file_s3_location);
-
-    //out files: KfFileTask(study, fileids[], files[*]);
-    // out files: FileDocumentReference(study, fileids[], files[*]);
-    out files: FileDocumentReference(study, file.file_s3_location, file.content);
-    //out files: KfDocReference(study, files[], category);
+    out files: FileDocumentReference(study, file);
 }
