@@ -14,7 +14,6 @@ BCRseq,BCRseq,datafile,Experimental Strategy,Experimental Strategy,BCRseq,BCRseq
 Controlled,Controlled,datafile,Data Access,Data Access,controlled,Controlled,https://includedcc.org/fhir/code-systems/data_access_types,
 Co-occurring Conditions,Co-occurring Conditions,datafile,Data Type,Data Type,Co-occurring Conditions,Co-occurring Conditions,https://includedcc.org/fhir/code-systems/data_types,
 Demographic,Demographic,datafile,Data Type,Data Type,Demographic,Demographic,https://includedcc.org/fhir/code-systems/data_types,
-Demographic|Cause of Death|Postmortem Interval|Biospecimen,Demographic|Cause of Death|Postmortem Interval|Biospecimen,datafile,Data Type,Data Type,Demographic|Cause of Death|Postmortem Interval|Biospecimen,Demographic|Cause of Death|Postmortem Interval|Biospecimen,https://includedcc.org/fhir/code-systems/data_types
 Dictionary,Dictionary,datafile,Data Type,Data Type,Dictionary,Dictionary,https://includedcc.org/fhir/code-systems/data_types,
 Familial Relationships Report,Familial Relationships Report,datafile,Data Type,Data Type,Peddy-Family-Sex,Peddy - Family/Sex,https://includedcc.org/fhir/code-systems/data_types,
 Gene Expression,Gene Expression,datafile,Data Type,Data Type,Gene-Expression-Quantifications,Gene Expression Quantifications,https://includedcc.org/fhir/code-systems/data_types,
