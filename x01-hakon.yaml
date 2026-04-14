@@ -68,7 +68,7 @@ dataset:
       dataset: study_meta
       colname: Study Code
   participant:
-    filename: data/tables/X01-Hakonarson/participant.csv
+    filename: data/tables/X01-Hakonarson/hakon_harmonized_participants_v7_2025-12-15.csv
     data_dictionary: 
       filename: data/dd/participant.csv
   dataset_meta:
@@ -76,14 +76,14 @@ dataset:
     data_dictionary: 
       filename: data/dd/dataset_meta.csv
   dataset_manifest:
-    filename: data/tables/X01-Hakonarson/hakon-rna-dataset-manifests-global-ids.csv,data/tables/X01-Hakonarson/hakon-wgs-dataset-manifest-global-ids.csv,data/tables/X01-Hakonarson/X01-Hakonarson-UH-Clinical_dataset_manifest_2025-06-26.csv
+    filename: data/tables/X01-Hakonarson/hakon-rna-dataset-manifests-global-ids_2026_04_07.csv,data/tables/X01-Hakonarson/hakon-wgs-dataset-manifest-global-ids_2026_04_07.csv,data/tables/X01-Hakonarson/X01-Hakonarson-UH-Clinical_dataset_manifest_2025-04-02.csv
     data_dictionary: 
       filename: data/dd/dataset_manifest.csv
     embed:
       dataset: dataset_meta
       colname: Dataset External ID
   condition:
-    filename: data/tables/X01-Hakonarson/condition.csv
+    filename: data/tables/X01-Hakonarson/hakon_harmonized_conditions_v7_2025-12-12.csv
     embed:
       dataset: participant
       colname: Participant External ID
@@ -104,7 +104,7 @@ dataset:
     data_dictionary: 
       filename: data/dd/family.csv
   specimen:
-    filename: data/tables/X01-Hakonarson/FV_CFPDTD0T_hakon_biospecimen_manifest_11_03_2025_guid.csv
+    filename: data/tables/X01-Hakonarson/hakon_vbr_harmonized_2026-01-22.csv
     subject_id: Participant External ID
     key_columns: Sample Global ID
     group_by: Participant External ID, Sample External ID
@@ -113,13 +113,27 @@ dataset:
     # filename: data/tables/X01-Hakonarson/FV_CFPDTD0T_hakon_biospecimen_manifest.csv
     # group_by: Participant External ID, Sample External ID
   file_manifest:
-    filename: data/tables/X01-Hakonarson/hakon_file_manifest_registered-2025-07-03.csv,data/tables/X01-Hakonarson/hakon_file_manifest_controlled-2025-07-03.csv,data/tables/X01-Hakonarson/X01-Hakonarson-UH-Clinical_datafile_manifest_2025-10-15.csv
+    filename: data/tables/X01-Hakonarson/hakon_v7_harmonized_datafile_2026-03-30.csv
     # filename: data/tables/X01-Hakonarson/hakon_file_manifest_controlled-20240314.csv,data/tables/X01-Hakonarson/hakon_file_manifest_registered-20240314.csv
     # filename: data/tables/X01-Hakonarson/hakon_file_manifest_registered-20240314.csv
     data_dictionary:
       filename: data/dd/datafile.csv
-    group_by: File S3 Location
+    # group_by: File S3 Location
     # group_by: File External ID
+  participant_file_manifest:
+    filename: data/tables/X01-Hakonarson/X01_Hakonarson_participant_datafile_manifest_2026_04_07.csv
+    data_dictionary:
+      filename: data/dd/participant_file_manifest.csv
+    embed:
+      dataset: file_manifest
+      colname: File Global ID
+  specimen_file_manifest:
+    filename: data/tables/X01-Hakonarson/X01_Hakonarson_sample_datafile_manifest_2026_04_07.csv
+    data_dictionary:
+      filename: data/dd/specimen_file_manifest.csv
+    embed:
+      dataset: file_manifest
+      colname: File Global ID
 active_tables:
   ALL: true
 

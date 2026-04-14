@@ -76,10 +76,10 @@ dataset:
     filename: data/tables/DSC/dsc_unharmonized_clinical_datafiles_2025-10-15.csv
     data_dictionary:
       filename: data/dd/datafile.csv
-    group_by: File S3 Location
+    # group_by: File S3 Location
   participant:
     # filename: data/tables/DSC/DSC_DSD_shared_participants_draft.csv
-    filename: data/tables/DSC/dsc_participant_harmonized_2024-04-12.csv
+    filename: data/tables/DSC/dsc_participant_harmonized_2025-03-17.csv
     data_dictionary: 
       filename: data/dd/participant.csv
   condition:

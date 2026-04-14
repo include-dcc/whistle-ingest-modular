@@ -69,7 +69,14 @@ dataset:
     filename: data/tables/X01-deSmith/desmith_final_datafile_manifest_w_controlled_and_registered_data_v2_2025-07-03.csv,data/tables/X01-deSmith/X01-deSmith-UH-Clinical_datafile_manifest_2025-10-15.csv
     data_dictionary:
       filename: data/dd/datafile.csv
-    group_by: File S3 Location
+    # group_by: File S3 Location
+  participant_file_manifest:
+    filename: data/tables/X01-deSmith/X01-deSmith-UH-Clinical_participant_datafile_2026-02-23.csv
+    data_dictionary:
+      filename: data/dd/participant_file_manifest.csv
+    embed:
+      dataset: file_manifest
+      colname: File Global ID
   study_contacts:
     hidden: true
     filename: data/tables/x01-deSmith/contacts.csv

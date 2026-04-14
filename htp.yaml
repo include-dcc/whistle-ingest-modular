@@ -120,14 +120,21 @@ dataset:
   # If using file_manifest, use the "harmonized" projection, too!
   file_manifest:
     # File manifests for HTP were combined into a single file for November 2025 dataset release
-    filename: data/tables/HTP/HTP_datafile_manifest_2025_12_10.csv
+    filename: data/tables/HTP/HTP_datafile_manifest_2026-03-18.csv
     data_dictionary:
       filename: data/dd/datafile.csv
-    group_by: File S3 Location
+    # group_by: File S3 Location
     # The below file manifests are just for TCR and BCR 
     # filename: data/tables/HTP/htp_tcr_files_updated_sample_globalIds.csv,data/tables/HTP/htp_bcr_files_updated_sample_globalIds.csv
     # The following represents all of the File Manifests
     # filename: data/tables/HTP/htp_v1_omics_datafiles_2023-10-10.csv,data/tables/HTP/FV_PJ79R4DY_FV_9Q2N4BTN_FV_7MVH1YCE_htp_datafile_manifest_w_crnic_files_v5.csv,data/tables/HTP/htp_v5_datafile_manifest_new_data_controlled_access_only.csv,data/tables/HTP/htp_v5_datafile_manifest_new_data_updated_registered_access_only.csv,data/tables/HTP/htp_bcr_files_updated_sample_globalIds.csv,data/tables/HTP/htp_tcr_files_updated_sample_globalIds.csv
+  participant_file_manifest:
+    filename: data/tables/HTP/HTP_crossover_participant_datafile_manifest_2026-03-16.csv,data/tables/HTP/HTP-TCRseq-2022-X01_participant_datafile_manifest.csv,data/tables/HTP/HTP-BCRseq-2022-X01_participant_datafile_manifest.csv
+    data_dictionary:
+      filename: data/dd/participant_file_manifest.csv
+    embed:
+      dataset: file_manifest
+      colname: File Global ID
 active_tables:
   ALL: true
 #  family: true

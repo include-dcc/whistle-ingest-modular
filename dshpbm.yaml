@@ -64,18 +64,18 @@ dataset:
       dataset: study_meta
       colname: Study Code
   participant:
-    filename: data/tables/DS-HPBM/DS-HPBM_harmonized_participant_2025-09-24.csv
+    filename: data/tables/DS-HPBM/DS-HPBM_harmonized_participant_2026-01-14.csv
     data_dictionary: 
       filename: data/dd/participant.csv
   condition:
-    filename: data/tables/DS-HPBM/DS-HPBM_harmonized_condition_2025-09-24.csv
+    filename: data/tables/DS-HPBM/DS-HPBM_harmonized_condition_2026-01-15.csv
     embed:
       dataset: participant
       colname: Participant External ID
     data_dictionary: 
       filename: data/dd/condition.csv
   specimen:
-    filename: data/tables/DS-HPBM/DS-HPBM_harmonized_biospecimen_2025-10-15.csv
+    filename: data/tables/DS-HPBM/DS-HPBM_harmonized_biospecimen_2026-01-23.csv
     subject_id: Participant External ID
     key_columns: Sample Global ID
     group_by: Participant External ID, Sample External ID
@@ -94,17 +94,25 @@ dataset:
     data_dictionary:
       filename: data/dd/dataset_meta.csv
   dataset_manifest:
-    filename: data/tables/DS-HPBM/DS-HPBM-BF-UH-Clinical_dataset_manifest_2025-10-15.csv,data/tables/DS-HPBM/DS-HPBM-BF-snATACseq_dataset_manifest_2025-10-15.csv,data/tables/DS-HPBM/DS-HPBM-BF-snRNAseq_dataset_manifest_2025-10-15.csv
+    filename: data/tables/DS-HPBM/DS-HPBM-BF-UH-Clinical_dataset_manifest_2026-04-02.csv,data/tables/DS-HPBM/DS-HPBM-BF-snATACseq_dataset_manifest_2026-04-02.csv,data/tables/DS-HPBM/DS-HPBM-BF-snRNAseq_dataset_manifest_2025-10-15.csv,data/tables/DS-HPBM/DS-HPBM-PFC-UH-Clinical_dataset_manifest_2026-04-02.csv,data/tables/DS-HPBM/DS-HPBM-PFC-snATACseq_dataset_manifest_2026-04-02.csv,data/tables/DS-HPBM/DS-HPBM-PFC-snRNAseq_dataset_manifest_2026-04-02.csv
     data_dictionary:
       filename: data/dd/dataset_manifest.csv
     embed: 
       dataset: dataset_meta
       colname: Dataset External ID
   file_manifest:
-    filename: data/tables/DS-HPBM/DS-HPBM-BF-UH-clinical_datafile_2025-10-14.csv,data/tables/DS-HPBM/DS-HPBM-BF-snATACseq_harmonized_datafile_2025-10-14.csv,data/tables/DS-HPBM/DS-HPBM-BF-snRNAseq_harmonized_datafile_2025-10-14.csv
+  # Datafiles for sequencing are in one manifest, separate manifests for UH Clinical datafiles
+    filename: data/tables/DS-HPBM/DS-HPBM_harmonized_datafile_2026-04-02.csv
     data_dictionary:
       filename: data/dd/datafile.csv
-    group_by: File S3 Location
+    # group_by: File S3 Location
+  participant_file_manifest:
+    filename: data/tables/DS-HPBM/DS-HPBM-BF-UH-clinical_participant_datafile_2026-04-02.csv,data/tables/DS-HPBM/DS-HPBM-PFC-UH-clinical_participant_datafile_2026-04-02.csv
+    data_dictionary:
+      filename: data/dd/participant_file_manifest.csv
+    embed:
+      dataset: file_manifest
+      colname: File Global ID
 active_tables:
   ALL: true
 #  family: true
