@@ -56,6 +56,11 @@ def FileSpecimenReference(study, manifest) {
     $this: Reference_Key_Identifier(study, "Specimen", BuildSpecimenIdentifier(study, manifest.participant_external_id, manifest.sample_external_id));
 }
 
+def FileSpecimenReferenceGlobal(study, manifest) {
+    $this: Reference_Global_ID("Specimen", manifest.sample_global_id);
+}
+
+
 def FileSpecimenAsInput(study, manifest) {
     type.text: "Specimen";
     valueReference: Reference_Key_Identifier(study, "Specimen", SpecimenIdentifier(study, manifest.participant_external_id, manifest.sample_external_id));
@@ -244,7 +249,15 @@ def FileDocumentReference(study, manifest) {
         relatesTo[0].code: "transforms";
         relatesTo[0].target: Reference_Key_Identifier(study, "DocumentReference",  DocumentReferenceID(study, source_file));
     } else {
-        context.related[]: FileSpecimenReference(study, manifest);
+        if ($ListLen(manifest.specimen_file_manifest) > 1){
+            // if (manifest.sample_external_id ~= "NA" and manifest.sample_external_id ~= "") {
+            context.related[]: FileSpecimenReferenceGlobal(study, manifest.specimen_file_manifest[]);
+            // }
+        } else {
+            if (manifest.sample_external_id ~= "NA" and manifest.sample_external_id ~= "") {
+                context.related[]: FileSpecimenReferenceGlobal(study, manifest);
+            }
+        }
     }
 
     resourceType: "DocumentReference";
