@@ -48,7 +48,7 @@ def run():
 
                 # This changed after my config was already defined
                 if study_code == "X01-Hakonarson":
-                    destdir = Path("data/tables") / "X01-Hakon"
+                    destdir = Path("data/tables") / "X01-Hakonarson"
                 else:
                     destdir = Path("data/tables") / study_code
                 destdir.mkdir(parents=True, exist_ok=True)
