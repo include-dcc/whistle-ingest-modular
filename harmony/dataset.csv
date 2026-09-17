@@ -62,6 +62,7 @@ Physical Activity,Physical Activity,study_meta,Data Category,Data Category,physi
 Other,Other,study_meta,Data Category,Data Category,other,Other,https://includedcc.org/fhir/code-systems/expected_data_category,
 Adherence,Adherence,study_meta,Data Category,Data Category,adherence,Adherence,https://includedcc.org/fhir/code-systems/expected_data_category,
 Sleep,Sleep,study_meta,Data Category,Data Category,sleep,Sleep,https://includedcc.org/fhir/code-systems/expected_data_category,
+Speech/Language/Hearing,Speech/Language/Hearing,study_meta,Data Category,Data Category,speech_language_hearing,Speech/Language/Hearing,https://includedcc.org/fhir/code-systems/expected_data_category,
 Illumina,Illumina,dataset_meta,Experimental Platform,Experimental Platform,illumina,Illumina,https://includedcc.org/fhir/CodeSystem/data-dictionary/dataset_meta/experimental_platform,
 Illumina NovaSeq,Illumina NovaSeq,dataset_meta,Experimental Platform,Experimental Platform,illumina_novaSeq,Illumina NovaSeq,https://includedcc.org/fhir/CodeSystem/data-dictionary/dataset_meta/experimental_platform,
 Meso Scale Discovery,Meso Scale Discovery,dataset_meta,Experimental Platform,Experimental Platform,meso-scale_discovery,Meso Scale Discovery,https://includedcc.org/fhir/CodeSystem/data-dictionary/dataset_meta/experimental_platform,

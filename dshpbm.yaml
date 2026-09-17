@@ -64,7 +64,7 @@ dataset:
       dataset: study_meta
       colname: Study Code
   participant:
-    filename: data/tables/DS-HPBM/DS-HPBM_harmonized_participant_2026-01-14.csv
+    filename: data/tables/DS-HPBM/DS-HPBM_harmonized_participant_2026-04-23.csv
     data_dictionary: 
       filename: data/dd/participant.csv
   condition:
