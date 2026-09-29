@@ -5,6 +5,7 @@ Other,Other,participant,Family Type,Family Type,Other,Other,https://includedcc.o
 Proband-only,Proband-only,participant,Family Type,Family Type,Proband-only,Proband-only,https://includedcc.org/fhir/code-systems/family_types,
 Trio,Trio,participant,Family Type,Family Type,Trio,Trio,https://includedcc.org/fhir/code-systems/family_types,
 Trio+,Trio+,participant,Family Type,Family Type,Trio+,Trio+,https://includedcc.org/fhir/code-systems/family_types,
+Trio Plus,Trio Plus,participant,Family Type,Family Type,Trio+,Trio+,https://includedcc.org/fhir/code-systems/family_types,
 Father,Father,Participant,Family Relationship,Inverse Family Relationship,CHILD,child,http://terminology.hl7.org/CodeSystem/v3-RoleCode,
 Mother,Mother,Participant,Family Relationship,Inverse Family Relationship,CHILD,child,http://terminology.hl7.org/CodeSystem/v3-RoleCode,
 Sibling,Sibling,Participant,Family Relationship,Inverse Family Relationship,SIB,sibling,http://terminology.hl7.org/CodeSystem/v3-RoleCode,

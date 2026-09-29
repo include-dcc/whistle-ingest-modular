@@ -107,9 +107,11 @@ def Study(study, studymeta, participants) {
     keyword[1].coding[]: BuildCoding(studymeta.study_code, studymeta.study_code, identifier[0].system);
     keyword[1].text: studymeta.study_code;
 
-    relatedArtifact[] (if studymeta.study_website?): StudyArtifactUrl("documentation", "Study Website", studymeta.study_website);
+    var websites: $StrSplit(studymeta.study_website, "|");
+    relatedArtifact[] (if studymeta.study_website?): StudyArtifactUrl("documentation", "Study Website", websites[]);
     relatedArtifact[] (if studymeta.selection_criteria?): StudyArtifactCitation("documentation", "SelectionCriteria", studymeta.selection_criteria);
-    relatedArtifact[] (if studymeta.study_design?): StudyArtifactCitation("citation", "StudyDesign", studymeta.study_design);
+    var study_designs: $StrSplit(studymeta.study_design, "|");
+    relatedArtifact[] (if studymeta.study_design?): StudyArtifactCitation("citation", "StudyDesign", study_designs[]);
     relatedArtifact[] (if studymeta.doi_citation?): StudyArtifactCitation("citation", "DOI Citation", studymeta.doi_citation);
 
 

@@ -1,18 +1,18 @@
-study_id: JAKi-DS
+study_id: HomeGrown
 study_accession:  
-study_title: "JAK Inhibition in Down Syndrome"
+study_title: "Home Grown: A family-based lifestyle intervention to support healthy development of young children with Down syndrome"
 study_desc:
 url: 
-identifier_prefix: https://includedcc.org/fhir/jaki-ds
+identifier_prefix: https://includedcc.org/fhir/homegrown
 dd_prefix: https://includedcc.org/fhir
-output_filename: jaki-ds
+output_filename: homegrown
 id_colname: Participant ID
 
 projection_version: current
 whistle_src: _entry.wstl
 
 # This is where the harmony file will be written 
-code_harmonization_dir: harmony/jaki-ds
+code_harmonization_dir: harmony/homegrown
 
 # This is the prefix associated with the final study harmony file
 # This must match whatever is used in the whistle code (which is data-harmony
@@ -28,7 +28,7 @@ code_harmonization:
  - harmony/encounter.csv
  - harmony/misc.csv
  - harmony/specimen.csv
- # - harmony/jaki-ds-conditions.csv
+ # - harmony/homegrown-conditions.csv
 projections: 
   study: projector/study_only
   dataset: projector/dataset
@@ -50,16 +50,12 @@ env:
   prod: prd-kf2-inc
 dataset:
   study_meta: 
-    filename: data/tables/JAKi-DS/study.csv
+    filename: data/tables/HomeGrown/study.csv
     data_dictionary:
       filename: data/dd/study.csv
-  clinical_trials:
-    filename: data/tables/JAKi-DS/clinicaltrials.csv
-    data_dictionary:
-      filename: data/dd/clinicaltrials.csv
   study_contacts:
     hidden: true
-    filename: data/tables/JAKi-DS/contacts.csv
+    filename: data/tables/HomeGrown/contacts.csv
     data_dictionary: 
       filename: data/dd/contacts.csv
     embed:

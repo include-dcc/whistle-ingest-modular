@@ -1,7 +1,7 @@
 variable_name,description,data_type,enumerations,min,max
 Participant Global ID,"Unique INCLUDE global identifier for the participant, assigned by DCC",String,,,
 Participant External ID,"Unique, de-identified identifier for the participant, assigned by data contributor. External IDs must be two steps removed from personal information in the study records.",string,
-Age at Biospecimen Collection,Age in days of participant at time of biospecimen collection,integer,,,
+Age at Biospecimen Collection,Age in days of participant at time of biospecimen collection,string,,,
 Sample Global ID,"INCLUDE global identifier for sample, assigned by DCC",string,
 Sample External ID,"Unique identifier for sample, assigned by data contributor. A sample is a unique biological material; two samples with two different IDs are biologically distinct.",string,
 Sample Type,"Type of biological material comprising the Sample (e.g. Plasma, White blood cells, Red blood cells, DNA, RNA, Peripheral blood mononuclear cells, CD4+ Tconv cells, NK cells, Monocytes, CD8+ T cells, B cells, Granulocytes, Treg cells)",String,ATACseq;B cells Cryo;Blood Smear Slide;Buffy Coat;CD4+ Tconv cells;CD8+ T cells;CYTOF Ready White Blood Cells;DNA;Granulocytes;Monocytes;NK cells;PAXgene Whole Blood DNA;PAXgene Whole Blood DNA Tube;PAXgene Whole Blood RNA;PAXgene Whole Blood RNA Tube;PBMC;Peripheral Blood Mononuclear Cells;Peripheral Whole Blood;Plasma;Red Blood Cells;RNA;Saliva;Salivette;Skin Tape;Tongue Swab;Tregs;White Blood Cells;White Blood Cells Cryo;White Blood Cells DNA;White Blood Cells Protein;White Blood Cells RNA;Whole Blood;Whole Blood EDTA

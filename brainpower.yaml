@@ -54,6 +54,10 @@ dataset:
     filename: data/tables/BrainPower/study.csv
     data_dictionary:
       filename: data/dd/study.csv
+  clinical_trials:
+    filename: data/tables/BrainPower/clinicaltrials.csv
+    data_dictionary:
+      filename: data/dd/clinicaltrials.csv
   study_contacts:
     hidden: true
     filename: data/tables/BrainPower/contacts.csv
@@ -98,7 +102,14 @@ dataset:
     filename: data/tables/BrainPower/brainpower_datafile_manifest_2025-06-26.csv
     data_dictionary:
       filename: data/dd/datafile.csv
-    group_by: File S3 Location
+    # group_by: File S3 Location
+  participant_file_manifest:
+    filename: data/tables/BrainPower/brainpower_participant_datafile_manifest_2025-02-05.csv
+    data_dictionary:
+      filename: data/dd/participant_file_manifest.csv
+    embed:
+      dataset: file_manifest
+      colname: File Global ID
 active_tables:
   ALL: true
 #  family: true

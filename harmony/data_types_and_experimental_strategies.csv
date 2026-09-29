@@ -1,0 +1,16 @@
+local code,text,table_name,parent_varname,local code system,code,display,code system,comment
+Chimeric Aligned Reads,Chimeric Aligned Reads,datafile,Data Type,Data Type,Chimeric Aligned Reads,Chimeric Aligned Reads,https://includedcc.org/fhir/code-systems/data_types
+Contamination Estimation,Contamination Estimation,datafile,Data Type,Data Type,Contamination Estimation,Contamination Estimation,https://includedcc.org/fhir/code-systems/data_types
+Familial Relationship,Familial Relationship,datafile,Data Type,Data Type,Familial Relationship,Familial Relationship,https://includedcc.org/fhir/code-systems/data_types
+Familial Relationship Report,Familial Relationship Report,datafile,Data Type,Data Type,Familial Relationship Report,Familial Relationship Report,https://includedcc.org/fhir/code-systems/data_types
+Gender QC Metrics,Gender QC Metrics,datafile,Data Type,Data Type,Gender QC Metrics,Gender QC Metrics,https://includedcc.org/fhir/code-systems/data_types
+Gene Expression Count,Gene Expression Count,datafile,Data Type,Data Type,Gene Expression Count,Gene Expression Count,https://includedcc.org/fhir/code-systems/data_types
+Genome Aligned Reads,Genome Aligned Reads,datafile,Data Type,Data Type,Genome Aligned Reads,Genome Aligned Reads,https://includedcc.org/fhir/code-systems/data_types
+Genome Aligned Reads Index,Genome Aligned Reads Index,datafile,Data Type,Data Type,Genome Aligned Reads Index,Genome Aligned Reads Index,https://includedcc.org/fhir/code-systems/data_types
+HLA Genotyping,HLA Genotyping,datafile,Data Type,Data Type,HLA Genotyping,HLA Genotyping,https://includedcc.org/fhir/code-systems/data_types
+Het Call QC Metrics,Het Call QC Metrics,datafile,Data Type,Data Type,Het Call QC Metrics,Het Call QC Metrics,https://includedcc.org/fhir/code-systems/data_types
+QC Metrics,QC Metrics,datafile,Data Type,Data Type,QC Metrics,QC Metrics,https://includedcc.org/fhir/code-systems/data_types
+RNAseq Alignment Metrics,RNAseq Alignment Metrics,datafile,Data Type,Data Type,RNAseq Alignment Metrics,RNAseq Alignment Metrics,https://includedcc.org/fhir/code-systems/data_types
+Relatedness QC Metrics,Relatedness QC Metrics,datafile,Data Type,Data Type,Relatedness QC Metrics,Relatedness QC Metrics,https://includedcc.org/fhir/code-systems/data_types
+Splice Junction,Splice Junction,datafile,Data Type,Data Type,Splice Junction,Splice Junction,https://includedcc.org/fhir/code-systems/data_types
+Variant Calling Metrics,Variant Calling Metrics,datafile,Data Type,Data Type,Variant Calling Metrics,Variant Calling Metrics,https://includedcc.org/fhir/code-systems/data_types

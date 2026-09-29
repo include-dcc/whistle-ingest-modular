@@ -10,8 +10,8 @@ from yaml import safe_load
 
 PID_COLNAME = "Participant External ID"
 AGE_COLNAME = "Age At Condition or Measure Observation"
-FIRST_ENCOUNTER = "Age at First Patient Engagement"
-FIRST_ENCOUNTER_TYPE = "First Patient Engagement Event"
+FIRST_ENCOUNTER = "Age at First Participant Engagement"
+FIRST_ENCOUNTER_TYPE = "First Participant Engagement Event"
 LAST_ENCOUNTER = "Age at Last Vital Status"
 
 

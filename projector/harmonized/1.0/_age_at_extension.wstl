@@ -11,7 +11,7 @@
 //  age_unit - years/days - indicate the units associated with age (above)
 //  
 def AgeAtExtension(study, subject_id, required age, age_unit) {
-    if (age ~= "NA") {
+    if (age ~= "NA" and age ~= "Unknown") {
         if (age_unit = "years"){
             url: "http://hl7.org/fhir/StructureDefinition/cqf-relativeDateTime";
             extension[0].url: "target";
